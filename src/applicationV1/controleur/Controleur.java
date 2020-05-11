@@ -28,6 +28,13 @@ public class Controleur implements Initializable{
 			return codeTuile;
 		}
 		
-		
+	//	public void afficherMap(int[] map) {
+			
+			
+//			for (int i = 0; i < 225; i++) {
+//				 ImageView texture = new ImageView("resources/Textures/" + map[i] + ".png");
+//		            map.getChildren().add(texture);
+//			}
+//		}
 
 }
