@@ -1,9 +1,11 @@
 package applicationV1.modele;
 
+import java.util.ArrayList;
+
 public class Terrain {
 	private int width = 15;
 	private int height = 15;
-
+		
 	private int[] map= {42, 43, 44, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5,
 	                     36, 35, 46, 47, 48, 49, 26, 1, 1, 1, 16, 23, 23,
 	                     23, 17, 34, 31, 3, 50, 51, 1, 1, 1, 1, 1, 11, 21,
@@ -21,11 +23,11 @@ public class Terrain {
 	
 	private int[][] grille;
 	
-
 //	public Terrain(int width, int height) {
 //		this.width = width;
 //		this.height = height;
 //	}
+	
 	public int getWidth() {
 		return width;
 	}
@@ -35,5 +37,9 @@ public class Terrain {
 	
 	public int getNumeroTuile(int indice) {
 		return map[indice]; //TODO coordonnées en X Y %15 ou tab[][] pour faire la grille
+	}
+	
+	public int[] getMap() {
+		return map;
 	}
 }
