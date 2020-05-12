@@ -1,10 +1,10 @@
-package applicationV1.controleur;
+package TowerDefense.controleur;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import applicationV1.modele.Terrain;
+import TowerDefense.modele.Terrain;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;

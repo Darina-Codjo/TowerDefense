@@ -1,4 +1,4 @@
-package applicationV1.modele;
+package TowerDefense.modele;
 
 public abstract class Acteur {
 	

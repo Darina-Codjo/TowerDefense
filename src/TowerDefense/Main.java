@@ -1,4 +1,4 @@
-package applicationV1;
+package TowerDefense;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
