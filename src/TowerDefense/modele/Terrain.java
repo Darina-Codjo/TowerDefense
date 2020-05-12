@@ -42,4 +42,7 @@ public class Terrain {
 	public int[] getMap() {
 		return map;
 	}
+	public boolean dansTerrain(int x, int y){
+		return (0 <= x && x<this.width && 0<=y && y< this.height);
+	}
 }
