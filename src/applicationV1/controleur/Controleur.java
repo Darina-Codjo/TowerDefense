@@ -11,10 +11,11 @@ import javafx.scene.layout.TilePane;
 public class Controleur implements Initializable{
 	
 	private Terrain monTerrain;
-	    @FXML
+	
+	@FXML
 	    private TilePane TilePane;
 
-		@Override
+	@Override
 		public void initialize(URL location, ResourceBundle resources) {
 			this.monTerrain = new Terrain();
 			afficherTerrain();
