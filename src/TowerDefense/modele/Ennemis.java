@@ -45,6 +45,15 @@ public class Ennemis extends Acteur {
 	}
 
 	public void seDeplacer() {
-		//coder case suivante tab[][][][]
+		
+		int nposX=this.getX()+(this.vitesse*this.xSuivant);
+		int nposY=this.getY()+(this.vitesse*this.ySuivant);
+		while (!Terrain.dansTerrain(nposX, nposY)) {
+			
+			 nposX=this.getX()+(this.vitesse*this.xSuivant);
+			 nposY=this.getY()+(this.vitesse*this.ySuivant);
+		}
+			this.xSuivant = nposX;
+			this.ySuivant = nposY;
 	}
 }
