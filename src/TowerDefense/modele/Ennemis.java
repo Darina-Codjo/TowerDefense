@@ -1,5 +1,7 @@
 package TowerDefense.modele;
 
+import java.util.Random;
+
 public class Ennemis extends Acteur {
 
 	private int pointsDeVie;
@@ -43,8 +45,32 @@ public class Ennemis extends Acteur {
 	public void setVitesse(int v) {
 		this.vitesse = v;
 	}
+	
+	private void directionAleatoire() {
+		Random random=new Random();
+		int randomInt = random.nextInt(3);
+		xSuivant=randomInt-1;
+		if(xSuivant==0){
+			randomInt=random.nextInt(2)-1;
+			if(randomInt==0){
+				ySuivant=-1;
+			}
+			else{
+				ySuivant=1;
+			}
+		}
+		else{
+			ySuivant=random.nextInt(3)-1;
+		}
+	}
 
 	public void seDeplacer() {
 		//coder case suivante tab[][][][]
+	}
+
+	@Override
+	public void agit() {
+		// TODO Auto-generated method stub
+		
 	}
 }

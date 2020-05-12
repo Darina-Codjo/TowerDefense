@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Terrain {
 	private int width = 15;
 	private int height = 15;
+	private ArrayList<Ennemis> listeEnnemis;
 
 	private int[] map= {42, 43, 44, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5,
 			36, 35, 46, 47, 48, 49, 26, 1, 1, 1, 16, 23, 23,
@@ -42,4 +43,17 @@ public class Terrain {
 	public int[] getMap() {
 		return map;
 	}
+	
+	
+	public void tourDeJeu() {
+		
+		for(int i=0; i< listeEnnemis.size()-1; i++) {
+			listeEnnemis.get(i).agit();
+		}
+	}
+	
+	
+	
+	
+	
 }
