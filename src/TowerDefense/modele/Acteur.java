@@ -16,29 +16,35 @@ public abstract class Acteur {
 		this.id = "A"+compteur;
 		compteur++;
 	}
+	
 	public Acteur(Terrain terrain) {
 		//random de position dans tab[][][][]
 		this.terrain = terrain;	
 		this.id="A"+compteur;
 		compteur++;
 	}
+	
 	public int getX() {
 		return x;
 	}
+	
 	public void setX(int newX) {
 		this.x = newX;
 	}
+	
 	public int getY() {
 		return y;
 	}
+	
 	public void setY(int newY) {
 		this.y = newY;
 	}
+	
 	public String getId() {
 		return id;
 	}
 	
-	
+	public abstract void agit();
 	
 	
 	
