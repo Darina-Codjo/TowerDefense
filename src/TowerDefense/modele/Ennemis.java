@@ -7,20 +7,22 @@ public abstract class Ennemis extends Acteur {
 	private int pointsDeVie;
 	private int vitesse;
 	private int xSuivant;
-	private int ySuivant;	
-	private int x;
-	private int y;
+	private int ySuivant;
+
 	
+	
+	public Ennemis(int x, int y, Terrain terrain, int pv, int v) {
+		super(x, y, terrain);
+		this.pointsDeVie = pv;
+		this.vitesse = v;
+	}
+
 	public Ennemis(Terrain terrain, int pv, int v) {
 		super(terrain);
-		Random random=new Random();
-		this.x = random.nextInt(terrain.getWidth()-1);
-		this.y = random.nextInt(terrain.getHeight()-1);
 		this.pointsDeVie = pv;
 		this.vitesse = v;
 	}
 	
-
 	public int getPointsDeVie() {
 		return pointsDeVie;
 	}

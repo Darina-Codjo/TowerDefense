@@ -25,7 +25,10 @@ public class Terrain {
 
 //	private int[][] grille;
 //
-	
+//	public Terrain(int width, int height) {
+//		this.width = width;
+//		this.height = height;
+//	}
 
 	public int getWidth() {
 		return width;
@@ -73,8 +76,6 @@ public class Terrain {
 	public void init() {
 		for(int i = 0; i < 100 ; i++) {
 			this.ajouterEnnemis(new Cactus(this));
-			System.out.println("UN CACTUS");
-			
 		}
 	}
 }

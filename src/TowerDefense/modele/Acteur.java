@@ -1,17 +1,20 @@
 package TowerDefense.modele;
 
+import java.util.Random;
+
 public class Acteur {
 	
 	private int x;
 	private int y;
 	private String id;
 	protected Terrain terrain;
-	private int compteur = 0;
+	private int compteur;
 	
 	public Acteur(int x, int y, Terrain terrain) {
 		super();
-		this.x = x;
-		this.y = y;
+		Random random=new Random();
+		this.x = random.nextInt(terrain.getWidth()-1);
+		this.y = random.nextInt(terrain.getHeight()-1);
 		this.terrain = terrain;
 		this.id = "A"+compteur;
 		compteur++;
@@ -21,8 +24,6 @@ public class Acteur {
 		this.terrain = terrain;	
 		this.id="A"+compteur;
 		compteur++;
-		this.x = 1;
-		this.y = 1;
 	}
 	public int getX() {
 		return x;

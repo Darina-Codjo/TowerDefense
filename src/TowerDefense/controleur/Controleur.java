@@ -3,7 +3,6 @@ package TowerDefense.controleur;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Cactus;
 import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Terrain;
@@ -24,6 +23,12 @@ public class Controleur implements Initializable{
 
 	  @FXML
 	    private TilePane map;
+
+//	@FXML
+//		private Button ajouterEnnemis;
+
+	@FXML
+		private Button startButton;
 	
 	@FXML
     private Pane plateau;
@@ -31,7 +36,13 @@ public class Controleur implements Initializable{
 	@FXML
     private Label nbrEnnemis;
 
-	
+	@Override
+		public void initialize(URL location, ResourceBundle resources) {
+			this.monTerrain = new Terrain();
+			afficherMap();
+			this.monTerrain.tourDeJeu();
+			
+		}
 
 	private int codeTuile(int indice) {
 		return monTerrain.getNumeroTuile(indice);
@@ -49,7 +60,7 @@ public class Controleur implements Initializable{
 	@FXML
     void ajouterEnnemis(ActionEvent event) {
 		//for(int i = 0; i < 10; i++) {
-			Cactus c = new Cactus(this.monTerrain);
+			Cactus c = new Cactus(monTerrain);
 			this.monTerrain.ajouterEnnemis(c);
 			creerSprite(c);
 			System.out.println("AJOUTER");
@@ -64,41 +75,26 @@ public class Controleur implements Initializable{
 		//System.out.println("APRES");
     }
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		this.monTerrain = new Terrain();
-		afficherMap();
-		this.monTerrain.tourDeJeu();
-		this.plateau.setMaxWidth(240); 
-		this.plateau.setMaxHeight(240);
-		this.monTerrain.init();
-	}
+	
+	
+	 public void refreshPlateau() {
+		 for(int i = 0; i < this.monTerrain.getActeurs().size(); i++) {
+			 Circle c = (Circle) this.plateau.lookup("#" + this.monTerrain.getActeurs().get(i).getId());
+				 c.setTranslateX(this.monTerrain.getActeurs().get(i).getX());
+				 c.setTranslateY(this.monTerrain.getActeurs().get(i).getY());
+		 }
+	 }
 
 	private void creerSprite(Ennemis ennemis) {
-		
-		Circle circle = new Circle(5);
+		Circle circle;
+		circle = new Circle(5);
 		circle.setFill(Color.GREEN);
-		
 		circle.setId(ennemis.getId());
 		circle.setTranslateX(ennemis.getX());
 		circle.setTranslateY(ennemis.getY());
 		plateau.getChildren().add(circle);
 	}
-	
-	public void refreshPlateau() {
-		 for(Acteur acteur: this.monTerrain.getActeurs()){
-			 Circle c = (Circle) this.plateau.lookup("#" + acteur.getId());
-			 c.setTranslateX(acteur.getX());
-			 c.setTranslateY(acteur.getY());
-	}
-		
-//		
-//		for(int i = 0; i < this.monTerrain.getActeurs().size(); i++) {
-//			 Circle c = (Circle) this.plateau.lookup("#" + this.monTerrain.getActeurs().get(i).getId());
-//				 c.setTranslateX(this.monTerrain.getActeurs().get(i).getX());
-//				 c.setTranslateY(this.monTerrain.getActeurs().get(i).getY());
-//		 }
-	 }
+
 
 
 }
