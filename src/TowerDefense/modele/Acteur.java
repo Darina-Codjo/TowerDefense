@@ -1,12 +1,12 @@
 package TowerDefense.modele;
 
-public abstract class Acteur {
+public class Acteur {
 	
 	private int x;
 	private int y;
 	private String id;
 	protected Terrain terrain;
-	private int compteur;
+	private int compteur = 0;
 	
 	public Acteur(int x, int y, Terrain terrain) {
 		super();
@@ -21,6 +21,8 @@ public abstract class Acteur {
 		this.terrain = terrain;	
 		this.id="A"+compteur;
 		compteur++;
+		this.x = 1;
+		this.y = 1;
 	}
 	public int getX() {
 		return x;
@@ -38,6 +40,10 @@ public abstract class Acteur {
 		return id;
 	}
 	
+	
+	
+	
+
 	
 	
 	
