@@ -69,6 +69,7 @@ public abstract class Ennemis extends Acteur {
 
 	public void seDeplacer() {
 		
+		//System.out.println("Avant déplacemetn:" +toString());
        int newPositionX = this.getX()+(this.vitesse*xSuivant);
        int newPositionY = this.getY()+(this.vitesse*ySuivant);
         
@@ -80,8 +81,15 @@ public abstract class Ennemis extends Acteur {
      //   }
             this.setX(newPositionX);
             this.setY(newPositionY);
+            //System.out.println("Après déplacemetn:" +toString());
 	}
     
+	@Override
+	public String toString() {
+		return "Ennemis [pointsDeVie=" + pointsDeVie + ", vitesse=" + vitesse + ", xSuivant=" + xSuivant + ", ySuivant="
+				+ ySuivant + "]";
+	}
+
 	public abstract void agit();
 	
 }

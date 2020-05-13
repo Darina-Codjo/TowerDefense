@@ -8,7 +8,7 @@ public class Acteur {
 	private int y;
 	private String id;
 	protected Terrain terrain;
-	private int compteur;
+	static private int compteur=0;
 	
 	public Acteur(int x, int y, Terrain terrain) {
 		super();

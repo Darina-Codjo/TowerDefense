@@ -49,6 +49,7 @@ public class Terrain {
 	public void tourDeJeu() {
         for(int i = 0; i < listeEnnemis.size(); i++) {
          Ennemis e = listeEnnemis.get(i);
+         //System.out.println( listeEnnemis.get(i).getId()+ " va bouger");
          e.seDeplacer();
         }
     }

@@ -12,5 +12,15 @@ public class Cactus extends Ennemis {
 		int newPositionY = this.getY();
 		this.seDeplacer();
 	}
+
+	@Override
+	public String toString() {
+		return "Cactus [getPointsDeVie()=" + getPointsDeVie() + ", getVitesse()=" + getVitesse() + ", getxSuivant()="
+				+ getxSuivant() + ", getySuivant()=" + getySuivant() + ", getX()=" + getX() + ", getY()=" + getY()
+				+ ", getId()=" + getId() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+	
+	
 	
 }
