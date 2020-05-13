@@ -67,6 +67,7 @@ public abstract class Ennemis extends Acteur {
     }
 	
 
+	public void seDeplacer() {
 		
        int newPositionX = this.getX()+(this.vitesse*xSuivant);
        int newPositionY = this.getY()+(this.vitesse*ySuivant);
