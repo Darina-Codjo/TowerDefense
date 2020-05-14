@@ -6,6 +6,9 @@ public class Tourelle extends Tours {
 		super(x, y, terrain);
 	}
 	
+	public Tourelle(Terrain terrain) {
+		super(0,2,terrain);
+	}
 	
 
 }

@@ -7,6 +7,7 @@ public class Terrain {
 	private int width = 240;
 	private int height = 240;
 	private ArrayList<Ennemis> listeEnnemis = new ArrayList<Ennemis>();
+	private ArrayList<Tourelle> listeTourelle = new ArrayList<Tourelle>();
 
 	private int[] map = {42, 43, 44, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5,
 			36, 35, 46, 47, 48, 49, 26, 1, 1, 1, 16, 23, 23,
@@ -44,6 +45,17 @@ public class Terrain {
 	public int[] getMap() {
 		return map;
 	}
+	
+	public ArrayList<Integer> getTuilesChemin() {
+		ArrayList<Integer> listeTuilesChemin= new ArrayList<Integer>();
+		for(int i= 0; i<map.length; i++){
+			if(map[i]>=11 && map[i]<=24) {
+				listeTuilesChemin.add(map[i]);
+			}
+		}	
+		
+		return listeTuilesChemin;
+	}
 
 	
 	public void tourDeJeu() {
@@ -56,6 +68,10 @@ public class Terrain {
 	
 	public void ajouterEnnemis(Ennemis ennemis){
 		listeEnnemis.add(ennemis);
+	}
+	
+	public void ajouterTourelle(Tourelle tourelle) {
+		listeTourelle.add(tourelle);
 	}
 	
 	public boolean dansTerrain(int x, int y) {
