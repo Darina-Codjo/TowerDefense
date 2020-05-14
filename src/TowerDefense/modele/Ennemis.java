@@ -64,9 +64,12 @@ public abstract class Ennemis extends Acteur {
         else{
             ySuivant = random.nextInt(3)-1;
         }
+        
+        while(!this.terrain.dansTerrain(this.xSuivant + this.getX(), this.ySuivant + this.getY())) {
+        	this.seDeplacer();
+        }
     }
 	
-
 	public void seDeplacer() {
 		
 		//System.out.println("Avant déplacemetn:" +toString());
@@ -82,6 +85,7 @@ public abstract class Ennemis extends Acteur {
             this.setX(newPositionX);
             this.setY(newPositionY);
             //System.out.println("Après déplacemetn:" +toString());
+           
 	}
     
 	@Override
