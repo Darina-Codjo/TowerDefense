@@ -1,5 +1,8 @@
 package TowerDefense.modele;
 
+import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.Terrain;
+
 public class Cactus extends Ennemis {
 	
 	public Cactus(Terrain monTerrain){

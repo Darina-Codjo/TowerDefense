@@ -2,19 +2,18 @@ package TowerDefense.modele;
 
 import java.util.Random;
 
-public abstract class Ennemis extends Acteur {
+public class Ennemis extends Acteur{
 
 	private int pointsDeVie;
 	private int vitesse;
 	private int xSuivant;
 	private int ySuivant;
-
-	
 	
 	public Ennemis(int x, int y, Terrain terrain, int pv, int v) {
 		super(x, y, terrain);
 		this.pointsDeVie = pv;
 		this.vitesse = v;
+
 	}
 
 	public Ennemis(Terrain terrain, int pv, int v) {
@@ -37,6 +36,10 @@ public abstract class Ennemis extends Acteur {
 
 	public int getySuivant() {
 		return ySuivant;
+	}
+	
+	public String getId() {
+		return id;
 	}
 
 	public void setPointsDeVie(int pv) {
@@ -94,6 +97,12 @@ public abstract class Ennemis extends Acteur {
 				+ ySuivant + "]";
 	}
 
-	public abstract void agit();
+	@Override
+	public void agit() {
+		seDeplacer();
+		
+	}
+
+
 	
 }

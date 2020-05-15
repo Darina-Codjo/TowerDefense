@@ -76,7 +76,7 @@ public class Controleur implements Initializable{
 	void ajouterEnnemis(ActionEvent event) {
 		//for(int i = 0; i < 10; i++) {
 		Cactus c = new Cactus(monTerrain);
-		this.monTerrain.ajouterEnnemis(c);
+		this.monTerrain.ajouterActeur(c);
 		creerSprite(c);
 		//System.out.println("AJOUTER");
 		//}
@@ -85,7 +85,7 @@ public class Controleur implements Initializable{
 	@FXML
 	void ajouterTourelle(ActionEvent event) {
 		Tourelle t = new Tourelle(monTerrain);
-		this.monTerrain.ajouterTourelle(t);
+		this.monTerrain.ajouterActeur(t);
 		creerSpriteTourelle(t);
 	}
 
@@ -101,10 +101,10 @@ public class Controleur implements Initializable{
 
 	public void refreshPlateau() {
 		//System.out.println(this.monTerrain.getActeurs().size());
-		for(int i = 0; i < this.monTerrain.getActeurs().size(); i++) {
-			Circle c = (Circle) this.plateau.lookup("#" + this.monTerrain.getActeurs().get(i).getId());
-			c.setTranslateX(this.monTerrain.getActeurs().get(i).getX());
-			c.setTranslateY(this.monTerrain.getActeurs().get(i).getY());
+		for(int i = 0; i < this.monTerrain.getListeActeurs().size(); i++) {
+			Circle c = (Circle) this.plateau.lookup("#" + this.monTerrain.getListeActeurs().get(i).getId());
+			c.setTranslateX(this.monTerrain.getListeActeurs().get(i).getX());
+			c.setTranslateY(this.monTerrain.getListeActeurs().get(i).getY());
 		}
 	}
 

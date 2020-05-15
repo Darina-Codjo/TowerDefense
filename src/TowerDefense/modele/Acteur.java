@@ -1,12 +1,13 @@
 package TowerDefense.modele;
-
 import java.util.Random;
 
-public class Acteur {
+import TowerDefense.modele.Terrain;
+
+public abstract class Acteur extends Jeu {
 	
 	private int x;
 	private int y;
-	private String id;
+	protected String id;
 	protected Terrain terrain;
 	static private int compteur=0;
 	
@@ -16,7 +17,7 @@ public class Acteur {
 		this.x = random.nextInt(terrain.getWidth()-1);
 		this.y = random.nextInt(terrain.getHeight()-1);
 		this.terrain = terrain;
-		this.id = "A"+compteur;
+		this.id ="A"+compteur;
 		compteur++;
 	}
 	public Acteur(Terrain terrain) {
@@ -41,13 +42,5 @@ public class Acteur {
 		return id;
 	}
 	
-	
-	
-	
-
-	
-	
-	
-	
-	
+	public abstract void agit();
 }

@@ -3,11 +3,10 @@ import java.util.ArrayList;
 
 import TowerDefense.modele.Acteur;
 
-public class Terrain {
+public class Terrain extends Jeu {
 	private int width = 240;
 	private int height = 240;
-	private ArrayList<Ennemis> listeEnnemis = new ArrayList<Ennemis>();
-	private ArrayList<Tourelle> listeTourelle = new ArrayList<Tourelle>();
+
 
 	private int[] map = {42, 43, 44, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5,
 			36, 35, 46, 47, 48, 49, 26, 1, 1, 1, 16, 23, 23,
@@ -47,6 +46,7 @@ public class Terrain {
 	}
 	
 	public ArrayList<Integer> getTuilesChemin() {
+		//Si on clique de ces tuiles impossibles de poser une tourelle
 		ArrayList<Integer> listeTuilesChemin= new ArrayList<Integer>();
 		for(int i= 0; i<map.length; i++){
 			if(map[i]>=11 && map[i]<=24) {
@@ -57,38 +57,13 @@ public class Terrain {
 		return listeTuilesChemin;
 	}
 
-	
-	public void tourDeJeu() {
-        for(int i = 0; i < listeEnnemis.size(); i++) {
-         Ennemis e = listeEnnemis.get(i);
-         //System.out.println( listeEnnemis.get(i).getId()+ " va bouger");
-         e.seDeplacer();
-        }
-    }
-	
-	public void ajouterEnnemis(Ennemis ennemis){
-		listeEnnemis.add(ennemis);
-	}
-	
-	public void ajouterTourelle(Tourelle tourelle) {
-		listeTourelle.add(tourelle);
-	}
+
 	
 	public boolean dansTerrain(int x, int y) {
 		return (0 <= x && x<this.width && 0<=y && y< this.height);
 	}
+
 	
-	public ArrayList<Ennemis> getActeurs() {
-		return listeEnnemis;
-	}
-	
-	public Ennemis getEnnemi(String id) {
-		for(Ennemis e : this.listeEnnemis) {
-			if(e.getId().equals(id)) {
-				return e;
-			}
-		}
-		return null;
-	}
 }
+
 
