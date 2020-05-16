@@ -2,9 +2,15 @@ package TowerDefense.modele;
 
 import java.util.ArrayList;
 
-public abstract class Jeu {
+public class Jeu {
 	
-	private ArrayList<Acteur> listeActeur = new ArrayList<Acteur>();
+	private Terrain monTerrain;
+	private ArrayList<Acteur> listeActeur;
+	
+	public Jeu(Terrain terrain) {
+		this.monTerrain = terrain;
+		this.listeActeur = new ArrayList<Acteur>();
+	}
 	
 	public void tourDeJeu() {
         for(int i = 0; i < listeActeur.size(); i++) {
@@ -22,6 +28,11 @@ public abstract class Jeu {
 		return listeActeur;
 	}
 		
+	
+	public Terrain getMonTerrain() {
+		return monTerrain;
+	}
+
 	public Acteur getActeur(Acteur a) {
 		Acteur acteur=a;
 		for(int i=0; i< listeActeur.size();i++) {

@@ -6,10 +6,10 @@ public class Ennemis extends Acteur{
 
 	private int pointsDeVie;
 	private int vitesse;
-	private int xSuivant;
-	private int ySuivant;
+	private double directionX;
+	private double directionY;
 	
-	public Ennemis(int x, int y, Terrain terrain, int pv, int v) {
+	public Ennemis(double x, double y, Terrain terrain, int pv, int v) {
 		super(x, y, terrain);
 		this.pointsDeVie = pv;
 		this.vitesse = v;
@@ -19,7 +19,15 @@ public class Ennemis extends Acteur{
 	public Ennemis(Terrain terrain, int pv, int v) {
 		super(terrain);
 		this.pointsDeVie = pv;
-		this.vitesse = v;
+		this.vitesse = 10;
+	}
+	
+	public Ennemis(Terrain terrain) {
+		super(terrain);
+		this.directionX = 0;
+		this.directionY = 0;
+		this.vitesse = 10;
+		this.pointsDeVie = 100;
 	}
 	
 	public int getPointsDeVie() {
@@ -30,12 +38,12 @@ public class Ennemis extends Acteur{
 		return vitesse;
 	}
 
-	public int getxSuivant() {
-		return xSuivant;
+	public double getxSuivant() {
+		return directionX;
 	}
 
-	public int getySuivant() {
-		return ySuivant;
+	public double getySuivant() {
+		return directionY;
 	}
 	
 	public String getId() {
@@ -52,55 +60,37 @@ public class Ennemis extends Acteur{
 
 	private void directionAleatoire() {
         Random random = new Random();
-        int randomInt = random.nextInt(3);
-        xSuivant = randomInt-1;
         
-        if(xSuivant == 0){
-            randomInt = random.nextInt(2)-1;
-            if(randomInt == 0){
-                ySuivant = -1;
-            }
-            else{
-                ySuivant = 1;
-            }
-        }
-        else{
-            ySuivant = random.nextInt(3)-1;
-        }
+        double randomInt = random.nextInt(3);
+        directionX = randomInt-1;
         
-        while(!this.terrain.dansTerrain(this.xSuivant + this.getX(), this.ySuivant + this.getY())) {
+        randomInt = random.nextInt(3);
+        directionY = randomInt-1;
+        
+        while(!this.terrain.dansTerrain(this.directionX + this.getX(), this.directionY + this.getY())) {
         	this.seDeplacer();
         }
     }
 	
 	public void seDeplacer() {
 		
-		//System.out.println("Avant déplacemetn:" +toString());
-       int newPositionX = this.getX()+(this.vitesse*xSuivant);
-       int newPositionY = this.getY()+(this.vitesse*ySuivant);
-        
-       // while(!terrain.dansTerrain(newPositionX, newPositionY)){
- 
-        	directionAleatoire();
-        	newPositionX = this.getX()+(this.vitesse*xSuivant);
-        	newPositionY = this.getY()+(this.vitesse*ySuivant);
-     //   }
-            this.setX(newPositionX);
-            this.setY(newPositionY);
-            //System.out.println("Après déplacemetn:" +toString());
-           
+		directionAleatoire();
+		double newPositionX = this.getX()+(this.vitesse*directionX);
+		double newPositionY = this.getY()+(this.vitesse*directionY);
+    
+	   this.setX(newPositionX);
+	   this.setY(newPositionY);   
 	}
     
 	@Override
 	public String toString() {
-		return "Ennemis [pointsDeVie=" + pointsDeVie + ", vitesse=" + vitesse + ", xSuivant=" + xSuivant + ", ySuivant="
-				+ ySuivant + "]";
+		return "Ennemis [pointsDeVie=" + pointsDeVie + ", vitesse=" + vitesse + ", xSuivant=" + directionX + ", ySuivant="
+				+ directionY + "]";
 	}
 
 	@Override
 	public void agit() {
 		seDeplacer();
-		
 	}
 
 

@@ -1,9 +1,7 @@
 package TowerDefense.modele;
 import java.util.ArrayList;
 
-import TowerDefense.modele.Acteur;
-
-public class Terrain extends Jeu {
+public class Terrain {
 	private int width = 240;
 	private int height = 240;
 
@@ -22,13 +20,13 @@ public class Terrain extends Jeu {
 			1, 11, 15, 1, 1, 2, 3, 1, 11, 12, 23, 23, 23, 23, 23, 23, 20, 
 			15, 1, 1, 2, 3, 1, 14, 22, 22, 22, 22, 22, 22, 22, 22, 18, 1, 
 			25, 2, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8};
+	
+	
 
-//	private int[][] grille;
-//
-//	public Terrain(int width, int height) {
-//		this.width = width;
-//		this.height = height;
-//	}
+	
+	public Terrain() {
+		
+	}
 
 	public int getWidth() {
 		return width;
@@ -38,11 +36,16 @@ public class Terrain extends Jeu {
 	}
 
 	public int getNumeroTuile(int indice) {
-		return map[indice]; //TODO coordonnées en X Y %15 ou tab[][] pour faire la grille
+		return this.map[indice];
+		//TODO coordonnées en X Y %15 ou tab[][] pour faire la grille
 	}
 
 	public int[] getMap() {
 		return map;
+	}
+	
+	public int codeTuile(int indice) {
+		return this.getNumeroTuile(indice);
 	}
 	
 	public ArrayList<Integer> getTuilesChemin() {
@@ -53,16 +56,14 @@ public class Terrain extends Jeu {
 				listeTuilesChemin.add(map[i]);
 			}
 		}	
-		
 		return listeTuilesChemin;
 	}
 
 
 	
-	public boolean dansTerrain(int x, int y) {
-		return (0 <= x && x<this.width && 0<=y && y< this.height);
+	public boolean dansTerrain(double d, double e) {
+		return (0 <= d && d<this.width && 0<=e && e< this.height);
 	}
-
 	
 }
 

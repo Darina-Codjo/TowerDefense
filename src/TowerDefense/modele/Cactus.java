@@ -11,8 +11,8 @@ public class Cactus extends Ennemis {
 	
 	@Override
 	public void agit() {
-		int newPositionX = this.getX();
-		int newPositionY = this.getY();
+		double newPositionX = this.getX();
+		double newPositionY = this.getY();
 		this.seDeplacer();
 	}
 

@@ -1,6 +1,5 @@
 package TowerDefense.modele;
 
-import TowerDefense.modele.Terrain;
 import TowerDefense.modele.Tours;
 
 public class Tourelle extends Tours {

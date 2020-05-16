@@ -17,12 +17,11 @@
    <right>
       <VBox prefHeight="251.0" prefWidth="101.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#ajouterEnnemis" prefHeight="47.0" prefWidth="99.0" text="AjtEnnemis" />
+            <Button mnemonicParsing="false" onAction="#ajouterActeur" prefHeight="47.0" prefWidth="99.0" text="AjtEnnemis" />
             <Button mnemonicParsing="false" onAction="#start" prefHeight="43.0" prefWidth="101.0" text="START" />
             <Label prefHeight="26.0" prefWidth="100.0" text="Nombre ennemis" />
             <Label fx:id="nbrEnnemis" text="0" />
-            <RadioButton fx:id="buttonTourelle" mnemonicParsing="false" onAction="#ajouterTourelle" text="Tourelle" />
-            <RadioButton mnemonicParsing="false" text="Rien" />
+            <RadioButton fx:id="buttonTourelle" mnemonicParsing="false" onAction="#ajouterTrourelle" text="Tourelle" />
          </children>
       </VBox>
    </right>
