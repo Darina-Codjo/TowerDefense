@@ -89,6 +89,14 @@ public class Terrain {
 		return (0 <= d && d<this.width && 0<=e && e< this.height);
 	}
 	
+	public boolean dansChemin(int indice) {
+		if(this.codeTuile(indice)==2) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
 
 

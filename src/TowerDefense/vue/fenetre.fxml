@@ -21,7 +21,7 @@
             <Button mnemonicParsing="false" onAction="#start" prefHeight="43.0" prefWidth="101.0" text="START" />
             <Label prefHeight="26.0" prefWidth="100.0" text="Nombre ennemis" />
             <Label fx:id="nbrEnnemis" text="0" />
-            <RadioButton fx:id="buttonTourelle" mnemonicParsing="false" onAction="#ajouterTrourelle" text="Tourelle" />
+            <RadioButton fx:id="buttonTourelle" mnemonicParsing="false" onAction="#ajouterTourelle" text="Tourelle" />
          </children>
       </VBox>
    </right>
