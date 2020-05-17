@@ -33,8 +33,8 @@ public class Terrain {
 	3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 
 	3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 
 	3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 
-	2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 41, 40, 3, 3, 3, 3, 3, 3, 3, 3,
-	1, 1, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 40, 39, 38, 37, 42,
+	2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 41, 40, 3, 3, 3, 3, 3, 3, 3, 3,1,
+	1, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 40, 39, 38, 37, 42,
 	3, 3, 3, 3, 3, 3, 3, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3,
 	31, 32, 33, 35, 34, 3, 3, 3, 3, 3, 3, 3, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3,
 	3, 3, 3, 3, 3, 3, 29, 30, 3, 26, 3, 3, 3, 3, 3, 3, 3, 3, 1, 2, 2, 2, 2, 2, 2,
@@ -72,16 +72,16 @@ public class Terrain {
 		return this.getNumeroTuile(indice);
 	}
 	
-	public ArrayList<Integer> getTuilesChemin() {
-		//Si on clique de ces tuiles impossibles de poser une tourelle
-		ArrayList<Integer> listeTuilesChemin= new ArrayList<Integer>();
-		for(int i= 0; i<map.length; i++){
-			if(map[i]>=11 && map[i]<=24) {
-				listeTuilesChemin.add(map[i]);
-			}
-		}	
-		return listeTuilesChemin;
-	}
+//	public ArrayList<Integer> getTuilesChemin() {
+//		//Si on clique de ces tuiles impossibles de poser une tourelle
+//		ArrayList<Integer> listeTuilesChemin= new ArrayList<Integer>();
+//		for(int i= 0; i<map.length; i++){
+//			if(map[i]>=11 && map[i]<=24) {
+//				listeTuilesChemin.add(map[i]);
+//			}
+//		}	
+//		return listeTuilesChemin;
+//	}
 
 
 	

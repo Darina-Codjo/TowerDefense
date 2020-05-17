@@ -1,12 +1,9 @@
 package TowerDefense.vue;
 
-import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Jeu;
-import TowerDefense.modele.Terrain;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.shape.Circle;
 
 public class ConstruireMap {
 	
@@ -27,12 +24,4 @@ public class ConstruireMap {
 		}
 	}
 	
-
-//	public void refreshPlateau() {
-//		for(Acteur acteur :this.game.getListeActeurs()) {
-//			Circle c = (Circle) this.plateau.lookup("#" + acteur.getId());
-//			c.setTranslateX(acteur.getX());
-//			c.setTranslateY(acteur.getY());
-//		}
-//	}
 }
