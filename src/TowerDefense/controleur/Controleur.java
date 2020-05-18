@@ -88,20 +88,6 @@ public class Controleur implements Initializable{
 		
 	}
 	
-	/*int getTuileSansClic(double x, double y) {
-		double valeurX = x;
-		double valeurY = y;
-		int indice = 0;
-		while (valeurX >= 16) {
-			valeurX-=16;
-			indice ++;
-		}
-		while (valeurY >= 16) {
-			valeurY-=16;
-			indice += 30;
-		}
-		return indice;
-	}*/
 
     @FXML
     int getTuile(MouseEvent clic) {
