@@ -86,7 +86,7 @@ public class Terrain {
 	}
 	
 	public boolean dansChemin(int indice) {
-		if(this.codeTuile(indice)==2) {
+		if(this.codeTuile(indice)==2 || this.codeTuile(indice) == 50 || this.codeTuile(indice) == 51) {
 			return true;
 		}
 		else {
