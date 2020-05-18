@@ -60,36 +60,69 @@ public class Controleur implements Initializable{
 		construireMap.remplirTileMap();
 		this.vue = new VueTerrain(game, construireMap, plateau);
 		this.vue.initAnimation();
+		this.sprite = new CreerSprite(plateau);
 	}
 
 	@FXML
     void ajouterActeur(ActionEvent event) {
 		Acteur acteur = new Ennemis(monTerrain);
-		sprite = new CreerSprite(plateau);
 		this.game.ajouterActeur(acteur);
 		this.sprite.acteurSprite(acteur);
     }
+	
 	@FXML
     void ajouterTourelle(ActionEvent event) {
 		if(buttonTourelle.isSelected()) {
 			this.plateau.setOnMouseClicked(clic -> {
 				double x = clic.getX();
 				double y = clic.getY();
-				Acteur acteur2 = new Tourelle(monTerrain);
-				this.game.ajouterActeur(acteur2);
-				this.sprite.tourelleSprite(acteur2, x, y);
+				
+				if(!this.monTerrain.dansChemin(getTuileSansClic(x, y))) {
+					Acteur acteur2 = new Tourelle(monTerrain);
+					this.game.ajouterActeur(acteur2);
+					this.sprite.tourelleSprite(x, y);
+				}
 			});
 			
 		}
 		
 	}
-
 	
+	int getTuileSansClic(double x, double y) {
+		double valeurX = x;
+		double valeurY = y;
+		int indice = 0;
+		while (valeurX >= 16) {
+			valeurX-=16;
+			indice ++;
+		}
+		while (valeurY >= 16) {
+			valeurY-=16;
+			indice += 30;
+		}
+		return indice;
+	}
+
+    @FXML
+    int getTuile(MouseEvent clic) {
+		
+			double x = clic.getX();
+			double y = clic.getY();
+			int indice = 0;
+			while (x >= 16) {
+				x-=16;
+				indice ++;
+			}
+			while (y >= 16) {
+				y-=16;
+				indice += 30;
+			}
+			return indice;
+    }
 	
 	@FXML
 	void start(ActionEvent event) {
 		vue.getGameLoop().play();
 	}
-	
 	
 }

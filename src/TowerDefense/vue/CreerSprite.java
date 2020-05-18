@@ -32,7 +32,7 @@ public class CreerSprite {
 		plateau.getChildren().add(circle);
 	}
 	
-	public void tourelleSprite(Acteur acteur, double x, double y) {
+	public void tourelleSprite(double x, double y) {
 		Circle circle = new Circle(5);
 		circle.setFill(Color.RED);
 		circle.setTranslateX(x);

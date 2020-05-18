@@ -4,8 +4,11 @@ import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
+import TowerDefense.modele.Tourelle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
@@ -68,4 +71,5 @@ public class VueTerrain {
 			}
 		}
 	}
+
 }
