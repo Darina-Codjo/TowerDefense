@@ -77,7 +77,7 @@ public class Controleur implements Initializable{
 				double x = clic.getX();
 				double y = clic.getY();
 				
-				if(!this.monTerrain.dansChemin(getTuileSansClic(x, y))) {
+				if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
 					Acteur acteur2 = new Tourelle(monTerrain);
 					this.game.ajouterActeur(acteur2);
 					this.sprite.tourelleSprite(x, y);
@@ -88,7 +88,7 @@ public class Controleur implements Initializable{
 		
 	}
 	
-	int getTuileSansClic(double x, double y) {
+	/*int getTuileSansClic(double x, double y) {
 		double valeurX = x;
 		double valeurY = y;
 		int indice = 0;
@@ -101,7 +101,7 @@ public class Controleur implements Initializable{
 			indice += 30;
 		}
 		return indice;
-	}
+	}*/
 
     @FXML
     int getTuile(MouseEvent clic) {
