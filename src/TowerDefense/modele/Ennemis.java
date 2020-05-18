@@ -70,6 +70,9 @@ public class Ennemis extends Acteur{
         while(!this.terrain.dansTerrain(this.directionX + this.getX(), this.directionY + this.getY())) {
         	this.seDeplacer();
         }
+       /* while(!this.terrain.dansChemin(this.terrain.getTuileSansClic(this.directionX+this.getX(), this.directionY + this.getY()))) {
+        	this.seDeplacer();
+        }*/
     }
 	
 	public void seDeplacer() {

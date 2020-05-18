@@ -65,8 +65,21 @@ public class Terrain {
 //		}	
 //		return listeTuilesChemin;
 //	}
-
-
+	
+	public int getTuileSansClic(double x, double y) {
+		double valeurX = x;
+		double valeurY = y;
+		int indice = 0;
+		while (valeurX >= 16) {
+			valeurX-=16;
+			indice ++;
+		}
+		while (valeurY >= 16) {
+			valeurY-=16;
+			indice += 30;
+		}
+		return indice;
+	}
 	
 	public boolean dansTerrain(double d, double e) {
 		return (0 <= d && d<this.width && 0<=e && e< this.height);
