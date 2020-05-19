@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Terrain {
 	private int width = 480;
 	private int height = 480;
+	//private ArrayList<Integer> indicesTuilesSpawn;
 
 
 	private int[] map = {5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 
@@ -93,6 +94,49 @@ public class Terrain {
 			return false;
 		}
 	}
+	
+	/*public void tuileSpawn() {
+		this.indicesTuilesSpawn = new ArrayList<Integer>();
+		
+		int i = 0;
+		
+		while(i < 900) {
+			if (this.codeTuile(i)==50) {
+				indicesTuilesSpawn.add(i);
+			}
+			i++;
+		}
+	}
+	
+	public ArrayList<Integer> getTuileSpawn(){
+		tuileSpawn();
+		return this.indicesTuilesSpawn;
+	}
+	
+	public int getXTuile(int indice) {
+		int valeurIndice = indice;
+		int x = 0;
+		
+		x = 16 * (valeurIndice % 30);
+		
+		return x;
+	}
+	
+	
+	public int getYTuile(int indice) {
+		int valeurIndice = indice;
+		int y = 0;
+		
+		while(valeurIndice >= 30) {
+			valeurIndice -= 30;
+			y++;
+		}
+		
+		y *= 16;
+		return y;
+	}*/
+	
+	
 }
 
 
