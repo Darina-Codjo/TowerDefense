@@ -71,21 +71,19 @@ public class Controleur implements Initializable{
     }
 	
 	@FXML
-    void ajouterTourelle(ActionEvent event) {
+	void ajouterTourelle(ActionEvent event) {
 		if(buttonTourelle.isSelected()) {
 			this.plateau.setOnMouseClicked(clic -> {
 				double x = clic.getX();
 				double y = clic.getY();
-				
+
 				if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
-					Acteur acteur2 = new Tourelle(monTerrain);
+					Acteur acteur2 = new Tourelle(monTerrain, game);
 					this.game.ajouterActeur(acteur2);
 					this.sprite.tourelleSprite(x, y);
 				}
 			});
-			
-		}
-		
+		}	
 	}
 	
 
