@@ -94,6 +94,8 @@ public class Terrain {
 			return false;
 		}
 	}
+
+	
 	
 	/*public void tuileSpawn() {
 		this.indicesTuilesSpawn = new ArrayList<Integer>();

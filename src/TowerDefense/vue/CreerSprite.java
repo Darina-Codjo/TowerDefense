@@ -39,4 +39,11 @@ public class CreerSprite {
 		circle.setTranslateY(y);
 		plateau.getChildren().add(circle);
 	}
+	public  void projectileSprite(double x, double y) {
+		Circle circle = new Circle(2);
+		circle.setFill(Color.BLACK);
+		circle.setTranslateX(x);
+		circle.setTranslateY(y);
+		plateau.getChildren().add(circle);
+	}
 }

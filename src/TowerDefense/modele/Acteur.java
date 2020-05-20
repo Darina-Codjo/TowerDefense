@@ -1,5 +1,6 @@
 package TowerDefense.modele;
 import java.util.Random;
+import TowerDefense.modele.Ennemis;
 
 public abstract class Acteur {
 	
@@ -8,6 +9,7 @@ public abstract class Acteur {
 	protected String id;
 	protected Terrain terrain;
 	static private int compteur=0;
+	
 	
 	public Acteur(double x, double y, Terrain terrain) {
 		Random random = new Random();
@@ -40,4 +42,5 @@ public abstract class Acteur {
 	}
 	
 	public abstract void agit();
+	
 }

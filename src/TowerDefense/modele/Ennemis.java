@@ -8,6 +8,7 @@ public class Ennemis extends Acteur{
 	private int vitesse;
 	private double directionX;
 	private double directionY;
+	
 	/*private Terrain terrain;
 	private int rng = (int)(Math.random()*terrain.getTuileSpawn().size()+1);
 	private int xSpawn = terrain.getXTuile(terrain.getTuileSpawn().get(rng-1));
@@ -40,7 +41,7 @@ public class Ennemis extends Acteur{
 	public int getPointsDeVie() {
 		return pointsDeVie;
 	}
-
+	
 	public int getVitesse() {
 		return vitesse;
 	}
