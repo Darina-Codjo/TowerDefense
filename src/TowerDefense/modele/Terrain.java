@@ -94,6 +94,19 @@ public class Terrain {
 			return false;
 		}
 	}
+	
+	public int indiceTuileDebutChemin() {
+		
+		int indice=0;
+		for(int i=0; i<map.length; i++) {
+			if(map[i]==50) {
+				indice= i;
+			}
+		}
+		return indice;
+		
+		
+	}
 
 	
 	

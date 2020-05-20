@@ -22,6 +22,8 @@ public abstract class Acteur {
 	public Acteur(Terrain terrain) {
 		//random de position dans tab[][][][]
 		this.terrain = terrain;	
+		this.x=(this.terrain.indiceTuileDebutChemin()%30)*16;
+		this.y=(this.terrain.indiceTuileDebutChemin()/30)*16;
 		this.id="A"+compteur;
 		compteur++;
 	}
