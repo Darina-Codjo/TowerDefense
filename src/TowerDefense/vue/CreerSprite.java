@@ -2,6 +2,9 @@ package TowerDefense.vue;
 
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.TourelleFeu;
+import TowerDefense.modele.TourelleGlace;
+import TowerDefense.modele.TourelleRoche;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -32,18 +35,47 @@ public class CreerSprite {
 		plateau.getChildren().add(circle);
 	}
 	
-	public void tourelleSprite(double x, double y) {
+	public void tourelleSprite(Acteur acteur, double x, double y) {
+
 		Circle circle = new Circle(5);
-		circle.setFill(Color.RED);
+		
+		if (acteur instanceof TourelleGlace ) {
+			circle.setFill(Color.BLUE);
+		}
+		else if (acteur instanceof TourelleFeu) {
+			circle.setFill(Color.RED);
+		}
+		else {
+			circle.setFill(Color.BLACK);			
+		}
+		
 		circle.setTranslateX(x);
 		circle.setTranslateY(y);
 		plateau.getChildren().add(circle);
+		
+		
+		
 	}
-	public  void projectileSprite(double x, double y) {
-		Circle circle = new Circle(2);
-		circle.setFill(Color.BLACK);
-		circle.setTranslateX(x);
-		circle.setTranslateY(y);
-		plateau.getChildren().add(circle);
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

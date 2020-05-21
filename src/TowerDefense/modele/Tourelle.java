@@ -6,18 +6,18 @@ public class Tourelle extends Tours {
 	
 	private Jeu game;
 
-	public Tourelle(int x, int y, Terrain terrain,Jeu jeu) {
+	public Tourelle(int x, int y, Terrain terrain/*,Jeu jeu*/) {
 		super(x, y, terrain);
-		this.game = jeu;
+		//this.game = jeu;
 	}
 	
-	public Tourelle(Terrain terrain, Jeu jeu) {
+	public Tourelle(Terrain terrain /*,Jeu jeu*/) {
 		super(0,2,terrain);
-		this.game = jeu;
+		//this.game = jeu;
 	}
 	
 
-	
+/*	
 	private Ennemis tirerEnnemis(){
 //zone...
 		if(this.game.getListeActeurs().size() == 0) {
