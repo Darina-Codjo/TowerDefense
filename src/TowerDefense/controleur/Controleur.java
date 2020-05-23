@@ -14,6 +14,10 @@ import TowerDefense.modele.TourelleRoche;
 import TowerDefense.vue.ConstruireMap;
 import TowerDefense.vue.CreerSprite;
 import TowerDefense.vue.VueTerrain;
+import TowerDefense.modele.Cactus;
+import TowerDefense.modele.CactusSpeciale;
+import TowerDefense.modele.ScorpionSpeciale;
+import TowerDefense.modele.SerpentSpeciale;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -67,10 +71,21 @@ public class Controleur implements Initializable{
 	//
 	@FXML
     void ajouterActeur(ActionEvent event) {
-		Acteur acteur = new Ennemis(monTerrain);
-		this.game.ajouterActeur(acteur);
-		this.sprite.acteurSprite(acteur);
-    }
+		Acteur cactus = new Cactus(monTerrain);
+		Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
+		Acteur serpentSpeciale= new SerpentSpeciale(monTerrain);
+		Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
+		
+		this.game.ajouterActeur(cactus);
+		this.game.ajouterActeur(scorpionSpeciale);
+		this.game.ajouterActeur(serpentSpeciale);
+		this.game.ajouterActeur(cactusSpeciale);
+		
+		this.sprite.acteurSprite(scorpionSpeciale);		
+		this.sprite.acteurSprite(cactus);			
+		this.sprite.acteurSprite(serpentSpeciale);		
+		this.sprite.acteurSprite(cactusSpeciale);    
+	}
 	
 	@FXML
     void ajouterTourelle(ActionEvent event) {

@@ -5,6 +5,9 @@ import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.TourelleFeu;
 import TowerDefense.modele.TourelleGlace;
 import TowerDefense.modele.TourelleRoche;
+import TowerDefense.modele.Cactus;
+import TowerDefense.modele.ScorpionSpeciale;
+import TowerDefense.modele.SerpentSpeciale;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -19,16 +22,18 @@ public class CreerSprite {
 	
 	public void acteurSprite(Acteur acteur) {
 		Circle circle;
-		if(acteur instanceof Ennemis) {
-			circle = new Circle(3);
-			circle.setFill(Color.GREEN);
+		circle = new Circle(3);
+		
+		if(acteur instanceof Cactus)
+			circle.setFill(Color.YELLOW);
 			//Color.web("color en hexa")
-		}
-		else {
-			circle = new Circle(5);
+		else if (acteur instanceof ScorpionSpeciale)
 			circle.setFill(Color.RED);
-			
-		}
+		else if (acteur instanceof SerpentSpeciale)
+			circle.setFill(Color.GREEN);
+		else
+			circle.setFill(Color.PURPLE);
+		
 		circle.setId(acteur.getId());
 		circle.setTranslateX(acteur.getX());
 		circle.setTranslateY(acteur.getY());
