@@ -52,6 +52,19 @@ public class Controleur implements Initializable{
     @FXML
     private RadioButton ajoutTourelleFeu;  
     @FXML
+    private Button ajoutCactus;
+    @FXML
+    private Button ajoutScorpion;
+
+    @FXML
+    private Button ajoutSerpent;
+    @FXML
+    private Button ajoutSerpentSpeciale;
+    @FXML
+    private Button ajoutScorpionSpeciale;
+    @FXML
+    private Button ajoutCactusSpeciale;
+    @FXML
     private RadioButton ajoutTourelleRoche;  
 	private VueTerrain vue;	
 	private static Timeline gameLoop;	
@@ -73,6 +86,7 @@ public class Controleur implements Initializable{
 	//
 	@FXML
     void ajouterActeur(ActionEvent event) {
+		
 		Acteur cactus = new Cactus(monTerrain);
 		Acteur serpent= new Serpent(monTerrain);
 		Acteur scorpion= new Scorpion(monTerrain);

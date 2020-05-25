@@ -60,26 +60,26 @@ public class Tourelle extends Tours {
 //	//verification : si un ennemis est dans le rayon de la tourelle il meure
 	
 //Doonia
-//	public boolean tireSurEnnemis(Acteur acteur) {
-//	if (acteur instanceof Ennemis) {
-//		if ( this.getY()<acteur.getY()&& this.getX()== acteur.getX()) {
-//		((Ennemis) acteur).setPointsDeVie(((Ennemis) acteur).getPointsDeVie());
-//			if (((Ennemis) acteur).getPointsDeVie()<=0 )
-//				 ((TowerDefense.modele.Jeu) this.Jeu).suppEnnemis(acteur);
-//			return true;
-//		}		
+//public boolean tireSurEnnemis(Acteur acteur) {
+//		if (acteur instanceof Ennemis) {
+//			if ( this.getY()==acteur.getY() || this.getX()== acteur.getX()) {
+//			 this.jeu.suppEnnemis(acteur);
+//					 
+//				return true;
+//			}		
+//		}
+//		return false;
 //	}
-//	return false;
-//}
+	
+//	public void agit(Acteur acteur) {
+//			tireSurEnnemis(acteur);
+//				
+			 
+//	}
 
-//public void agit(Acteur acteur) {
-//	double x ;
-//	double y ; 
-//	/* if(acteur instanceof Ennemis) {   
-//		 if (tireSurEnnemis(acteur) == true)
-//			CreerSprite.projectileSprite(x, y);*/
-//		 
 //}
+ 
+ */
 }
 	
 	
