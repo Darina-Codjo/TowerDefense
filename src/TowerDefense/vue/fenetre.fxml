@@ -21,12 +21,7 @@
    <right>
       <VBox prefHeight="516.0" prefWidth="116.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ajoutCactus" mnemonicParsing="false" onAction="#ajouterActeur" prefHeight="25.0" prefWidth="120.0" text="Cactus" />
-            <Button fx:id="ajoutCactusSpeciale" mnemonicParsing="false" onAction="#ajouterActeur" prefHeight="25.0" prefWidth="120.0" text="CactusSpeciale" />
-            <Button fx:id="ajoutScorpion" mnemonicParsing="false" onAction="#ajouterActeur" prefHeight="25.0" prefWidth="124.0" text="Scorpion" />
-            <Button fx:id="ajoutScorpionSpeciale" mnemonicParsing="false" onAction="#ajouterActeur" prefHeight="25.0" prefWidth="115.0" text="Scorpion Speciale" />
-            <Button fx:id="ajoutSerpent" mnemonicParsing="false" onAction="#ajouterActeur" prefHeight="25.0" prefWidth="122.0" text="Serpent " />
-            <Button fx:id="ajoutSerpentSpeciale" mnemonicParsing="false" onAction="#ajouterActeur" prefHeight="25.0" prefWidth="130.0" text=" Serpent Speciale" />
+            <Button mnemonicParsing="false" onAction="#ajouterActeur" prefHeight="49.0" prefWidth="116.0" text="Ajouter Ennemis" />
             <Button mnemonicParsing="false" onAction="#start" prefHeight="43.0" prefWidth="121.0" text="START" />
             <Label prefHeight="26.0" prefWidth="100.0" text="Nombre ennemis" />
             <Label fx:id="nbrEnnemis" text="0" />
