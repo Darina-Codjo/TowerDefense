@@ -2,11 +2,13 @@ package TowerDefense.vue;
 
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.Scorpion;
 import TowerDefense.modele.TourelleFeu;
 import TowerDefense.modele.TourelleGlace;
 import TowerDefense.modele.TourelleRoche;
 import TowerDefense.modele.Cactus;
 import TowerDefense.modele.ScorpionSpeciale;
+import TowerDefense.modele.Serpent;
 import TowerDefense.modele.SerpentSpeciale;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -21,12 +23,15 @@ public class CreerSprite {
 	}
 	
 	public void acteurSprite(Acteur acteur) {
-		Circle circle;
-		circle = new Circle(3);
+		Circle circle = new Circle(3);
 		
 		if(acteur instanceof Cactus)
 			circle.setFill(Color.YELLOW);
 			//Color.web("color en hexa")
+		else if (acteur instanceof Scorpion) 
+			circle.setFill(Color.BROWN);
+		else if (acteur instanceof Serpent) 
+			circle.setFill(Color.ORANGE);
 		else if (acteur instanceof ScorpionSpeciale)
 			circle.setFill(Color.RED);
 		else if (acteur instanceof SerpentSpeciale)

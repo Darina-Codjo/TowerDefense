@@ -1,11 +1,10 @@
 package TowerDefense.modele;
-
 import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Terrain;
 
-public class Scorpion extends Ennemis {
+public class Scorpion extends Ennemis{
 	
-	public Scorpion(Terrain monTerrain){
+	public Scorpion (Terrain monTerrain){
 		super(monTerrain, 100, 10);
 	}
 	
