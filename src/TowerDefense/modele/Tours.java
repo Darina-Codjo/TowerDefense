@@ -20,4 +20,18 @@ public class Tours  extends Acteur{
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public void setPointsDeVie(int pv) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public int getPointsDeVie() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

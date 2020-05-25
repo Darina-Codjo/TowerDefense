@@ -61,6 +61,8 @@ public class CreerSprite {
 		
 		circle.setTranslateX(x);
 		circle.setTranslateY(y);
+		circle.setId(acteur.getId());
+		System.out.println(circle.getId());
 		plateau.getChildren().add(circle);
 		
 		
@@ -68,7 +70,13 @@ public class CreerSprite {
 	}
 	
 	
-	
+	/*public  void projectileSprite(double x, double y) {
+	Circle circle = new Circle(2);
+	circle.setFill(Color.YELLOW);
+	circle.setTranslateX(x);
+	circle.setTranslateY(y);
+	plateau.getChildren().add(circle);
+}*/
 	
 	
 	

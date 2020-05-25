@@ -1,11 +1,13 @@
 package TowerDefense.modele;
 
 import TowerDefense.modele.Tours;
+import TowerDefense.modele.Jeu;
 
 public class Tourelle extends Tours {
 	
 	private Jeu game;
-
+	private Jeu jeu;
+	
 	public Tourelle(int x, int y, Terrain terrain/*,Jeu jeu*/) {
 		super(x, y, terrain);
 		//this.game = jeu;
@@ -15,6 +17,45 @@ public class Tourelle extends Tours {
 		super(0,2,terrain);
 		//this.game = jeu;
 	}
+	
+	
+	public boolean tireSurEnnemis(Acteur acteur) {
+		if (acteur instanceof Ennemis) {
+			if ( this.getY()==acteur.getY() || this.getX()== acteur.getX()) {
+				 this.jeu.suppEnnemis(acteur);
+					 
+				return true;
+			}		
+		}
+		return false;
+	}
+	
+	public void agit(Acteur acteur) {
+			//tireSurEnnemis(acteur);
+				
+			 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 /*	

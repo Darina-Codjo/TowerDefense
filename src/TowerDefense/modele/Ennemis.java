@@ -58,15 +58,10 @@ public class Ennemis extends Acteur{
 		return id;
 	}
 
-	
 	public void setPointsDeVie(int pv) {
 		this.pointsDeVie = pv;
 	}
 
-	public int getPointDeVie(int pv) {
-		return this.pointsDeVie; 
-	}
-	
 	public void setVitesse(int v) {
 		this.vitesse = v;
 	}
@@ -100,18 +95,10 @@ public class Ennemis extends Acteur{
 		return "Ennemis [pointsDeVie=" + pointsDeVie + ", vitesse=" + vitesse + ", xSuivant=" + directionX + ", ySuivant="
 				+ directionY + "]";
 	}
-	
-	public void meurt(){
-		this.pointsDeVie = 0;
-	}
-	
-	public boolean estVivant() {
-		return this.pointsDeVie > 0;
-	}
 
 	@Override
 	public void agit() {
-		this.seDeplacer();
+		seDeplacer();
 	}
 
 

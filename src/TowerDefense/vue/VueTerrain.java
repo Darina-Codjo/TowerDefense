@@ -18,11 +18,13 @@ public class VueTerrain {
 	private int temps;
 	private Jeu game;
 	private Pane plateau;
+	private ConstruireMap construction;
 
 	public VueTerrain(Jeu game, ConstruireMap construction, Pane plateau) {
 		super();
 		this.monTerrain = game.getMonTerrain();
 		this.game = game;
+		this.construction = construction;
 		this.plateau = plateau;
 		}
 
@@ -59,15 +61,61 @@ public class VueTerrain {
 		return gameLoop;
 	}
 	
-	public void refreshPlateau() {
-		for(Acteur acteur :this.game.getListeActeurs()) {
-			Circle c = (Circle) this.plateau.lookup("#" + acteur.getId());
-			if(acteur instanceof Ennemis) {
-				c.setTranslateX(acteur.getX());
-				c.setTranslateY(acteur.getY());
+public void refreshPlateau() {
+		
+		
+		for(int i= this.plateau.getChildren().size()-1; i>=0;i--){
+			Node c=this.plateau.getChildren().get(i) ;
+			
+			System.out.println("num :" + i+"=" +c.getId());
+			for(int j=0; j< this.game.getListeActeurs().size(); j++){
+				if(this.game.getListeActeurs().get(j).getPointsDeVie() ==0) {
+					this.plateau.getChildren().remove(c);
+				}
 			}
+			System.out.println("num apres :" + i+"=" +c.getId());
 		}
+
+		System.out.println(this.game.getListeActeurs().size());
+		for(Acteur acteur :this.game.getListeActeurs()) {
+			System.out.println( "tretment acteur " + acteur.getId());
+				Circle c = (Circle) this.plateau.lookup("#" + acteur.getId());
+				
+				if(acteur instanceof Ennemis  ) {
+					c.setTranslateX(acteur.getX());
+					c.setTranslateY(acteur.getY());
+				
+				}
+
+				System.out.println("fin tretment " +acteur.getId());
+			}
+ }
 		 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 //		if(this.plateau.getChildren().size() == 0) {
 //			System.out.println("liste vide");
 //		}
@@ -93,5 +141,4 @@ public class VueTerrain {
 //		if (a==null){
 //			this . panneauJeu.getChildren().remove(c);
 //			}
-//	}
-}
+//	}}
