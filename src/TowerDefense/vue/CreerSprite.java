@@ -26,7 +26,7 @@ public class CreerSprite {
 		Circle circle = new Circle(3);
 		
 		if(acteur instanceof Cactus)
-			circle.setFill(Color.YELLOW);
+			circle.setFill(Color.LIGHTGREEN);
 			//Color.web("color en hexa")
 		else if (acteur instanceof Scorpion) 
 			circle.setFill(Color.BROWN);
