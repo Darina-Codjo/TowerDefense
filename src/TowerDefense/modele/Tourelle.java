@@ -11,7 +11,7 @@ public class Tourelle extends Tours {
 		//this.game = jeu;
 	}
 	
-	public Tourelle(Terrain terrain /*,Jeu jeu*/) {
+	public Tourelle(Terrain terrain,int pv /*,Jeu jeu*/) {
 		super(0,2,terrain);
 		//this.game = jeu;
 	}

@@ -9,7 +9,7 @@ public class CactusSpeciale extends EnnemisSpeciales{
 	private int pv;
 	
 	public CactusSpeciale(Terrain terrain) {
-		super(terrain);
+		super(terrain,100,10);
 	}
 
 	public CactusSpeciale(Terrain terrain, int pv, int v) {

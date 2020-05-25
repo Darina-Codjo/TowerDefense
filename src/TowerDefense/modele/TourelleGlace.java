@@ -5,14 +5,13 @@ import TowerDefense.modele.TourelleBasique;
 
 public class TourelleGlace extends TourelleBasique {
 
-	public TourelleGlace(int x, int y, Terrain terrain, char direction) {
-		super(x, y, terrain, direction);
-		// TODO Auto-generated constructor stub
+	public TourelleGlace(int x, int y, Terrain terrain /*char direction*/) {
+		super(x, y, terrain/*direction*/);
 	}
 
 
 	public TourelleGlace(Terrain terrain) {
-		super(terrain);
+		super(terrain,100);
 	}
 
 

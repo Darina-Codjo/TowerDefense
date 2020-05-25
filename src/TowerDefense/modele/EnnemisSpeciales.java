@@ -5,10 +5,6 @@ import TowerDefense.modele.Terrain;
 
 public class EnnemisSpeciales extends Ennemis {
 
-	public EnnemisSpeciales(Terrain terrain) {
-		super(terrain);
-	}
-
 	public EnnemisSpeciales(Terrain terrain, int pv, int v) {
 		super(terrain, pv, v);
 	}
@@ -22,7 +18,7 @@ public class EnnemisSpeciales extends Ennemis {
 
 	@Override
 	public String toString() {
-		return "Cactus [getPointsDeVie()=" + getPointsDeVie() + ", getVitesse()=" + getVitesse() + ", getxSuivant()="
+		return "Cactus [getPointsDeVie()=" + getPv() + ", getVitesse()=" + getVitesse() + ", getxSuivant()="
 				+ getxSuivant() + ", getySuivant()=" + getySuivant() + ", getX()=" + getX() + ", getY()=" + getY()
 				+ ", getId()=" + getId() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
 				+ super.toString() + "]";

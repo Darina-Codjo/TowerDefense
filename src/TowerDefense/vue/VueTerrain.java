@@ -38,11 +38,7 @@ public class VueTerrain {
 				// on definit ce qui se passe Ã  chaque frame 
 				// c'est un eventHandler d'ou le lambda
 				(ev ->{
-					if(temps==100){
-						//System.out.println("fini");
-						gameLoop.stop();
-					}
-					else if (temps%5==0){
+					if (temps%5==0){
 						//System.out.println("un tour");
 						this.refreshPlateau();
 						this.game.tourDeJeu();

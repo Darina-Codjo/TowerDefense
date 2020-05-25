@@ -7,7 +7,7 @@ public class SerpentSpeciale extends EnnemisSpeciales {
 	
 	
 	public SerpentSpeciale(Terrain terrain) {
-		super(terrain);
+		super(terrain,100,10);
 	
 	}
 
@@ -16,9 +16,7 @@ public class SerpentSpeciale extends EnnemisSpeciales {
 	}
 	
 	public void destructeurs(int pvInflige) {
-		
-		//setPVTourelle(pvInflige);
-		
+		setPv(pvInflige);	
 	}
 
 }
