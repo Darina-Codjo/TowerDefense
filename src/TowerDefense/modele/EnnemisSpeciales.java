@@ -3,10 +3,14 @@ package TowerDefense.modele;
 import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Terrain;
 
-public class Cactus extends Ennemis {
-	
-	public Cactus(Terrain monTerrain){
-		super(monTerrain, 100, 10);
+public class EnnemisSpeciales extends Ennemis {
+
+	public EnnemisSpeciales(Terrain terrain) {
+		super(terrain);
+	}
+
+	public EnnemisSpeciales(Terrain terrain, int pv, int v) {
+		super(terrain, pv, v);
 	}
 	
 	@Override
@@ -23,7 +27,5 @@ public class Cactus extends Ennemis {
 				+ ", getId()=" + getId() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
 				+ super.toString() + "]";
 	}
-	
-	
-	
+
 }
