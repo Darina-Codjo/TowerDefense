@@ -1,7 +1,5 @@
 package TowerDefense.modele;
 
-import TowerDefense.modele.Terrain;
-
 public class TourelleBasique extends Tourelle {
 		
 

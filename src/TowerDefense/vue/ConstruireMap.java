@@ -9,6 +9,7 @@ public class ConstruireMap {
 	
 	private TilePane map;
 	private Jeu game;
+	@SuppressWarnings("unused")
 	private Pane plateau;
 	
 	public ConstruireMap (TilePane map, Jeu game, Pane plateau) {

@@ -1,11 +1,9 @@
 package TowerDefense.vue;
 
 import TowerDefense.modele.Acteur;
-import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Scorpion;
 import TowerDefense.modele.TourelleFeu;
 import TowerDefense.modele.TourelleGlace;
-import TowerDefense.modele.TourelleRoche;
 import TowerDefense.modele.Cactus;
 import TowerDefense.modele.ScorpionSpeciale;
 import TowerDefense.modele.Serpent;

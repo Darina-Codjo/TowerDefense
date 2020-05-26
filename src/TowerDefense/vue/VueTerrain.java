@@ -6,13 +6,13 @@ import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class VueTerrain {
 		
+	@SuppressWarnings("unused")
 	private Terrain monTerrain;
 	private Timeline gameLoop;
 	private int temps;

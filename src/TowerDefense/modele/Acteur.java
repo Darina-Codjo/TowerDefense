@@ -1,5 +1,4 @@
 package TowerDefense.modele;
-import java.util.Random;
 
 public abstract class Acteur {
 	
@@ -10,7 +9,7 @@ public abstract class Acteur {
 	protected Terrain terrain;
 	static private int compteur=0;
 	
-	//utiliser pour avoir des acteurs qui agissent en ayant une position fixe
+	//constructeur 
 	public Acteur(double x, double y, Terrain terrain) {
 		this.x = x;
 		this.y = y;
@@ -40,6 +39,7 @@ public abstract class Acteur {
 		return id;
 	}
 	
+	//méthode codée dans Ennemis et tourelle pour que les acteurs puissent agir différement 
 	public abstract void agit();
 	
 	public String toString() {
