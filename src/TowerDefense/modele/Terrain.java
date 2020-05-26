@@ -1,35 +1,40 @@
 package TowerDefense.modele;
-import java.util.ArrayList;
-
-import TowerDefense.modele.Acteur;
 
 public class Terrain {
-	private int width = 240;
-	private int height = 240;
-	private ArrayList<Ennemis> listeEnnemis = new ArrayList<Ennemis>();
-	private ArrayList<Tourelle> listeTourelle = new ArrayList<Tourelle>();
+	private int width;
+	private int height;
+	//private ArrayList<Integer> indicesTuilesSpawn;
 
-	private int[] map = {42, 43, 44, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5,
-			36, 35, 46, 47, 48, 49, 26, 1, 1, 1, 16, 23, 23,
-			23, 17, 34, 31, 3, 50, 51, 1, 1, 1, 1, 1, 11, 21,
-			22, 13, 15, 30, 37, 3, 1, 1, 1, 1, 1, 1, 1, 11, 15, 1,
-			11, 12, 33, 29, 3, 26, 1, 1, 16, 23, 23, 23, 20, 15, 1, 
-			14, 22, 32, 28, 3, 1, 1, 1, 11, 21, 22, 22, 22, 18, 38, 
-			39, 1, 1, 2, 3, 1, 1, 1, 11, 15, 1, 27, 1, 1, 1, 1, 1, 1,
-			2, 3, 1, 1, 1, 11, 12, 23, 23, 23, 23, 23, 17, 1, 1, 2, 19, 
-			23, 23, 17, 14, 22, 22, 22, 22, 22, 13, 15, 1, 1, 2, 24, 22,
-			13, 15, 1, 1, 1, 1, 1, 1, 11, 15, 1, 1, 10, 3, 41, 11, 15, 1,
-			1, 1, 1, 1, 1, 11, 15, 1, 1, 2, 3, 1, 11, 15, 25, 1, 1, 1, 1, 
-			1, 11, 15, 1, 1, 2, 3, 1, 11, 12, 23, 23, 23, 23, 23, 23, 20, 
-			15, 1, 1, 2, 3, 1, 14, 22, 22, 22, 22, 22, 22, 22, 22, 18, 1, 
-			25, 2, 9, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8};
 
-//	private int[][] grille;
-//
-//	public Terrain(int width, int height) {
-//		this.width = width;
-//		this.height = height;
-//	}
+	private int[] map = {5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 
+			4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 5, 5, 5, 5, 5, 5, 5, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 
+			3, 3, 3, 3, 3, 3, 3, 1, 5, 5, 5, 5, 5, 5, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 51, 5, 5, 5, 5, 5, 4, 
+			3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 51, 5, 5, 5, 5, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2,
+			2, 2, 2, 2, 2, 2, 2, 2, 2, 51, 6, 7, 8, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 5, 9, 4, 3,
+			3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 5, 10, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3,
+			3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 
+			3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 11, 12, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 3,
+			3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 13, 14, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3,
+			3, 3, 15, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 49, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 
+			3, 3, 3, 46, 47, 48, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 45, 44, 43, 3, 3, 3, 3, 3, 1, 1, 3, 
+			3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 
+			3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3,
+			2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+			3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 2, 2,
+			2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 41, 42, 3, 3, 3, 3, 1, 1, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 40, 
+			39, 38, 37, 36, 3, 3, 3, 1, 50, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 31, 32, 33, 35, 34, 3, 3, 3, 1, 50, 2, 2, 2, 2, 2,
+			2, 3, 3, 3, 3, 19, 20, 21, 3, 3, 3, 3, 3, 3, 3, 29, 30, 3, 26, 3, 3, 3, 3, 1, 50, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 18, 17, 16, 3, 3, 3, 3, 3, 3, 
+			3, 28, 27, 3, 25, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 24, 23, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 
+			3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 22, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+			1, 1, 1, 1, 1, 1};
+
+
+
+
+	public Terrain() {
+		this.height = 480;
+		this.width = 480;
+	}
 
 	public int getWidth() {
 		return width;
@@ -39,56 +44,63 @@ public class Terrain {
 	}
 
 	public int getNumeroTuile(int indice) {
-		return map[indice]; //TODO coordonnées en X Y %15 ou tab[][] pour faire la grille
+		return this.map[indice];
+		//TODO coordonnées en X Y %15 ou tab[][] pour faire la grille
 	}
 
 	public int[] getMap() {
 		return map;
 	}
-	
-	public ArrayList<Integer> getTuilesChemin() {
-		ArrayList<Integer> listeTuilesChemin= new ArrayList<Integer>();
-		for(int i= 0; i<map.length; i++){
-			if(map[i]>=11 && map[i]<=24) {
-				listeTuilesChemin.add(map[i]);
-			}
-		}	
-		
-		return listeTuilesChemin;
+
+	public int codeTuile(int indice) {
+		return this.getNumeroTuile(indice);
 	}
 
-	
-	public void tourDeJeu() {
-        for(int i = 0; i < listeEnnemis.size(); i++) {
-         Ennemis e = listeEnnemis.get(i);
-         //System.out.println( listeEnnemis.get(i).getId()+ " va bouger");
-         e.seDeplacer();
-        }
-    }
-	
-	public void ajouterEnnemis(Ennemis ennemis){
-		listeEnnemis.add(ennemis);
+
+	public int getTuileSansClic(double x, double y) {
+		double valeurX = x;
+		double valeurY = y;
+		int indice = 0;
+		while (valeurX >= 16) {
+			valeurX-=16;
+			indice ++;
+		}
+		while (valeurY >= 16) {
+			valeurY-=16;
+			indice += 30;
+		}
+		return indice;
 	}
-	
-	public void ajouterTourelle(Tourelle tourelle) {
-		listeTourelle.add(tourelle);
+
+	public boolean dansTerrain(double d, double e) {
+		return (0 <= d && d<this.width && 0<=e && e< this.height);
 	}
-	
+
+	public boolean dansChemin(int indice) {
+		if(this.codeTuile(indice)==2 || this.codeTuile(indice) == 50 || this.codeTuile(indice) == 51) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public int indiceTuileDebutChemin() {
+
+		int indice=0;
+		for(int i=0; i<map.length; i++) {
+			if(map[i]==50) {
+				indice= i;
+			}
+		}
+		return indice;
+	}
+
 	public boolean dansTerrain(int x, int y) {
 		return (0 <= x && x<this.width && 0<=y && y< this.height);
 	}
-	
-	public ArrayList<Ennemis> getActeurs() {
-		return listeEnnemis;
-	}
-	
-	public Ennemis getEnnemi(String id) {
-		for(Ennemis e : this.listeEnnemis) {
-			if(e.getId().equals(id)) {
-				return e;
-			}
-		}
-		return null;
-	}
+
+
 }
+
 
