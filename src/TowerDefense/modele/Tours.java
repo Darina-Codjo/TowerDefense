@@ -12,7 +12,6 @@ public class Tours  extends Acteur{
 
 	@Override
 	public void agit() {
-		// TODO Auto-generated method stub
 		
 	}
 }

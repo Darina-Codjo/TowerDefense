@@ -22,6 +22,7 @@ public class CreerSprite {
 		this.plateau = plateau;
 	}
 	
+	// en fonction du type d'ennemi, créer pour l'instant des sprites sous forme de cercle de différentes couleurs par ennemi
 	public void acteurSprite(Acteur acteur) {
 		Circle circle = new Circle(3);
 		
@@ -45,6 +46,8 @@ public class CreerSprite {
 		plateau.getChildren().add(circle);
 	}
 	
+	
+	//idem mais pour les tourelles
 	public void tourelleSprite(Acteur acteur, double x, double y) {
 
 		Circle circle = new Circle(5);

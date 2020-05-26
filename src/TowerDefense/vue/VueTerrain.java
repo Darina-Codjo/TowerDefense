@@ -26,7 +26,7 @@ public class VueTerrain {
 		this.plateau = plateau;
 		}
 
-	
+	//gameloop: methode qui rafraichit le plateau et fait un tour de jeu à l'infini
 	public void initAnimation() {
 		this.gameLoop = new Timeline();
 		temps = 0;
@@ -55,6 +55,7 @@ public class VueTerrain {
 		return gameLoop;
 	}
 	
+	//parcour la liste d'acteur et donne aux sprites les coordonnées de sa nouvelle position
 	public void refreshPlateau() {
 		for(Acteur acteur :this.game.getListeActeurs()) {
 			Circle c = (Circle) this.plateau.lookup("#" + acteur.getId());
@@ -62,32 +63,6 @@ public class VueTerrain {
 				c.setTranslateX(acteur.getX());
 				c.setTranslateY(acteur.getY());
 			}
-		}
-		 
-//		if(this.plateau.getChildren().size() == 0) {
-//			System.out.println("liste vide");
-//		}
-//		else {
-//			//supprimer les ennemis morts
-//			for(int i =  this.plateau.getChildren().size()-1; i >= 0; i--) {
-//				System.out.println(i);
-//				Node node = this.plateau.getChildren().get(i);
-//				Acteur acteur = this.game.getActeurId(node.getId());
-//				if(acteur == null) {
-//					System.out.println("*" +i);
-//					this.plateau.getChildren().remove(node);
-//				}
-//			}
-//		}
+		}		 
 	}
-
-	
-//	// pour enlever  les  morts,  il  faut  parcourir  les   sprites ...
-//	for  ( int  i =this.panneauJeu.getChildren().size()−1; i>=0;i−−){
-//		Node c=this.panneauJeu.getChildren().get(i) ;
-//		Acteur a = this.env.getActeur(c.getId ());
-//		if (a==null){
-//			this . panneauJeu.getChildren().remove(c);
-//			}
-//	}
 }
