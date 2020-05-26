@@ -9,7 +9,7 @@ public class CactusSpeciale extends EnnemisSpeciales{
 	private int pv;
 	
 	public CactusSpeciale(Terrain terrain) {
-		super(terrain);
+		super(terrain,100,10);
 	}
 
 	public CactusSpeciale(Terrain terrain, int pv, int v) {
@@ -21,12 +21,12 @@ public class CactusSpeciale extends EnnemisSpeciales{
 		int temps=0;
 		int newPV=0;
 		
-		while(newPV != pv) {
+		while(newPV != 100) {
+			temps++;
+			newPV++;
 			if (temps%10==0)
-				pv=newPV;
-			else
-				temps++;
-				newPV++;
+				this.setPv(newPV);
+
 		}
 	}
 	

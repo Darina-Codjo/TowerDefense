@@ -2,9 +2,11 @@ package TowerDefense.modele;
 
 import java.util.Random;
 
+import TowerDefense.modele.Terrain;
+
 public class Ennemis extends Acteur{
 
-	private int pointsDeVie;
+	private int pv;
 	private int vitesse;
 	private double directionX;
 	private double directionY;
@@ -14,32 +16,23 @@ public class Ennemis extends Acteur{
 	private int xSpawn = terrain.getXTuile(terrain.getTuileSpawn().get(rng-1));
 	private int ySpawn = terrain.getXTuile(terrain.getTuileSpawn().get(rng-1));*/
 	
-	public Ennemis(double x, double y, Terrain terrain, int pv, int v) {
-		super(x, y, terrain);
-		/*this.setX(xSpawn);
-		this.setY(ySpawn);*/
-		this.pointsDeVie = pv;
-		this.vitesse = v;
-
-	}
+//	public Ennemis(double x, double y, Terrain terrain, int pv, int v) {
+//		super(x, y, terrain);
+//		/*this.setX(xSpawn);
+//		this.setY(ySpawn);*/
+//		this.pointsDeVie = pv;
+//		this.vitesse = v;
+//
+//	}
 
 	public Ennemis(Terrain terrain, int pv, int v) {
-		super(terrain);
-		this.pointsDeVie = pv;
-		this.vitesse = 10;
+		super((terrain.indiceTuileDebutChemin()%30)*16, (terrain.indiceTuileDebutChemin()/30)*16 , terrain);
+		this.pv=pv;
+		this.vitesse = v;
 	}
 	
-	public Ennemis(Terrain terrain) {
-		super(terrain);
-		this.directionX = 0;
-		this.directionY = 0;
-		this.vitesse = 10;
-		this.pointsDeVie = 100;
-		//System.out.println(this.toString());
-	}
-	
-	public int getPointsDeVie() {
-		return pointsDeVie;
+	public int getPv() {
+		return this.pv;
 	}
 	
 	public int getVitesse() {
@@ -54,18 +47,14 @@ public class Ennemis extends Acteur{
 		return directionY;
 	}
 	
-	public String getId() {
-		return id;
+	public void setPv(int newPv) {
+		this.pv=newPv;
 	}
-
 	
-	public void setPointsDeVie(int pv) {
-		this.pointsDeVie = pv;
+	public void setPvDegat(int degatRecu) {
+		this.pv -= degatRecu;
 	}
 
-	public int getPointDeVie(int pv) {
-		return this.pointsDeVie; 
-	}
 	
 	public void setVitesse(int v) {
 		this.vitesse = v;
@@ -97,16 +86,16 @@ public class Ennemis extends Acteur{
     
 	@Override
 	public String toString() {
-		return "Ennemis [pointsDeVie=" + pointsDeVie + ", vitesse=" + vitesse + ", xSuivant=" + directionX + ", ySuivant="
+		return "Ennemis [pointsDeVie=" + this.pv + ", vitesse=" + vitesse + ", xSuivant=" + directionX + ", ySuivant="
 				+ directionY + "]";
 	}
 	
 	public void meurt(){
-		this.pointsDeVie = 0;
+		this.pv = 0;
 	}
 	
 	public boolean estVivant() {
-		return this.pointsDeVie > 0;
+		return this.pv > 0;
 	}
 
 	@Override

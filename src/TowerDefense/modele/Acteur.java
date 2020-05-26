@@ -6,27 +6,19 @@ public abstract class Acteur {
 	
 	private double x;
 	private double y;
-	protected String id;
+	private String id;
 	protected Terrain terrain;
 	static private int compteur=0;
 	
 	//utiliser pour avoir des acteurs qui agissent en ayant une position fixe
 	public Acteur(double x, double y, Terrain terrain) {
-		Random random = new Random();
-		this.x = x;//random.nextInt(terrain.getWidth()-1);
-		this.y = y;//random.nextInt(terrain.getHeight()-1);
+		this.x = x;
+		this.y = y;
 		this.terrain = terrain;
 		this.id ="A"+compteur;
 		compteur++;
 	}
 
-	public Acteur(Terrain terrain) {
-		this.terrain = terrain;	
-		this.x=(this.terrain.indiceTuileDebutChemin()%30)*16;
-		this.y=(this.terrain.indiceTuileDebutChemin()/30)*16;
-		this.id="A"+compteur;
-		compteur++;
-	}
 	
 	public double getX() {
 		return x;
@@ -49,5 +41,27 @@ public abstract class Acteur {
 	}
 	
 	public abstract void agit();
+	
+	public String toString() {
+		return "Position: x="+ this.x + " y="+ this.y+ "\n Id:" + this.id;
+				
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -54,17 +54,6 @@ public class Controleur implements Initializable{
     @FXML
     private Button ajoutCactus;
     @FXML
-    private Button ajoutScorpion;
-
-    @FXML
-    private Button ajoutSerpent;
-    @FXML
-    private Button ajoutSerpentSpeciale;
-    @FXML
-    private Button ajoutScorpionSpeciale;
-    @FXML
-    private Button ajoutCactusSpeciale;
-    @FXML
     private RadioButton ajoutTourelleRoche;  
 	private VueTerrain vue;	
 	private static Timeline gameLoop;	
