@@ -47,7 +47,11 @@ public class Ennemis extends Acteur{
 		return directionY;
 	}
 	
-	public void setPv(int degatRecu) {
+	public void setPv(int newPv) {
+		this.pv=newPv;
+	}
+	
+	public void setPvDegat(int degatRecu) {
 		this.pv -= degatRecu;
 	}
 

@@ -16,7 +16,7 @@ public class SerpentSpeciale extends EnnemisSpeciales {
 	}
 	
 	public void destructeurs(int pvInflige) {
-		setPv(pvInflige);	
+		setPvDegat(pvInflige);	
 	}
 
 }
