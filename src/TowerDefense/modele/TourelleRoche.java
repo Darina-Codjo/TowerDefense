@@ -1,14 +1,15 @@
 package TowerDefense.modele;
 
-public class TourelleRoche extends TourelleBasique{
+import TowerDefense.modele.Jeu;
+import TowerDefense.modele.Terrain;
+import TowerDefense.modele.TourelleBasique;
 
-	public TourelleRoche(Terrain terrain) {
-		super(terrain);
-		
+public class TourelleRoche extends TourelleBasique {
+
+	public TourelleRoche(double x, double y, Terrain terrain,Jeu jeu) {
+		super(x, y, terrain, jeu);
 	}
 
-	public TourelleRoche(int x, int y, Terrain terrain, char direction) {
-		super(x, y, terrain, direction);
-	}
+
 
 }

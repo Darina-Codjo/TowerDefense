@@ -1,18 +1,13 @@
 package TowerDefense.modele;
 
+import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
 import TowerDefense.modele.TourelleBasique;
 
 public class TourelleGlace extends TourelleBasique {
 
-	public TourelleGlace(int x, int y, Terrain terrain, char direction) {
-		super(x, y, terrain, direction);
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public TourelleGlace(Terrain terrain) {
-		super(terrain);
+	public TourelleGlace(double x, double y, Terrain terrain,Jeu jeu) {
+		super(x, y, terrain,jeu);
 	}
 
 
