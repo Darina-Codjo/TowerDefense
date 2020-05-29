@@ -19,12 +19,12 @@ public class VueTerrain {
 	private Jeu game;
 	private Pane plateau;
 
-	public VueTerrain(Jeu game, ConstruireMap construction, Pane plateau) {
+	public VueTerrain(Jeu game, Pane plateau) {
 		super();
 		this.monTerrain = game.getMonTerrain();
 		this.game = game;
 		this.plateau = plateau;
-		}
+	}
 
 	
 	public void initAnimation() {
@@ -40,7 +40,6 @@ public class VueTerrain {
 				(ev ->{
 					if (temps%5==0){
 						//System.out.println("un tour");
-						this.refreshPlateau();
 						this.game.tourDeJeu();
 //						this.refreshPlateau();
 					}
@@ -54,40 +53,5 @@ public class VueTerrain {
 	public Timeline getGameLoop() {
 		return gameLoop;
 	}
-	
-	public void refreshPlateau() {
-		for(Acteur acteur :this.game.getListeActeurs()) {
-			Circle c = (Circle) this.plateau.lookup("#" + acteur.getId());
-			if(acteur instanceof Ennemis) {
-				c.setTranslateX(acteur.getX());
-				c.setTranslateY(acteur.getY());
-			}
-		}
-		 
-//		if(this.plateau.getChildren().size() == 0) {
-//			System.out.println("liste vide");
-//		}
-//		else {
-//			//supprimer les ennemis morts
-//			for(int i =  this.plateau.getChildren().size()-1; i >= 0; i--) {
-//				System.out.println(i);
-//				Node node = this.plateau.getChildren().get(i);
-//				Acteur acteur = this.game.getActeurId(node.getId());
-//				if(acteur == null) {
-//					System.out.println("*" +i);
-//					this.plateau.getChildren().remove(node);
-//				}
-//			}
-//		}
-	}
 
-	
-//	// pour enlever  les  morts,  il  faut  parcourir  les   sprites ...
-//	for  ( int  i =this.panneauJeu.getChildren().size()−1; i>=0;i−−){
-//		Node c=this.panneauJeu.getChildren().get(i) ;
-//		Acteur a = this.env.getActeur(c.getId ());
-//		if (a==null){
-//			this . panneauJeu.getChildren().remove(c);
-//			}
-//	}
 }

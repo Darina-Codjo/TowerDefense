@@ -3,32 +3,23 @@ package TowerDefense.modele;
 import java.util.Random;
 
 import TowerDefense.modele.Terrain;
+import TowerDefense.modele.Jeu;
 
 public class Ennemis extends Acteur{
 
-	private int pv;
 	private int vitesse;
 	private double directionX;
 	private double directionY;
+	private int pv;
+	private Jeu jeu;
 	
-	/*private Terrain terrain;
-	private int rng = (int)(Math.random()*terrain.getTuileSpawn().size()+1);
-	private int xSpawn = terrain.getXTuile(terrain.getTuileSpawn().get(rng-1));
-	private int ySpawn = terrain.getXTuile(terrain.getTuileSpawn().get(rng-1));*/
-	
-//	public Ennemis(double x, double y, Terrain terrain, int pv, int v) {
-//		super(x, y, terrain);
-//		/*this.setX(xSpawn);
-//		this.setY(ySpawn);*/
-//		this.pointsDeVie = pv;
-//		this.vitesse = v;
-//
-//	}
-
 	public Ennemis(Terrain terrain, int pv, int v) {
 		super((terrain.indiceTuileDebutChemin()%30)*16, (terrain.indiceTuileDebutChemin()/30)*16 , terrain);
 		this.pv=pv;
 		this.vitesse = v;
+		this.directionX=0;
+		this.directionY=0;
+		this.jeu=jeu;
 	}
 	
 	public int getPv() {

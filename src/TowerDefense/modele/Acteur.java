@@ -1,67 +1,65 @@
 package TowerDefense.modele;
 import java.util.Random;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+
 public abstract class Acteur {
 	
-	
-	private double x;
-	private double y;
+	private DoubleProperty xProperty ;
+	private DoubleProperty yProperty ;
 	private String id;
 	protected Terrain terrain;
 	static private int compteur=0;
+	private int pv;
+	private Jeu jeu;
 	
-	//utiliser pour avoir des acteurs qui agissent en ayant une position fixe
 	public Acteur(double x, double y, Terrain terrain) {
-		this.x = x;
-		this.y = y;
-		this.terrain = terrain;
-		this.id ="A"+compteur;
+		this.terrain = terrain;	
+		this.xProperty =new SimpleDoubleProperty(x) ;
+		this.yProperty =new SimpleDoubleProperty(y) ;
+		this.id="A"+compteur;
 		compteur++;
 	}
-
 	
+
+
+
 	public double getX() {
-		return x;
+		return xProperty.getValue();
 	}
 	
 	public void setX(double newPositionX) {
-		this.x = newPositionX;
+		xProperty.setValue(newPositionX) ;
+	}
+	
+	public DoubleProperty xProperty() {
+		return this.xProperty ;
 	}
 	
 	public double getY() {
-		return y;
+		return yProperty.getValue() ;
 	}
 	
 	public void setY(double newPositionY) {
-		this.y = newPositionY;
+		yProperty.setValue(newPositionY) ;
+	}
+	
+	public final DoubleProperty yProperty(){
+		return this.yProperty ;
 	}
 	
 	public String getId() {
 		return id;
 	}
 	
+		
 	public abstract void agit();
 	
-	public String toString() {
-		return "Position: x="+ this.x + " y="+ this.y+ "\n Id:" + this.id;
-				
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+//	public String toString() {
+//		return "Position: x="+ this.x + " y="+ this.y+ "\n Id:" + this.id;
+//		
+//		
+//	}
 	
 }

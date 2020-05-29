@@ -6,8 +6,6 @@ import TowerDefense.modele.Terrain;
 public class CactusSpeciale extends EnnemisSpeciales{
 	
 	
-	private int pv;
-	
 	public CactusSpeciale(Terrain terrain) {
 		super(terrain,100,10);
 	}
