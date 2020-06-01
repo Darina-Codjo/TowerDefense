@@ -10,6 +10,8 @@ import TowerDefense.modele.Cactus;
 import TowerDefense.modele.ScorpionSpeciale;
 import TowerDefense.modele.Serpent;
 import TowerDefense.modele.SerpentSpeciale;
+import TowerDefense.modele.TourelleDestructible;
+import TowerDefense.modele.TourelleTirMultiple;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -33,8 +35,14 @@ public class CreerSprite {
 		else if (acteur instanceof TourelleFeu) {
 			circle.setFill(Color.RED);
 		}
-		else {
+		else if (acteur instanceof TourelleRoche){
 			circle.setFill(Color.BLACK);			
+		}
+		else if (acteur instanceof TourelleDestructible) {
+			circle.setFill(Color.LIGHTGREEN);
+		}
+		else {
+			circle.setFill(Color.PINK);
 		}
 		
 		circle.setTranslateX(x);

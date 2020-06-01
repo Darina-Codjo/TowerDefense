@@ -5,13 +5,17 @@ import java.util.ResourceBundle;
 
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.GrandeTour;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Scorpion;
 import TowerDefense.modele.Terrain;
 import TowerDefense.modele.Tourelle;
+import TowerDefense.modele.TourelleDestructible;
 import TowerDefense.modele.TourelleFeu;
 import TowerDefense.modele.TourelleGlace;
 import TowerDefense.modele.TourelleRoche;
+import TowerDefense.modele.TourelleTirMultiple;
+import TowerDefense.modele.Tours;
 import TowerDefense.vue.ConstruireMap;
 import TowerDefense.vue.CreerSprite;
 import TowerDefense.vue.ObservateurListeActeur;
@@ -52,7 +56,11 @@ public class Controleur implements Initializable{
     @FXML
     private RadioButton ajoutTourelleGlace; 
     @FXML
-    private RadioButton ajoutTourelleFeu;  
+    private RadioButton ajoutTourelleFeu; 
+    @FXML
+    private RadioButton ajoutTourelleDestructible;
+    @FXML
+    private RadioButton ajoutTourelleTirMultiple;
     @FXML
     private Button ajoutCactus;
     @FXML
@@ -81,6 +89,7 @@ public class Controleur implements Initializable{
     void ajouterActeur(ActionEvent event) {
 		
 		Acteur cactus = new Cactus(monTerrain);
+		Acteur grandeTour = new GrandeTour(monTerrain, game);
 		Acteur serpent= new Serpent(monTerrain);
 		Acteur scorpion= new Scorpion(monTerrain);
 		Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
@@ -88,13 +97,14 @@ public class Controleur implements Initializable{
 		Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
 		
 		this.game.ajouterActeur(cactus);
+		this.game.ajouterActeur(grandeTour);
 		this.game.ajouterActeur(serpent);
 		this.game.ajouterActeur(scorpion);
 		this.game.ajouterActeur(scorpionSpeciale);
 		this.game.ajouterActeur(serpentSpeciale);
 		this.game.ajouterActeur(cactusSpeciale);
 		
-   
+  
 	}
 	
 	@FXML
@@ -108,13 +118,20 @@ public class Controleur implements Initializable{
 			if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
 				Acteur acteur;
 				if(selectedToggleButton.equals(ajoutTourelleGlace)) {
-					acteur = new TourelleGlace(x,y, monTerrain, game);
+					acteur = new TourelleGlace(x,y, monTerrain, game);					
 				}
 				else if(selectedToggleButton.equals(ajoutTourelleFeu)) {
 					acteur = new TourelleFeu(x,y, monTerrain, game);
 				}
-				else {
+				else if (selectedToggleButton.equals(ajoutTourelleRoche)){
 					acteur = new TourelleRoche(x,y,monTerrain, game);
+				}
+				else if (selectedToggleButton.equals(ajoutTourelleDestructible)) {
+					acteur = new TourelleDestructible(x,y,monTerrain, game,100);
+				}
+				else {
+					acteur = new TourelleTirMultiple(x,y,monTerrain, game);
+					
 				}
 				
 				this.game.ajouterActeur(acteur);

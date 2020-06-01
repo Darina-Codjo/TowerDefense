@@ -1,6 +1,8 @@
 package TowerDefense.modele;
 
 import TowerDefense.modele.Tours;
+import TowerDefense.modele.Acteur;
+import TowerDefense.modele.Ennemis;
 
 public class Tourelle extends Tours {
 
@@ -12,8 +14,19 @@ public class Tourelle extends Tours {
 	}
 
 	
-	public void tirerEnnemis() {
-
+	public boolean ennemisProche(double zoneAttaque) {
+		for(Acteur a :getJeu().getListeActeurs()) {
+			if(a instanceof Ennemis) {
+				if(		(this.getY()-zoneAttaque<= a.getY() && a.getY()<=this.getY()+zoneAttaque) &&
+						(this.getX()-zoneAttaque<= a.getX() && a.getX()<=this.getX()+zoneAttaque)  
+						){
+					return true;
+				}
+			}
+			
+			
+		}
+		return false;
 	}
 	
 
