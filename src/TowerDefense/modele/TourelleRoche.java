@@ -15,7 +15,7 @@ public class TourelleRoche extends TourelleBasique {
 		
 		for(int i=0; i<listeEnnemis().size(); i++) {
 			if(ennemisProche(50)) {
-				getJeu().getListeProjectile().add(new Projectile(this,listeEnnemis().get(i),getJeu()));
+				getJeu().getListeProjectile().add(new ProjectileRoche(this,listeEnnemis().get(i),getJeu()));
 			}
 		}
 			
