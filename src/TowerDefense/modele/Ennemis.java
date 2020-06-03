@@ -2,18 +2,25 @@ package TowerDefense.modele;
 
 import java.util.Random;
 
+
+import TowerDefense.modele.Terrain;
+import TowerDefense.modele.Jeu;
+
 public class Ennemis extends Acteur{
 
-	private int pv;
 	private int vitesse;
 	private double directionX;
 	private double directionY;
-
-
+	private int pv;
+	//private Jeu jeu;
+	
 	public Ennemis(Terrain terrain, int pv, int v) {
 		super((terrain.indiceTuileDebutChemin()%30)*16, (terrain.indiceTuileDebutChemin()/30)*16 , terrain);
 		this.pv=pv;
 		this.vitesse = v;
+		this.directionX=0;
+		this.directionY=0;
+		//this.jeu=jeu;
 	}
 
 //permet au ennemis de se péplacer aleatoirement 

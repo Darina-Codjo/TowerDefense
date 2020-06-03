@@ -15,7 +15,7 @@ public class ScorpionSpeciale extends EnnemisSpeciales {
 	public void dedoublement() {
 		if(this.pv==0) {
 			Scorpion scorpionDouble = new Scorpion(terrain);
-			this.jeu.getListeActeurs().add(scorpionDouble);
+			//jeu.ajouterActeur(scorpionDouble);
 		}
 	}
 
