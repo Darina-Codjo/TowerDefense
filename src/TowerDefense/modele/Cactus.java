@@ -1,7 +1,6 @@
 package TowerDefense.modele;
 
 import TowerDefense.modele.Ennemis;
-import TowerDefense.modele.Terrain;
 
 public class Cactus extends Ennemis {
 	
@@ -9,12 +8,6 @@ public class Cactus extends Ennemis {
 		super(monTerrain, 100, 10);
 	}
 	
-	@Override
-	public void agit() {
-		double newPositionX = this.getX();
-		double newPositionY = this.getY();
-		this.seDeplacer();
-	}
 
 	@Override
 	public String toString() {

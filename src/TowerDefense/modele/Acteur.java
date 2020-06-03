@@ -1,5 +1,4 @@
 package TowerDefense.modele;
-import java.util.Random;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -53,7 +52,6 @@ public abstract class Acteur {
 		return id;
 	}
 	
-		
 	public abstract void agit();
 	
 //	public String toString() {

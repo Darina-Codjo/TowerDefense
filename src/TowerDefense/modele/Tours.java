@@ -1,10 +1,10 @@
 package TowerDefense.modele;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Terrain;
-import TowerDefense.modele.TourelleRoche;
 import TowerDefense.modele.Jeu;
 
 public class Tours  extends Acteur{

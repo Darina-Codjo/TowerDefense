@@ -1,7 +1,6 @@
 package TowerDefense.modele;
 
 import TowerDefense.modele.Ennemis;
-import TowerDefense.modele.Terrain;
 
 public class EnnemisSpeciales extends Ennemis {
 
@@ -9,12 +8,6 @@ public class EnnemisSpeciales extends Ennemis {
 		super(terrain, pv, v);
 	}
 	
-	@Override
-	public void agit() {
-		double newPositionX = this.getX();
-		double newPositionY = this.getY();
-		this.seDeplacer();
-	}
 
 	@Override
 	public String toString() {
