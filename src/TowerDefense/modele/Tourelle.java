@@ -14,17 +14,12 @@ public class Tourelle extends Tours {
 	}
 
 	
-	public boolean ennemisProche(double zoneAttaque) {
-		for(Acteur a :getJeu().getListeActeurs()) {
-			if(a instanceof Ennemis) {
-				if(		(this.getY()-zoneAttaque<= a.getY() && a.getY()<=this.getY()+zoneAttaque) &&
-						(this.getX()-zoneAttaque<= a.getX() && a.getX()<=this.getX()+zoneAttaque)  
-						){
-					return true;
-				}
-			}
-			
-			
+	public boolean ennemisProche(double zoneAttaque, Ennemis e) {
+		
+		if(		(this.getY()-zoneAttaque<= e.getY() && e.getY()<=this.getY()+zoneAttaque) &&
+				(this.getX()-zoneAttaque<= e.getX() && e.getX()<=this.getX()+zoneAttaque)  
+				){
+			return true;
 		}
 		return false;
 	}

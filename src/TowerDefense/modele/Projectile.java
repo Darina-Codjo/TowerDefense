@@ -1,5 +1,6 @@
 package TowerDefense.modele;
 
+import TowerDefense.modele.Jeu;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
@@ -26,6 +27,15 @@ public class Projectile {
 		this.id="A"+compteur;
 		compteur++;
 		
+	}
+	
+	public String getIdEnnemi(){
+		return this.positionEnnemis.getId();
+		
+	}
+	
+	public Jeu getJeu() {
+		return this.jeu;
 	}
 	
 	

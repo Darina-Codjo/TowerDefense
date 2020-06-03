@@ -36,9 +36,10 @@ public class Jeu {
         }
     }
 	
-	public boolean projectileExiste(String id) {
+	public boolean projectileExisteSurEnnemi(String idEnnemi) {
+		
 		for(int i=0; i< listeProjectile.size(); i++) {
-			if (listeProjectile.get(i).getId()==id) {
+			if (listeProjectile.get(i).getIdEnnemi()==idEnnemi) {
 				return true;
 			}
 			
