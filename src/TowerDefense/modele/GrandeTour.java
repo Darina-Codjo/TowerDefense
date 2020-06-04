@@ -7,7 +7,7 @@ import TowerDefense.modele.Tours;
 public class GrandeTour extends Tours {
 
 	public GrandeTour(Terrain terrain, Jeu jeu) {
-		super((terrain.indiceTuileFinChemin()%30)*16, (terrain.indiceTuileFinChemin()/30)*16, terrain, jeu);
+		super((terrain.getIndiceTuileFinChemin()%30)*16+8, (terrain.getIndiceTuileFinChemin()/30)*16+8, terrain, jeu);
 		
 	}
 	

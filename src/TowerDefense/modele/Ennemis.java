@@ -15,7 +15,7 @@ public class Ennemis extends Acteur{
 	//private Jeu jeu;
 	
 	public Ennemis(Terrain terrain, int pv, int v) {
-		super((terrain.indiceTuileDebutChemin()%30)*16, (terrain.indiceTuileDebutChemin()/30)*16 , terrain);
+		super((terrain.getIndiceTuileDebutChemin()%30)*16+8, (terrain.getIndiceTuileDebutChemin()/30)*16+8 , terrain);
 		this.pv=pv;
 		this.vitesse = v;
 		this.directionX=0;
@@ -33,7 +33,8 @@ public class Ennemis extends Acteur{
 		randomInt = random.nextInt(3);
 		directionY = randomInt-1;
 
-		while(!(this.terrain.dansChemin(this.terrain.getTuileSansClic(this.directionX*this.vitesse+this.getX(), this.directionY*this.vitesse + this.getY())) && this.terrain.dansTerrain(this.directionX*this.vitesse + this.getX(), this.directionY*this.vitesse + this.getY()))) {
+		while(!(this.terrain.dansChemin(this.terrain.getTuileSansClic(this.directionX*this.vitesse+this.getX(), this.directionY*this.vitesse + this.getY())) && 
+				this.terrain.dansTerrain(this.directionX*this.vitesse + this.getX(), this.directionY*this.vitesse + this.getY()))) {
 			this.seDeplacer();
 		}
 	}
