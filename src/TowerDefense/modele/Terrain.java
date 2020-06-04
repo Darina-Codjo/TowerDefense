@@ -103,7 +103,7 @@ public class Terrain {
 	public int getIndiceTuileChemin() {
 		int indice = 0;
 		for(int i = 0; i < mapDesert.length; i++) {
-			if(this.codeTuile(i)==2 || this.codeTuile(i) == 50 || this.codeTuile(i) == 51) {
+			if(this.codeTuile(i) == 2 || this.codeTuile(i) == 50 || this.codeTuile(i) == 51) {
 				indice = i;
 			}
 		}
