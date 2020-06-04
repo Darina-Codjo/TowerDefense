@@ -3,12 +3,16 @@ package TowerDefense.controleur;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.sun.jndi.url.dns.dnsURLContext;
+
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.GrandeTour;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
 import TowerDefense.modele.Tours;
+import TowerDefense.modele.dijkstra.Dijkstra;
+import TowerDefense.modele.dijkstra.Node;
 import TowerDefense.modele.ennemis.Cactus;
 import TowerDefense.modele.ennemis.CactusSpeciale;
 import TowerDefense.modele.ennemis.Scorpion;
@@ -69,16 +73,21 @@ public class Controleur implements Initializable{
 	private static Timeline gameLoop;	
 	private CreerSprite sprite;	
 	private Jeu game;
+	private Dijkstra dijkstra;
+	private Node noeud;
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.monTerrain = new Terrain();
 		game = new Jeu(monTerrain);
-		ConstruireMap construireMap = new ConstruireMap(map, game, plateau, monTerrain);
-		construireMap.remplirTileMap();
+		this.noeud = new Node();
+		this.dijkstra = new Dijkstra(game, monTerrain, noeud, map);
 		this.vue = new VueTerrain(game, plateau);
 		this.sprite = new CreerSprite(plateau);
+		ConstruireMap construireMap = new ConstruireMap(map, game, plateau, monTerrain);
+		construireMap.remplirTileMap();
+		dijkstra.associerNodeTuile();
 		this.game.getListeActeurs().addListener(new ObservateurListeActeur(this.plateau)) ;
 		this.game.getListeProjectile().addListener(new ObservateurListeProjectile(this.plateau));
 		this.vue.initAnimation();

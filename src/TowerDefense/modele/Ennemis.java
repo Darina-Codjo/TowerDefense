@@ -45,7 +45,6 @@ public class Ennemis extends Acteur{
 	}
 
 	public void seDeplacer() {
-
 		directionAleatoire();
 		double newPositionX = this.getX()+(this.vitesse*directionX);
 		double newPositionY = this.getY()+(this.vitesse*directionY);
@@ -54,6 +53,10 @@ public class Ennemis extends Acteur{
 		this.setY(newPositionY);   
 	}
 
+	public void seDeplacerDijkstra() {
+		
+	}
+	
 	public void meurt(){
 		this.pv = 0;
 	}

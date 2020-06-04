@@ -40,7 +40,6 @@ public class Node {
 		
 		nodeAVisiter.add(depart);
 		
-		
 		while(nodeAVisiter.size() != 0) {
 			Node node = PlusPetiteDistanceNode(nodeAVisiter);
 			nodeAVisiter.remove(node);

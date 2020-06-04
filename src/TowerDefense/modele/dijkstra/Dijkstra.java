@@ -12,10 +12,11 @@ public class Dijkstra {
 	private Node noeud;
 	private TilePane map;
 	
-	public Dijkstra(Jeu jeu, Terrain terrain, Node noeud) {
+	public Dijkstra(Jeu jeu, Terrain terrain, Node noeud, TilePane map) {
 		this.jeu = jeu;
 		this.terrain = terrain;
 		this.noeud = noeud;
+		this.map = map;
 	}
 	
 	//this.map.getChildren().add(noeud.ajouterDestination(newNode, 16));
@@ -25,31 +26,19 @@ public class Dijkstra {
 	//associer chaque tuile du tilePane a un node
 	//ajouterNode(ajouter un Node au set) 
 	//ajouterDestination(node de destination + int de destance)
-//	public void associerNodeTuile() {
-//		System.out.println("done1");
-//		for(int i = 0; i < this.map.getChildren().size(); i++) {
-//			Node newNode = new Node();
-//			graph.ajouterNode(newNode);
-//			if(terrain.getMap()[i] == terrain.getIndiceTuileDebutChemin()) {
-//				noeud.ajouterDestination(newNode, 0);
-//			}
-//			else {
-//				noeud.ajouterDestination(newNode,16);
-//			}
-//		}
-//
-////		for(int i = 0; i < terrain.getMap().length; i++) {
-////			System.out.println("done1");
-////			Node newNode = new Node();
-////			graph.ajouterNode(newNode);
-////			if(terrain.getMap()[i] == terrain.getIndiceTuileDebutChemin()) {
-////				noeud.ajouterDestination(newNode, 0);
-////			}
-////			else {
-////				noeud.ajouterDestination(newNode,16);
-////			}
-////		}
-//	}
+	public void associerNodeTuile(){
+		Graphe graphAllNode = new Graphe();
+		for(int i = 0; i < this.map.getChildren().size(); i++) {
+			Node newNode = new Node();
+			graphAllNode.ajouterNode(newNode);
+			if(terrain.getMap()[i] == terrain.getIndiceTuileDebutChemin()) {
+				noeud.ajouterDestination(newNode, 0);
+			}
+			else {
+				noeud.ajouterDestination(newNode,16);
+			}
+		}
+	}
 	
 	public Node getNodeDepart() {
 		Node nodeDepart = new Node();
@@ -63,7 +52,9 @@ public class Dijkstra {
 	
 	//construire le chemin 
 	public void chemin() {
-		noeud.calculBFS(graph, getNodeDepart());
+		
+		Graphe graph = new Graphe();
+		graph = noeud.calculBFS(graph, getNodeDepart());
 	}
 	
 	

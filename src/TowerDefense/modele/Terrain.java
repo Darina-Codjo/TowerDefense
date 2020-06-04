@@ -69,7 +69,6 @@ public class Terrain {
 			nbrTuile++;
 		}
 		return nbrTuile;
-
 	}
 
 	public int codeTuile(int indice) {
