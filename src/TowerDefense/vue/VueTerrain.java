@@ -35,14 +35,14 @@ public class VueTerrain {
 		KeyFrame kf = new KeyFrame(
 				Duration.seconds(0.017), 
 				(ev ->{
-
-					if (temps%5==0){
-						//System.out.println("un tour");
+					
+					this.game.tourDeJeuProjectile();
+					if (temps%30==0){
 						this.game.tourDeJeuActeur();						
 					}
-					else {
-						this.game.tourDeJeuProjectile();
-					}
+					//this.game.tourDeJeuProjectile();
+						
+					
 					temps++;
 				})
 		);

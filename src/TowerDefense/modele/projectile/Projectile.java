@@ -1,8 +1,15 @@
 package TowerDefense.modele.projectile;
 
+import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Tours;
+import TowerDefense.modele.ennemis.Cactus;
+import TowerDefense.modele.ennemis.Scorpion;
+import TowerDefense.modele.ennemis.Serpent;
+import TowerDefense.modele.tourelle.TourelleFeu;
+import TowerDefense.modele.tourelle.TourelleGlace;
+import TowerDefense.modele.tourelle.TourelleRoche;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
@@ -11,7 +18,6 @@ public class Projectile {
 	private  Tours positionTourelle;
     private Ennemis positionEnnemis;
     private String id;
-    private static int compteur=0;
 	private DoubleProperty xProperty ;
 	private DoubleProperty yProperty ;
     private Jeu jeu;
@@ -26,11 +32,19 @@ public class Projectile {
 		this.positionEnnemis=ennemisArrivee;
 		this.xProperty =new SimpleDoubleProperty(tourelleDepart.getX()) ;
 		this.yProperty =new SimpleDoubleProperty(tourelleDepart.getY()) ;
-		this.id="A"+compteur;
-		compteur++;
+		this.id="A"+Acteur.compteur;
+		Acteur.compteur++;
 		
 	}
 	
+	public String getIdEnnemi(){
+		return this.positionEnnemis.getId();
+		
+	}
+	
+	public Jeu getJeu() {
+		return this.jeu;
+	}
 	
 	public double getX() {
 		return xProperty.getValue();
@@ -89,8 +103,25 @@ public class Projectile {
 			}
 					
 			if (variablex==0 && variabley==0) {
-				jeu.getListeActeurs().remove(positionEnnemis);
+				
+				if((positionEnnemis instanceof Scorpion && positionTourelle instanceof TourelleGlace) || 
+				   (positionEnnemis instanceof Serpent && positionTourelle instanceof TourelleRoche) ||
+				   (positionEnnemis instanceof Cactus && positionTourelle instanceof TourelleFeu)) {
+					
+						positionEnnemis.setPvDegat(30);
+				}
+				
+				else {
+					positionEnnemis.setPvDegat(20);
+				}
+						
+				if(positionEnnemis.getPv()<=0) {
+					jeu.getListeActeurs().remove(positionEnnemis);
+					jeu.incrementerArgent(10);
+				}
 				jeu.getListeProjectile().remove(this);
+				
+
 			}
 
 		
@@ -100,6 +131,9 @@ public class Projectile {
 	
 		
 	}
+
+
+
 
 	
 	

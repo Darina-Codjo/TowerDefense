@@ -1,8 +1,10 @@
 package TowerDefense.modele.tourelle;
 
+import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Jeu;
+import TowerDefense.modele.projectile.ProjectileFeu;
 import TowerDefense.modele.Terrain;
-import TowerDefense.modele.projectile.ProjectileRoche;
+import TowerDefense.modele.tourelle.TourelleBasique;
 
 public class TourelleRoche extends TourelleBasique {
 
@@ -12,10 +14,13 @@ public class TourelleRoche extends TourelleBasique {
 	
 	public void tir() {
 		
-		for(int i=0; i<listeEnnemis().size(); i++) {
-			if(ennemisProche(50)) {
-				getJeu().getListeProjectile().add(new ProjectileRoche(this,listeEnnemis().get(i),getJeu()));
-			}
+		Ennemis ennemiViser= ennemieVisable(50);
+		
+		if (ennemiViser != null) {
+			if(!getJeu().projectileExisteSurEnnemi(ennemiViser.getId())) {				
+				getJeu().getListeProjectile().add(new ProjectileFeu(this,ennemiViser,getJeu()));
+				
+			}			
 		}
 			
 	}

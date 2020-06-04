@@ -15,22 +15,51 @@ public class Tourelle extends Tours {
 		super(x, y, terrain,jeu);
 	}
 	
-	public boolean ennemisProche(double zoneAttaque) {
+
+	
+	public boolean ennemisProcheTirTourelleMultiple(double zoneAttaque, Ennemis e) {
+
+				if(		(this.getY()-zoneAttaque<= e.getY() && e.getY()<=this.getY()+zoneAttaque) &&
+						(this.getX()-zoneAttaque<= e.getX() && e.getX()<=this.getX()+zoneAttaque)  
+						){
+					return true;
+				}		
+		return false;
+	}
+	
+	public Ennemis ennemieVisable(double zoneAttaque) {
+		
+		Ennemis ennemieVisable=null;
+	
 		for(Acteur a :getJeu().getListeActeurs()) {
 			if(a instanceof Ennemis) {
 				if(		(this.getY()-zoneAttaque<= a.getY() && a.getY()<=this.getY()+zoneAttaque) &&
 						(this.getX()-zoneAttaque<= a.getX() && a.getX()<=this.getX()+zoneAttaque)  
 						){
-					return true;
+					ennemieVisable=(Ennemis) a;
+					return ennemieVisable;
 				}
-			}
-			
-			
+			} 
 		}
-		return false;
+		return ennemieVisable;
 	}
-	
-	
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }
 
