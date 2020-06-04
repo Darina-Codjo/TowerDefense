@@ -1,9 +1,14 @@
 package TowerDefense.modele;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import TowerDefense.modele.Acteur;
+import TowerDefense.modele.projectile.Projectile;
+import TowerDefense.modele.tourelle.Tourelle;
+import TowerDefense.vue.AchatTourelleSpeciale;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -12,12 +17,16 @@ public class Jeu {
 	private Terrain monTerrain;
 	private ObservableList<Acteur> listeActeur;
 	private ObservableList<Projectile> listeProjectile;
+	private SimpleIntegerProperty argent;
 	
 	public Jeu(Terrain terrain) {
 		this.monTerrain = terrain;
 		this.listeActeur= FXCollections.observableArrayList() ;
 		this.listeProjectile= FXCollections.observableArrayList() ;
+		this.argent=new SimpleIntegerProperty(0);
+		
 	}
+	
 	
 	public void tourDeJeuActeur() {
         for(int i = 0; i < listeActeur.size(); i++) {
@@ -25,8 +34,20 @@ public class Jeu {
         	//System.out.println( listeActeur.get(i).getId()+ " va bouger");
         	a.agit();
         }
+        
 	}
 	
+	public void acheterTourelleSpeciale() {
+		int nbArgent=getArgent()-50;
+		this.setArgent(nbArgent);
+		
+	}
+	public boolean achatTourelleSpécialePossible() {
+		if(getArgent()==50) {
+			return true;
+		}
+		return false;
+	}
 	public void tourDeJeuProjectile() {
         
         for (int j=0; j< listeProjectile.size(); j++) {
@@ -82,17 +103,24 @@ public class Jeu {
 		return listeProjectile;
 	}
 
-//	public Acteur getActeur(Acteur a) {
-//		Acteur acteur=a;
-//		for(int i=0; i< listeActeur.size();i++) {
-//			if(a instanceof Ennemis) {
-//				acteur= (Ennemis) listeActeur.get(i);
-//			}
-//			else
-//				acteur= (Tourelle) listeActeur.get(i);
-//		}
-//		return acteur;		
-//	}
+
+	public final int getArgent(){
+		return this.argent.getValue() ;
+	}
+	
+	public final void incrementerArgent(int argent){
+		int nbArgent=getArgent()+argent;
+		this.argent.setValue(nbArgent) ;
+	}
+	
+	public void setArgent(int nbArgent) {
+		this.argent.setValue(nbArgent) ;
+	}
+	
+	
+	public final IntegerProperty NbArgentProperty() {
+		return argent ;
+	}
 	
 	public Acteur getActeur(String id) {
 		for(Acteur a:this.listeActeur){

@@ -1,10 +1,13 @@
-package TowerDefense.modele;
+package TowerDefense.modele.ennemis;
+import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.Terrain;
 
-public class Serpent extends Ennemis{
+public class Scorpion extends Ennemis{
 	
-	public Serpent (Terrain monTerrain){
+	public Scorpion (Terrain monTerrain){
 		super(monTerrain, 100, 10);
 	}
+	
 
 	@Override
 	public String toString() {

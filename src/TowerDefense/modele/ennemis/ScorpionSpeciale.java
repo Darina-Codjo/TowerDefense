@@ -1,6 +1,8 @@
-package TowerDefense.modele;
+package TowerDefense.modele.ennemis;
 
 import TowerDefense.modele.EnnemisSpeciales;
+import TowerDefense.modele.Jeu;
+import TowerDefense.modele.Terrain;
 
 public class ScorpionSpeciale extends EnnemisSpeciales {
 	

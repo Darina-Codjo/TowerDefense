@@ -1,8 +1,7 @@
-package TowerDefense.modele;
+package TowerDefense.modele.projectile;
 
 import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Jeu;
-import TowerDefense.modele.Projectile;
 import TowerDefense.modele.Tours;
 
 public class ProjectileFeu extends Projectile {

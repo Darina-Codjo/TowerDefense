@@ -1,10 +1,10 @@
 package TowerDefense.vue;
 
 import TowerDefense.modele.Acteur;
-import TowerDefense.modele.Projectile;
-import TowerDefense.modele.ProjectileFeu;
-import TowerDefense.modele.ProjectileGlace;
-import TowerDefense.modele.ProjectileRoche;
+import TowerDefense.modele.projectile.Projectile;
+import TowerDefense.modele.projectile.ProjectileFeu;
+import TowerDefense.modele.projectile.ProjectileGlace;
+import TowerDefense.modele.projectile.ProjectileRoche;
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;

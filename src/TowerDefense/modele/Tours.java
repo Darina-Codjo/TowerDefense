@@ -5,6 +5,10 @@ import java.util.Random;
 
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Terrain;
+import TowerDefense.modele.tourelle.TourelleFeu;
+import TowerDefense.modele.tourelle.TourelleGlace;
+import TowerDefense.modele.tourelle.TourelleRoche;
+import TowerDefense.modele.tourelle.TourelleTirMultiple;
 import TowerDefense.modele.Jeu;
 
 public class Tours  extends Acteur{
@@ -59,8 +63,12 @@ public class Tours  extends Acteur{
 				((TourelleRoche) jeu.listeTourelle().get(i)).tir();
 				
 			}
+			else if(jeu.listeTourelle().get(i) instanceof TourelleTirMultiple){
+				((TourelleTirMultiple) jeu.listeTourelle().get(i)).tirMultiple();
+			}
+			
 			else {
-				System.out.println("Pas de méthode de tir pr tourelle speciale pour l'instant");
+				
 			}
 		}
 			

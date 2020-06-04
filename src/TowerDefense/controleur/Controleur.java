@@ -1,5 +1,6 @@
 package TowerDefense.controleur;
 
+import java.awt.TextArea;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -7,25 +8,26 @@ import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.GrandeTour;
 import TowerDefense.modele.Jeu;
-import TowerDefense.modele.Scorpion;
+import TowerDefense.modele.ennemis.Scorpion;
 import TowerDefense.modele.Terrain;
-import TowerDefense.modele.Tourelle;
-import TowerDefense.modele.TourelleDestructible;
-import TowerDefense.modele.TourelleFeu;
-import TowerDefense.modele.TourelleGlace;
-import TowerDefense.modele.TourelleRoche;
-import TowerDefense.modele.TourelleTirMultiple;
+import TowerDefense.modele.tourelle.Tourelle;
+import TowerDefense.modele.tourelle.TourelleDestructible;
+import TowerDefense.modele.tourelle.TourelleFeu;
+import TowerDefense.modele.tourelle.TourelleGlace;
+import TowerDefense.modele.tourelle.TourelleRoche;
+import TowerDefense.modele.tourelle.TourelleTirMultiple;
 import TowerDefense.modele.Tours;
+import TowerDefense.vue.AchatTourelleSpeciale;
 import TowerDefense.vue.ConstruireMap;
 import TowerDefense.vue.CreerSprite;
 import TowerDefense.vue.ObservateurListeActeur;
 import TowerDefense.vue.ObservateurListeProjectile;
 import TowerDefense.vue.VueTerrain;
-import TowerDefense.modele.Cactus;
-import TowerDefense.modele.CactusSpeciale;
-import TowerDefense.modele.ScorpionSpeciale;
-import TowerDefense.modele.Serpent;
-import TowerDefense.modele.SerpentSpeciale;
+import TowerDefense.modele.ennemis.Cactus;
+import TowerDefense.modele.ennemis.CactusSpeciale;
+import TowerDefense.modele.ennemis.ScorpionSpeciale;
+import TowerDefense.modele.ennemis.Serpent;
+import TowerDefense.modele.ennemis.SerpentSpeciale;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -50,7 +52,11 @@ public class Controleur implements Initializable{
 	@FXML
 	private Pane plateau;
 	@FXML
-	private Label nbrEnnemis;	
+	private Label nbrEnnemis;
+	@FXML
+	private Label nbArgent;
+    @FXML
+    private Label message;
     @FXML
     private ToggleGroup Tourelle;
     @FXML
@@ -61,9 +67,6 @@ public class Controleur implements Initializable{
     private RadioButton ajoutTourelleDestructible;
     @FXML
     private RadioButton ajoutTourelleTirMultiple;
-    @FXML
-    private Button ajoutCactus;
-    @FXML
     private RadioButton ajoutTourelleRoche;  
 	private VueTerrain vue;	
 	private static Timeline gameLoop;	
@@ -79,9 +82,13 @@ public class Controleur implements Initializable{
 		construireMap.remplirTileMap();
 		this.vue = new VueTerrain(game, plateau);
 		this.sprite = new CreerSprite(plateau);
+		this.vue.initAnimation();
 		this.game.getListeActeurs().addListener(new ObservateurListeActeur(this.plateau)) ;
 		this.game.getListeProjectile().addListener(new ObservateurListeProjectile(this.plateau));
-		this.vue.initAnimation();
+		this.game.NbArgentProperty().addListener(new AchatTourelleSpeciale(this.message));
+		this.nbArgent.textProperty().bind(this.game.NbArgentProperty().asString()) ;		
+		this.ajoutTourelleTirMultiple.setVisible(false);
+		this.ajoutTourelleDestructible.setVisible(false);
 	}
 
 	//
@@ -103,8 +110,7 @@ public class Controleur implements Initializable{
 		this.game.ajouterActeur(scorpionSpeciale);
 		this.game.ajouterActeur(serpentSpeciale);
 		this.game.ajouterActeur(cactusSpeciale);
-		
-  
+		   
 	}
 	
 	@FXML
@@ -128,9 +134,15 @@ public class Controleur implements Initializable{
 				}
 				else if (selectedToggleButton.equals(ajoutTourelleDestructible)) {
 					acteur = new TourelleDestructible(x,y,monTerrain, game,100);
+					this.game.acheterTourelleSpeciale();
+					this.ajoutTourelleTirMultiple.setVisible(false);
+					this.ajoutTourelleDestructible.setVisible(false);
 				}
 				else {
 					acteur = new TourelleTirMultiple(x,y,monTerrain, game);
+					this.game.acheterTourelleSpeciale();
+					this.ajoutTourelleTirMultiple.setVisible(false);
+					this.ajoutTourelleDestructible.setVisible(false);
 					
 				}
 				
@@ -140,6 +152,20 @@ public class Controleur implements Initializable{
 			}
 		});		
 	}
+	
+	
+	 @FXML
+	 void AcheterTourelleSpeciale(ActionEvent event) {
+		 
+		 if(this.game.achatTourelleSpécialePossible()) {
+				
+			 this.ajoutTourelleTirMultiple.setVisible(true);
+			 this.ajoutTourelleDestructible.setVisible(true);
+		 }
+		 
+
+	 }
+	 
 	
 
     @FXML
@@ -161,6 +187,7 @@ public class Controleur implements Initializable{
 	
 	@FXML
 	void start(ActionEvent event) {
+		
 		vue.getGameLoop().play();
 	}
 	
