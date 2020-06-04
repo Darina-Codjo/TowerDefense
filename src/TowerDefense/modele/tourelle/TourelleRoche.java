@@ -1,6 +1,8 @@
-package TowerDefense.modele;
+package TowerDefense.modele.tourelle;
 
-import TowerDefense.modele.ProjectileRoche;
+import TowerDefense.modele.Jeu;
+import TowerDefense.modele.Terrain;
+import TowerDefense.modele.projectile.ProjectileRoche;
 
 public class TourelleRoche extends TourelleBasique {
 

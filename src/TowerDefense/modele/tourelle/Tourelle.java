@@ -1,5 +1,9 @@
-package TowerDefense.modele;
+package TowerDefense.modele.tourelle;
 
+import TowerDefense.modele.Acteur;
+import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.Jeu;
+import TowerDefense.modele.Terrain;
 import TowerDefense.modele.Tours;
 
 public class Tourelle extends Tours {

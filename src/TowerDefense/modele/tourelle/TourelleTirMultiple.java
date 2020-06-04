@@ -1,8 +1,7 @@
-package TowerDefense.modele;
+package TowerDefense.modele.tourelle;
 
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
-import TowerDefense.modele.Tourelle;
 
 public class TourelleTirMultiple extends Tourelle {
 

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import TowerDefense.modele.Acteur;
+import TowerDefense.modele.projectile.Projectile;
+import TowerDefense.modele.tourelle.Tourelle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

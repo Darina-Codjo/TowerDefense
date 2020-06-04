@@ -1,5 +1,8 @@
-package TowerDefense.modele;
+package TowerDefense.modele.projectile;
 
+import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.Jeu;
+import TowerDefense.modele.Tours;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 

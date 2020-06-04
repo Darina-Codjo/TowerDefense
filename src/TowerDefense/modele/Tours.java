@@ -5,6 +5,9 @@ import java.util.Random;
 
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Terrain;
+import TowerDefense.modele.tourelle.TourelleFeu;
+import TowerDefense.modele.tourelle.TourelleGlace;
+import TowerDefense.modele.tourelle.TourelleRoche;
 import TowerDefense.modele.Jeu;
 
 public class Tours  extends Acteur{

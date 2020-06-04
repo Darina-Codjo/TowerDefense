@@ -1,6 +1,8 @@
-package TowerDefense.modele;
+package TowerDefense.modele.tourelle;
 
-import TowerDefense.modele.ProjectileGlace;
+import TowerDefense.modele.Jeu;
+import TowerDefense.modele.Terrain;
+import TowerDefense.modele.projectile.ProjectileGlace;
 
 public class TourelleGlace extends TourelleBasique {
 

@@ -1,6 +1,7 @@
-package TowerDefense.modele;
+package TowerDefense.modele.ennemis;
 
 import TowerDefense.modele.EnnemisSpeciales;
+import TowerDefense.modele.Terrain;
 
 public class SerpentSpeciale extends EnnemisSpeciales {
 	
