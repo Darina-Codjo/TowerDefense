@@ -1,5 +1,6 @@
 package TowerDefense.modele;
 
+
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
@@ -9,7 +10,7 @@ public abstract class Acteur {
 	private DoubleProperty yProperty ;
 	private String id;
 	protected Terrain terrain;
-	static private int compteur=0;
+	public static int compteur=0;
 	private int pv;
 	private Jeu jeu;
 	
@@ -21,9 +22,14 @@ public abstract class Acteur {
 		compteur++;
 	}
 	
-
-
-
+	public int getCompteur() {
+		return compteur;
+	}
+	
+	public void setCompteur(int newCompteur) {
+		compteur=newCompteur;
+	}
+	
 	public double getX() {
 		return xProperty.getValue();
 	}
@@ -52,6 +58,7 @@ public abstract class Acteur {
 		return id;
 	}
 	
+		
 	public abstract void agit();
 	
 //	public String toString() {
@@ -59,5 +66,22 @@ public abstract class Acteur {
 //		
 //		
 //	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
