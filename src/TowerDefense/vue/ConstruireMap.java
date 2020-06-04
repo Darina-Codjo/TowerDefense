@@ -10,6 +10,7 @@ public class ConstruireMap {
 	
 	private TilePane map;
 	private Jeu game;
+	@SuppressWarnings("unused")
 	private Pane plateau;
 	private Terrain terrain;
 	
@@ -22,6 +23,7 @@ public class ConstruireMap {
 	
 	public void remplirTileMap() {//rempli la TileMap
 		for (int i = 0; i < terrain.nbrTuileMap(map) ; i++) {
+
 			ImageView texture = new ImageView("textures/" +game.getMonTerrain().codeTuile(i) + ".png");
 			this.map.getChildren().add(texture);
 		}

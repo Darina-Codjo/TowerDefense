@@ -1,5 +1,8 @@
-package TowerDefense.modele;
+package TowerDefense.modele.projectile;
 
+import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.Jeu;
+import TowerDefense.modele.Tours;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
@@ -11,7 +14,8 @@ public class Projectile {
     private static int compteur=0;
 	private DoubleProperty xProperty ;
 	private DoubleProperty yProperty ;
-    public Jeu jeu;
+    private Jeu jeu;
+    
     
 	
 
@@ -57,39 +61,43 @@ public class Projectile {
 		return this.id;
 	}
 	
+	
 
-	
-	
 	
 	public void agit() {
 		
-		double variablex= this.getX() - positionEnnemis.getX();
-		double variabley = this.getY() - positionEnnemis.getY();
-		
-		if (variablex >0) { 
-			this.setX(this.getX()-1);
-		}
-		else if (variablex <0) {
-			this.setX(this.getX()+1);
-			//System.out.println("Test2");
-		}
-		//System.out.println(variablex);
-		
-		if (variabley >0) {
-			this.setY(this.getY()-1);
-		}
-		else if (variabley <0) {
-			this.setY(this.getY()+1);
+	
+			double variablex= this.getX() - positionEnnemis.getX();
+			double variabley = this.getY() - positionEnnemis.getY();
 			
-		}
+			
+			
+			if (variablex >0) { 
+				this.setX(this.getX()-1);
+			}
+			else if (variablex <0) {
+				this.setX(this.getX()+1);
+				
+			}
+				
+			if (variabley >0) {
+				this.setY(this.getY()-1);
+			}
+			else if (variabley <0) {
+				this.setY(this.getY()+1);
+				
+			}
+					
+			if (variablex==0 && variabley==0) {
+				jeu.getListeActeurs().remove(positionEnnemis);
+				jeu.getListeProjectile().remove(this);
+			}
+
 		
-		//System.out.println(variabley);
+
 		
-		if (variablex==0 && variabley==0) {
-			//System.out.println("bien arrivé");
-			jeu.getListeActeurs().remove(positionEnnemis);
-			jeu.getListeProjectile().remove(positionTourelle);
-		}
+	
+	
 		
 	}
 

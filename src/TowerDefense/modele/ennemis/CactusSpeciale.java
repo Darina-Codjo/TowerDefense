@@ -1,4 +1,4 @@
-package TowerDefense.modele;
+package TowerDefense.modele.ennemis;
 
 import TowerDefense.modele.EnnemisSpeciales;
 import TowerDefense.modele.Terrain;
@@ -8,10 +8,6 @@ public class CactusSpeciale extends EnnemisSpeciales{
 	
 	public CactusSpeciale(Terrain terrain) {
 		super(terrain,100,10);
-	}
-
-	public CactusSpeciale(Terrain terrain, int pv, int v) {
-		super(terrain, pv, v);
 	}
 	
 	

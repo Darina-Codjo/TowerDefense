@@ -1,5 +1,9 @@
 package TowerDefense.modele;
 
+
+import java.util.ArrayList;
+import TowerDefense.modele.projectile.Projectile;
+import TowerDefense.modele.tourelle.Tourelle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -11,23 +15,49 @@ public class Jeu {
 	
 	public Jeu(Terrain terrain) {
 		this.monTerrain = terrain;
-		//this.listeActeur = new ArrayList<Acteur>();
 		this.listeActeur= FXCollections.observableArrayList() ;
 		this.listeProjectile= FXCollections.observableArrayList() ;
 	}
 	
-	public void tourDeJeu() {
+	public void tourDeJeuActeur() {
         for(int i = 0; i < listeActeur.size(); i++) {
         	Acteur a= listeActeur.get(i);
         	//System.out.println( listeActeur.get(i).getId()+ " va bouger");
         	a.agit();
         }
+	}
+	
+	public void tourDeJeuProjectile() {
         
         for (int j=0; j< listeProjectile.size(); j++) {
+    		
         	Projectile p= listeProjectile.get(j);
         	p.agit();
         }
     }
+	
+	public boolean projectileExiste(String id) {
+		for(int i=0; i< listeProjectile.size(); i++) {
+			if (listeProjectile.get(i).getId()==id) {
+				return true;
+			}
+			
+		}
+		return false;
+	}
+	
+	public ArrayList<Tourelle> listeTourelle(){
+		ArrayList<Tourelle> listeTourelle = new ArrayList<Tourelle>();
+		
+		for(int i=0; i< getListeActeurs().size();i++) {
+			if (getListeActeurs().get(i) instanceof Tourelle) {
+				listeTourelle.add((Tourelle) getListeActeurs().get(i));
+			}
+		}
+		
+		return listeTourelle;
+		
+	}
 	
 	public void ajouterActeur(Acteur acteur){
 		listeActeur.add(acteur);
@@ -71,6 +101,29 @@ public class Jeu {
 		}
 		return null;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

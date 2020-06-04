@@ -5,23 +5,27 @@ import java.util.ResourceBundle;
 
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.GrandeTour;
 import TowerDefense.modele.Jeu;
-import TowerDefense.modele.Scorpion;
 import TowerDefense.modele.Terrain;
-import TowerDefense.modele.Tourelle;
-import TowerDefense.modele.TourelleFeu;
-import TowerDefense.modele.TourelleGlace;
-import TowerDefense.modele.TourelleRoche;
+import TowerDefense.modele.Tours;
+import TowerDefense.modele.ennemis.Cactus;
+import TowerDefense.modele.ennemis.CactusSpeciale;
+import TowerDefense.modele.ennemis.Scorpion;
+import TowerDefense.modele.ennemis.ScorpionSpeciale;
+import TowerDefense.modele.ennemis.Serpent;
+import TowerDefense.modele.ennemis.SerpentSpeciale;
+import TowerDefense.modele.tourelle.Tourelle;
+import TowerDefense.modele.tourelle.TourelleDestructible;
+import TowerDefense.modele.tourelle.TourelleFeu;
+import TowerDefense.modele.tourelle.TourelleGlace;
+import TowerDefense.modele.tourelle.TourelleRoche;
+import TowerDefense.modele.tourelle.TourelleTirMultiple;
 import TowerDefense.vue.ConstruireMap;
 import TowerDefense.vue.CreerSprite;
 import TowerDefense.vue.ObservateurListeActeur;
 import TowerDefense.vue.ObservateurListeProjectile;
 import TowerDefense.vue.VueTerrain;
-import TowerDefense.modele.Cactus;
-import TowerDefense.modele.CactusSpeciale;
-import TowerDefense.modele.ScorpionSpeciale;
-import TowerDefense.modele.Serpent;
-import TowerDefense.modele.SerpentSpeciale;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -52,7 +56,11 @@ public class Controleur implements Initializable{
     @FXML
     private RadioButton ajoutTourelleGlace; 
     @FXML
-    private RadioButton ajoutTourelleFeu;  
+    private RadioButton ajoutTourelleFeu; 
+    @FXML
+    private RadioButton ajoutTourelleDestructible;
+    @FXML
+    private RadioButton ajoutTourelleTirMultiple;
     @FXML
     private Button ajoutCactus;
     @FXML
@@ -80,20 +88,23 @@ public class Controleur implements Initializable{
     void ajouterActeur(ActionEvent event) {
 		
 		Acteur cactus = new Cactus(monTerrain);
-		Acteur serpent = new Serpent(monTerrain);
-		Acteur scorpion = new Scorpion(monTerrain);
-		Acteur scorpionSpeciale = new ScorpionSpeciale(monTerrain);
-		Acteur serpentSpeciale = new SerpentSpeciale(monTerrain);
-		Acteur cactusSpeciale = new CactusSpeciale(monTerrain);
-		
+
+		Acteur grandeTour = new GrandeTour(monTerrain, game);
+		Acteur serpent= new Serpent(monTerrain);
+		Acteur scorpion= new Scorpion(monTerrain);
+		Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
+		Acteur serpentSpeciale= new SerpentSpeciale(monTerrain);
+		Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
+
 		this.game.ajouterActeur(cactus);
+		this.game.ajouterActeur(grandeTour);
 		this.game.ajouterActeur(serpent);
 		this.game.ajouterActeur(scorpion);
 		this.game.ajouterActeur(scorpionSpeciale);
 		this.game.ajouterActeur(serpentSpeciale);
 		this.game.ajouterActeur(cactusSpeciale);
 		
-   
+  
 	}
 	
 	@FXML
@@ -107,13 +118,20 @@ public class Controleur implements Initializable{
 			if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
 				Acteur acteur;
 				if(selectedToggleButton.equals(ajoutTourelleGlace)) {
-					acteur = new TourelleGlace(x,y, monTerrain, game);
+					acteur = new TourelleGlace(x,y, monTerrain, game);					
 				}
 				else if(selectedToggleButton.equals(ajoutTourelleFeu)) {
 					acteur = new TourelleFeu(x,y, monTerrain, game);
 				}
-				else {
+				else if (selectedToggleButton.equals(ajoutTourelleRoche)){
 					acteur = new TourelleRoche(x,y,monTerrain, game);
+				}
+				else if (selectedToggleButton.equals(ajoutTourelleDestructible)) {
+					acteur = new TourelleDestructible(x,y,monTerrain, game,100);
+				}
+				else {
+					acteur = new TourelleTirMultiple(x,y,monTerrain, game);
+					
 				}
 				
 				this.game.ajouterActeur(acteur);

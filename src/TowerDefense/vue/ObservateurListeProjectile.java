@@ -1,6 +1,14 @@
 package TowerDefense.vue;
 
-import TowerDefense.modele.Projectile;
+
+//import TowerDefense.modele.Projectile;
+
+import TowerDefense.modele.Acteur;
+import TowerDefense.modele.projectile.Projectile;
+import TowerDefense.modele.projectile.ProjectileFeu;
+import TowerDefense.modele.projectile.ProjectileGlace;
+import TowerDefense.modele.projectile.ProjectileRoche;
+
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -16,7 +24,16 @@ public class ObservateurListeProjectile implements ListChangeListener<Projectile
 	}
 	
 	public void spriteProjectile(Projectile projectile) {	
-		Circle p = new Circle(2, Color.YELLOW);
+		Circle p;
+		if (projectile instanceof ProjectileFeu) {
+			p = new Circle(2, Color.RED);
+		}
+		else if (projectile instanceof ProjectileGlace) {
+			p = new Circle(2, Color.LIGHTBLUE);		
+		}
+		else {
+			p = new Circle(2, Color.GRAY);
+		}
 		p.setId(projectile.getId());
 		p.translateXProperty().bind(projectile.xProperty()) ;
 		p.translateYProperty().bind(projectile.yProperty()) ;

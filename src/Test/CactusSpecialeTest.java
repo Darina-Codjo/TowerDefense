@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import TowerDefense.modele.CactusSpeciale;
 import TowerDefense.modele.Terrain;
+import TowerDefense.modele.ennemis.CactusSpeciale;
 
 class CactusSpecialeTest {
 

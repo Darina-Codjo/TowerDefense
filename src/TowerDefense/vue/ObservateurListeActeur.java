@@ -1,13 +1,17 @@
 package TowerDefense.vue;
 
 import TowerDefense.modele.Acteur;
-import TowerDefense.modele.Cactus;
-import TowerDefense.modele.Scorpion;
-import TowerDefense.modele.ScorpionSpeciale;
-import TowerDefense.modele.Serpent;
-import TowerDefense.modele.SerpentSpeciale;
+import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.GrandeTour;
+import TowerDefense.modele.Jeu;
+import TowerDefense.modele.ennemis.Cactus;
+import TowerDefense.modele.ennemis.Scorpion;
+import TowerDefense.modele.ennemis.ScorpionSpeciale;
+import TowerDefense.modele.ennemis.Serpent;
+import TowerDefense.modele.ennemis.SerpentSpeciale;
+import TowerDefense.modele.tourelle.TourelleFeu;
+import TowerDefense.modele.tourelle.TourelleGlace;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ListChangeListener.Change;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -22,7 +26,13 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	}
 	
 	public void acteurSprite(Acteur acteur) {
-		Circle circle = new Circle(3);
+		Circle circle;
+		if (acteur instanceof GrandeTour) {
+			circle = new Circle(10);
+		}
+		else {
+			circle = new Circle(3);
+		}
 		
 		if(acteur instanceof Cactus)
 			circle.setFill(Color.LIGHTGREEN);
@@ -70,4 +80,20 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

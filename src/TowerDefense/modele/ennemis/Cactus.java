@@ -1,19 +1,14 @@
-package TowerDefense.modele;
-import TowerDefense.modele.Ennemis;
+package TowerDefense.modele.ennemis;
 
-public class Scorpion extends Ennemis{
+import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.Terrain;
+
+public class Cactus extends Ennemis {
 	
-	public Scorpion (Terrain monTerrain){
+	public Cactus(Terrain monTerrain){
 		super(monTerrain, 100, 10);
 	}
 	
-	@SuppressWarnings("unused")
-	@Override
-	public void agit() {
-		double newPositionX = this.getX();
-		double newPositionY = this.getY();
-		this.seDeplacer();
-	}
 
 	@Override
 	public String toString() {
