@@ -6,6 +6,8 @@ import TowerDefense.modele.tourelle.TourelleFeu;
 import TowerDefense.modele.tourelle.TourelleGlace;
 import TowerDefense.modele.tourelle.TourelleRoche;
 
+import TowerDefense.modele.tourelle.TourelleTirMultiple;
+
 public class Tours  extends Acteur{
 	
 	private Jeu jeu;
@@ -58,8 +60,12 @@ public class Tours  extends Acteur{
 				((TourelleRoche) jeu.listeTourelle().get(i)).tir();
 				
 			}
+			else if(jeu.listeTourelle().get(i) instanceof TourelleTirMultiple){
+				((TourelleTirMultiple) jeu.listeTourelle().get(i)).tirMultiple();
+			}
+			
 			else {
-				System.out.println("Pas de méthode de tir pr tourelle speciale pour l'instant");
+				
 			}
 		}
 			

@@ -26,19 +26,38 @@ public class Dijkstra {
 	//associer chaque tuile du tilePane a un node
 	//ajouterNode(ajouter un Node au set) 
 	//ajouterDestination(node de destination + int de destance)
-	public void associerNodeTuile(){
-		Graphe graphAllNode = new Graphe();
-		for(int i = 0; i < this.map.getChildren().size(); i++) {
-			Node newNode = new Node();
-			graphAllNode.ajouterNode(newNode);
-			if(terrain.getMap()[i] == terrain.getIndiceTuileDebutChemin()) {
-				noeud.ajouterDestination(newNode, 0);
-			}
-			else {
-				noeud.ajouterDestination(newNode,16);
-			}
-		}
-	}
+//	public void associerNodeTuile() {
+//		int comte = 0;
+//		for(int i = 0; i < this.terrain.getMap().length; i++) {
+//			if(i == terrain.getIndiceTuileChemin()) {
+//				Node newNode = new Node();
+//				graph.ajouterNode(newNode);
+//				comte++;
+//				if(terrain.getMap()[i] == terrain.getIndiceTuileDebutChemin()) {
+//					noeud.ajouterDestination(newNode, 0);
+//				}
+//				else {
+//					noeud.ajouterDestination(newNode,16);
+//				}
+//			}
+//		}
+//		if(comte == terrain.nbrTuileChemin()) {
+//			System.out.println("meme nombre");
+//		}
+
+//		for(int i = 0; i < terrain.getMap().length; i++) {
+//			System.out.println("done1");
+//			Node newNode = new Node();
+//			graph.ajouterNode(newNode);
+//			if(terrain.getMap()[i] == terrain.getIndiceTuileDebutChemin()) {
+//				noeud.ajouterDestination(newNode, 0);
+//			}
+//			else {
+//				noeud.ajouterDestination(newNode,16);
+//			}
+//		}
+//
+//	}
 	
 	public Node getNodeDepart() {
 		Node nodeDepart = new Node();
