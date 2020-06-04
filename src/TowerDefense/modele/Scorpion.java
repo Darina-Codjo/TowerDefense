@@ -8,6 +8,7 @@ public class Scorpion extends Ennemis{
 		super(monTerrain, 100, 10);
 	}
 	
+	@SuppressWarnings("unused")
 	@Override
 	public void agit() {
 		double newPositionX = this.getX();

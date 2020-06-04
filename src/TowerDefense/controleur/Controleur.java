@@ -67,7 +67,7 @@ public class Controleur implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		this.monTerrain = new Terrain();
 		game = new Jeu(monTerrain);
-		ConstruireMap construireMap = new ConstruireMap(map, game, plateau);
+		ConstruireMap construireMap = new ConstruireMap(map, game, plateau, monTerrain);
 		construireMap.remplirTileMap();
 		this.vue = new VueTerrain(game, plateau);
 		this.sprite = new CreerSprite(plateau);
@@ -76,16 +76,15 @@ public class Controleur implements Initializable{
 		this.vue.initAnimation();
 	}
 
-	//
 	@FXML
     void ajouterActeur(ActionEvent event) {
 		
 		Acteur cactus = new Cactus(monTerrain);
-		Acteur serpent= new Serpent(monTerrain);
-		Acteur scorpion= new Scorpion(monTerrain);
-		Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
-		Acteur serpentSpeciale= new SerpentSpeciale(monTerrain);
-		Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
+		Acteur serpent = new Serpent(monTerrain);
+		Acteur scorpion = new Scorpion(monTerrain);
+		Acteur scorpionSpeciale = new ScorpionSpeciale(monTerrain);
+		Acteur serpentSpeciale = new SerpentSpeciale(monTerrain);
+		Acteur cactusSpeciale = new CactusSpeciale(monTerrain);
 		
 		this.game.ajouterActeur(cactus);
 		this.game.ajouterActeur(serpent);

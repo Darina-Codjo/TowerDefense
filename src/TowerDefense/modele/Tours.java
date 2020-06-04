@@ -37,7 +37,7 @@ public class Tours  extends Acteur{
 	
 	@Override
 	public void agit() {
-		System.out.println(projectile().size());
+//		System.out.println(projectile().size());
 		
 		for(int j=0; j< projectile().size(); j++) {
 			jeu.getListeProjectile().add(new Projectile(this, projectile().get(j), jeu));

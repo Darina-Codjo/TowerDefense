@@ -1,6 +1,5 @@
 package TowerDefense.vue;
 
-import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Projectile;
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;

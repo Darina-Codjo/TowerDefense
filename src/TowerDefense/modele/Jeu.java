@@ -1,8 +1,5 @@
 package TowerDefense.modele;
 
-import java.util.ArrayList;
-
-import TowerDefense.modele.Acteur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
