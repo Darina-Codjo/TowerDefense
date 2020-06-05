@@ -5,6 +5,7 @@ import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.GrandeTour;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.ennemis.Cactus;
+import TowerDefense.modele.ennemis.CactusSpeciale;
 import TowerDefense.modele.ennemis.Scorpion;
 import TowerDefense.modele.ennemis.ScorpionSpeciale;
 import TowerDefense.modele.ennemis.Serpent;
@@ -40,12 +41,15 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 			circle.setFill(Color.BROWN);
 		else if (acteur instanceof Serpent) 
 			circle.setFill(Color.ORANGE);
+		else if (acteur instanceof CactusSpeciale)
+			circle.setFill(Color.PURPLE);
 		else if (acteur instanceof ScorpionSpeciale)
 			circle.setFill(Color.RED);
 		else if (acteur instanceof SerpentSpeciale)
 			circle.setFill(Color.GREEN);
 		else
-			circle.setFill(Color.PURPLE);
+			circle.setOpacity(0);
+		
 		
 		circle.setId(acteur.getId());
 		circle.translateXProperty().bind(acteur.xProperty()) ;
