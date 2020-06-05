@@ -16,6 +16,7 @@ import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.image.ImageView;
 
 public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 
@@ -27,13 +28,12 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	}
 	
 	public void acteurSprite(Acteur acteur) {
-		Circle circle;
-		if (acteur instanceof GrandeTour) {
-			circle = new Circle(10);
-		}
-		else {
-			circle = new Circle(3);
-		}
+		Circle circle = new Circle(3);
+		
+		/*ImageView texture = new ImageView("textures/tour.png");*/
+		
+			
+		
 		
 		if(acteur instanceof Cactus)
 			circle.setFill(Color.LIGHTGREEN);
@@ -47,14 +47,26 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 			circle.setFill(Color.RED);
 		else if (acteur instanceof SerpentSpeciale)
 			circle.setFill(Color.GREEN);
+		else if (acteur instanceof GrandeTour) {
+			circle.setFill(Color.BLACK);
+		}
+		/*else if(acteur instanceof GrandeTour) {
+			texture.setTranslateX(acteur.getX()+16);
+			texture.setTranslateY(acteur.getY()+16);
+			plateau.getChildren().add(texture);
+		}*/
 		else
 			circle.setOpacity(0);
+		
+		
 		
 		
 		circle.setId(acteur.getId());
 		circle.translateXProperty().bind(acteur.xProperty()) ;
 		circle.translateYProperty().bind(acteur.yProperty()) ;
 		plateau.getChildren().add(circle);
+		
+		
 	}
 	
 	
