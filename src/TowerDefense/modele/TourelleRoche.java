@@ -4,9 +4,9 @@ import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.projectile.ProjectileRoche;
 import TowerDefense.modele.Terrain;
-import TowerDefense.modele.tourelle.TourelleBasique;
+import TowerDefense.modele.tourelle.Tourelle;
 
-public class TourelleRoche extends TourelleBasique {
+public class TourelleRoche extends Tourelle {
 
 	public TourelleRoche(double x, double y, Terrain terrain,Jeu jeu) {
 		super(x, y, terrain, jeu);
