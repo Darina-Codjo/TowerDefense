@@ -12,7 +12,6 @@ public class Ennemis extends Acteur{
 	private double directionX;
 	private double directionY;
 	private int pv;
-	//private Jeu jeu;
 	
 	public Ennemis(Terrain terrain, int pv, int v) {
 		super((terrain.getIndiceTuileDebutChemin()%30)*16+8, (terrain.getIndiceTuileDebutChemin()/30)*16+8 , terrain);
@@ -20,10 +19,11 @@ public class Ennemis extends Acteur{
 		this.vitesse = v;
 		this.directionX=0;
 		this.directionY=0;
-		//this.jeu=jeu;
 	}
 
-//permet au ennemis de se péplacer aleatoirement 
+	
+	
+	//Permet au ennemis de se déplacer aleatoirement 
 	private void directionAleatoire() {
 		Random random = new Random();
 
@@ -49,35 +49,13 @@ public class Ennemis extends Acteur{
 		this.setY(newPositionY);   
 	}
 
-	public void meurt(){
-		this.pv = 0;
-	}
 
-	public boolean estVivant() {
-		return this.pv > 0;
-	}
 
-	@Override
-	public void agit() {
-		this.seDeplacer();
-	}
-
+	//Les méthodes get et set relatives au pv
 	public int getPv() {
 		return this.pv;
 	}
-
-	public int getVitesse() {
-		return vitesse;
-	}
-
-	public double getxSuivant() {
-		return directionX;
-	}
-
-	public double getySuivant() {
-		return directionY;
-	}
-
+	
 	public void setPv(int newPv) {
 		this.pv=newPv;
 	}
@@ -86,9 +64,35 @@ public class Ennemis extends Acteur{
 		this.pv -= degatRecu;
 	}
 
-
+	
+	
+	//Les méthodes get et set relatives à la vitesse
+	public int getVitesse() {
+		return vitesse;
+	}
+	
 	public void setVitesse(int v) {
 		this.vitesse = v;
+	}
+	
+	
+	
+	
+	//Les méthodes get et set relatives aux nouvelles coordonnées
+	public double getxSuivant() {
+		return directionX;
+	}
+
+	public double getySuivant() {
+		return directionY;
+	}
+
+
+
+	
+	@Override
+	public void agit() {
+		this.seDeplacer();
 	}
 
 	@Override

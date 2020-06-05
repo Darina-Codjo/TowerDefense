@@ -36,7 +36,6 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		
 		if(acteur instanceof Cactus)
 			circle.setFill(Color.LIGHTGREEN);
-			//Color.web("color en hexa")
 		else if (acteur instanceof Scorpion) 
 			circle.setFill(Color.BROWN);
 		else if (acteur instanceof Serpent) 
@@ -57,7 +56,6 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	
 	
 	private void enleverSprite (Acteur mort) {
-		//System.out.println(”enlever sprite ”);
 		this.plateau.getChildren().remove(this.plateau.lookup("#" + mort.getId()));
 	}
 	
@@ -67,12 +65,12 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		
 		while(c.next()){
 		
-			// on cree leur sprite .
+			// on cree leur sprite dès qu'un ennemis est ajouter à la liste .
 			for (Acteur nouveau: c.getAddedSubList()){
 				acteurSprite(nouveau);
 			}
-			// gestion des morts
-			// on enleve leur sprite .
+			// gestion des ennemis morts
+			// on enleve leur sprite dès qu'un ennemis est retirer de la liste .
 			for (Acteur mort: c.getRemoved()){
 				enleverSprite (mort);
 			}

@@ -23,8 +23,6 @@ public class Projectile {
     private Jeu jeu;
     
     
-	
-
 	public Projectile(Tours tourelleDepart, Ennemis ennemisArrivee, Jeu jeu) {
 
 		this.jeu=jeu;
@@ -36,6 +34,7 @@ public class Projectile {
 		Acteur.compteur++;
 		
 	}
+	
 	
 	public String getIdEnnemi(){
 		return this.positionEnnemis.getId();
@@ -80,12 +79,13 @@ public class Projectile {
 	
 	public void agit() {
 		
-	
+			//Regarde la différence de coordonées entre le projectile est l'ennemi
+			//pour savoir vers où le projectile doit se déplacer
 			double variablex= this.getX() - positionEnnemis.getX();
 			double variabley = this.getY() - positionEnnemis.getY();
 			
 			
-			
+			//Modification des coordonées de la projectile en fonction du calcul précédent
 			if (variablex >0) { 
 				this.setX(this.getX()-1);
 			}
@@ -101,7 +101,11 @@ public class Projectile {
 				this.setY(this.getY()+1);
 				
 			}
-					
+			
+			//Cas où le projectile à toucher l'ennemi
+			//Retire  les pv à l'ennemi
+			//Si 'ennemi n'a plus de pv et est donc mort il est retirer de la liste d'acteur et le joueur gagne de l'argent
+			//Le projectile est aussi retirer de la liste de projectile
 			if (variablex==0 && variabley==0) {
 				
 				if((positionEnnemis instanceof Scorpion && positionTourelle instanceof TourelleGlace) || 
