@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import TowerDefense.modele.Terrain;
+
 public class BreadthFirstSearch {
 	private Node nodeDebut;
 	private Node nodeFin;
@@ -16,8 +18,9 @@ public class BreadthFirstSearch {
 	public void construireBFS() {
 		Queue<Node> queue = new LinkedList<>();
 		ArrayList<Node> explore = new ArrayList<>();
-        queue.add(this.nodeDebut);
-        explore.add(nodeDebut);
+        
+		queue.add(this.nodeDebut);
+        explore.add(this.nodeDebut);
         
         while(!queue.isEmpty()){
             Node current = queue.remove();
@@ -33,5 +36,10 @@ public class BreadthFirstSearch {
             explore.add(current);
         }
        // return false;
+        this.nodeDebut.getVoisins();//retourne le graph DFS
+	}
+	
+	public void BFS() {
+		
 	}
 }

@@ -2,12 +2,15 @@ package TowerDefense.modele;
 
 import java.util.Random;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.scene.layout.TilePane;
 
 public class Terrain {
 	private int width = 480;
 	private int height = 480;
-
+	private DoubleProperty xProperty ;
+	private DoubleProperty yProperty ;
+	private TilePane map;
 
 	private int[] mapDesert = {	5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5,  4 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1,
 								5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
@@ -44,7 +47,7 @@ public class Terrain {
 
 
 	public Terrain() {
-
+		
 	}
 
 	public int getWidth() {
@@ -62,7 +65,7 @@ public class Terrain {
 		return mapDesert;
 	}
 
-	public int nbrTuileMap(TilePane tilePane) {
+	public int nbrTuileMap(TilePane map) {
 		int nbrTuile = 0;
 		for(int i = 0; i < this.mapDesert.length; i++) {
 			nbrTuile++;
@@ -83,11 +86,12 @@ public class Terrain {
 			indice ++;
 		}
 		while (valeurY >= 16) {
-			valeurY-=16;
+			valeurY -= 16;
 			indice += 30;
 		}
 		return indice;
 	}
+	
 
 	public boolean dansTerrain(double d, double e) {
 		return (0 <= d && d<this.width && 0<=e && e< this.height);
@@ -123,6 +127,15 @@ public class Terrain {
 		return nbrTuileChemin;
 	}
 
+	public int getIndiceTuileCheminSansDebutEtFin() {
+		int indiceCase2 = 0;	
+		for(int i = 0; i < mapDesert.length; i++) {
+			if(mapDesert[i] == 2) {
+				indiceCase2 = i;
+			}
+		}
+		return indiceCase2;
+	}
 
 	public int getIndiceTuileDebutChemin() {
 
@@ -171,8 +184,8 @@ public class Terrain {
 	public int getIndiceTuileFinChemin() {
 
 		int indice = 0;
-		//compte nombre d'occurence de 
-		int compteurCase50 = 0;
+		//compte nombre d'occurence de 51 
+		int compteurCase51 = 0;
 
 		//recupere l'indice du 1ere, 2eme et 3eme occurence de 50
 		int indice51_1 = 0;
@@ -182,16 +195,16 @@ public class Terrain {
 		for(int i = 0; i < mapDesert.length; i++) {
 
 			if(mapDesert[i] == 51) {
-				compteurCase50++;
+				compteurCase51++;
 			}
 
-			if(mapDesert[i] == 51 && compteurCase50 == 1) {
+			if(mapDesert[i] == 51 && compteurCase51 == 1) {
 				indice51_1 = i;
 			}
-			if(mapDesert[i] == 51 && compteurCase50 == 2) {
+			if(mapDesert[i] == 51 && compteurCase51 == 2) {
 				indice51_2 = i;
 			}
-			if(mapDesert[i] == 51 && compteurCase50 == 3) {
+			if(mapDesert[i] == 51 && compteurCase51 == 3) {
 				indice51_3 = i;
 			}
 		}
@@ -212,55 +225,18 @@ public class Terrain {
 		return indice;
 	}
 
-	public int getIndiceTuileFinChemmin() {
-
-		int indice = 0;
-		//compte nombre d'occurence de 
-		int compteurCase50 = 0;
-
-		//recupere l'indice du 1ere, 2eme et 3eme occurence de 50
-		int indice51_1 = 0;
-		int indice51_2 = 0;
-		int indice51_3 = 0;
-
-		for(int i = 0; i < mapDesert.length; i++) {
-
-			if(mapDesert[i] == 51) {
-				compteurCase50++;
-			}
-
-			if(mapDesert[i] == 51 && compteurCase50 == 1) {
-				indice51_1 = i;
-			}
-			if(mapDesert[i] == 51 && compteurCase50 == 2) {
-				indice51_2 = i;
-			}
-			if(mapDesert[i] == 51 && compteurCase50 == 3) {
-				indice51_3 = i;
-			}
-		}
-
-		Random random = new Random();
-		int alea = random.nextInt(3);
-
-		if (alea == 0) {
-			indice = indice51_1;
-		}
-		if (alea == 1) {
-			indice = indice51_2;
-		}
-		if (alea == 2) {
-			indice = indice51_3;
-		}
-
-		return indice;
-	}
 
 	public boolean dansTerrain(int x, int y) {
 
 		return (0 <= x && x<this.width && 0<=y && y< this.height);
 	}
 
+	public double getX() {
+		return xProperty.getValue();
+	}	
+	public double getY() {
+		return yProperty.getValue() ;
+	}
 }
 
 
