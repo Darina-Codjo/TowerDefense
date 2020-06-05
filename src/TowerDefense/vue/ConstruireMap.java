@@ -18,7 +18,8 @@ public class ConstruireMap {
 		this.plateau = plateau;
 	}
 	
-	public void remplirTileMap() {//rempli la TileMap par des blocs de texture
+	//rempli la TileMap par des blocs de texture
+	public void remplirTileMap() {
 		for (int i = 0; i < 900; i++) {
 			ImageView texture = new ImageView("textures/" +game.getMonTerrain().codeTuile(i) + ".png");
 			this.map.getChildren().add(texture);
