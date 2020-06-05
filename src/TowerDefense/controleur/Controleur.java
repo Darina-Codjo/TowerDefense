@@ -8,7 +8,8 @@ import TowerDefense.modele.GrandeTour;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
 import TowerDefense.modele.dijkstra.Dijkstra;
-import TowerDefense.modele.dijkstra.Node;
+import TowerDefense.modele.dijkstra.Graphe;
+import TowerDefense.modele.dijkstra.bfsNode;
 import TowerDefense.modele.ennemis.Cactus;
 import TowerDefense.modele.ennemis.CactusSpeciale;
 import TowerDefense.modele.ennemis.Scorpion;
@@ -70,20 +71,16 @@ public class Controleur implements Initializable{
 	private CreerSprite sprite;	
 	private Jeu game;
 	private Dijkstra dijkstra;
-	private Node noeud;
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.monTerrain = new Terrain();
 		game = new Jeu(monTerrain);
-		this.noeud = new Node();
-		this.dijkstra = new Dijkstra(game, monTerrain, noeud, map);
 		this.vue = new VueTerrain(game, plateau);
 		this.sprite = new CreerSprite(plateau);
 		ConstruireMap construireMap = new ConstruireMap(map, game, plateau, monTerrain);
 		construireMap.remplirTileMap();
-		//dijkstra.associerNodeTuile();
 
 		this.vue.initAnimation();
 		this.game.getListeActeurs().addListener(new ObservateurListeActeur(this.plateau)) ;
@@ -100,11 +97,11 @@ public class Controleur implements Initializable{
 		Acteur cactus = new Cactus(monTerrain);
 
 		Acteur grandeTour = new GrandeTour(monTerrain, game);
-		Acteur serpent= new Serpent(monTerrain);
-		Acteur scorpion= new Scorpion(monTerrain);
-		Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
-		Acteur serpentSpeciale= new SerpentSpeciale(monTerrain);
-		Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
+		Acteur serpent = new Serpent(monTerrain);
+		Acteur scorpion = new Scorpion(monTerrain);
+		Acteur scorpionSpeciale = new ScorpionSpeciale(monTerrain);
+		Acteur serpentSpeciale = new SerpentSpeciale(monTerrain);
+		Acteur cactusSpeciale =new CactusSpeciale(monTerrain);
 
 		this.game.ajouterActeur(cactus);
 		this.game.ajouterActeur(grandeTour);

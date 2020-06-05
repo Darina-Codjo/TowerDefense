@@ -94,7 +94,7 @@ public class Terrain {
 	}
 
 	public boolean dansChemin(int indice) {
-		if(this.codeTuile(indice) ==2 || this.codeTuile(indice) == 50 || this.codeTuile(indice) == 51) {
+		if(this.codeTuile(indice) == 2 || this.codeTuile(indice) == 50 || this.codeTuile(indice) == 51) {
 			return true;
 		}
 		else {
@@ -112,8 +112,8 @@ public class Terrain {
 		return indice;
 	}
 
-
-	public int nbrTuileChemin() {
+//utilisé pour verifier dijkstra
+	public int getNbrTuileChemin() {
 		int nbrTuileChemin = 0;
 		for(int i = 0; i < mapDesert.length; i++) {
 			if(this.codeTuile(i) == 2 || this.codeTuile(i) == 50 || this.codeTuile(i) == 51) {

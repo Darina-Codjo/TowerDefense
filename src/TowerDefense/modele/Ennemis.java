@@ -4,6 +4,8 @@ import java.util.Random;
 
 
 import TowerDefense.modele.Terrain;
+import TowerDefense.modele.dijkstra.Dijkstra;
+import TowerDefense.modele.dijkstra.bfsNode;
 import TowerDefense.modele.Jeu;
 
 
@@ -13,7 +15,9 @@ public class Ennemis extends Acteur{
 	private double directionX;
 	private double directionY;
 	private int pv;
-	//private Jeu jeu;
+	private Dijkstra dijkstra;
+	private Jeu jeu;
+	private bfsNode noeud;
 	
 		
 	public Ennemis(Terrain terrain, int pv, int v) {
@@ -23,8 +27,8 @@ public class Ennemis extends Acteur{
 		this.directionX = 0;
 		this.directionY = 0;
 		this.directionX=0;
-		this.directionY=0;
-		//this.jeu=jeu;
+		this.directionY = 0;
+		this.dijkstra = new Dijkstra(jeu, terrain, noeud);	
 	}
 
 
@@ -54,7 +58,8 @@ public class Ennemis extends Acteur{
 	}
 
 	public void seDeplacerDijkstra() {
-		
+		this.dijkstra.associerNodeTuile();
+		this.dijkstra.chemin();
 	}
 	
 	public void meurt(){
@@ -67,7 +72,8 @@ public class Ennemis extends Acteur{
 
 	@Override
 	public void agit() {
-		this.seDeplacer();
+		//this.seDeplacer();
+		this.seDeplacerDijkstra();
 	}
 
 

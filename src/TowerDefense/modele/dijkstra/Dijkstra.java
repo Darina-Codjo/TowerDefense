@@ -2,21 +2,22 @@ package TowerDefense.modele.dijkstra;
 
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
-import javafx.scene.layout.TilePane;
 
 public class Dijkstra {
 	
 	private Jeu jeu;
 	private Terrain terrain;
 	private Graphe graph;
-	private Node noeud;
-	private TilePane map;
+	private bfsNode noeud;
+	private Graphe chemin;
 	
-	public Dijkstra(Jeu jeu, Terrain terrain, Node noeud, TilePane map) {
+	public Dijkstra(Jeu jeu, Terrain terrain, bfsNode noeud) {
 		this.jeu = jeu;
 		this.terrain = terrain;
-		this.noeud = noeud;
-		this.map = map;
+		this.noeud = new bfsNode();
+		this.graph = new Graphe();
+		this.chemin = new Graphe();
+		
 	}
 	
 	//this.map.getChildren().add(noeud.ajouterDestination(newNode, 16));
@@ -26,41 +27,23 @@ public class Dijkstra {
 	//associer chaque tuile du tilePane a un node
 	//ajouterNode(ajouter un Node au set) 
 	//ajouterDestination(node de destination + int de destance)
-//	public void associerNodeTuile() {
-//		int comte = 0;
-//		for(int i = 0; i < this.terrain.getMap().length; i++) {
-//			if(i == terrain.getIndiceTuileChemin()) {
-//				Node newNode = new Node();
-//				graph.ajouterNode(newNode);
-//				comte++;
-//				if(terrain.getMap()[i] == terrain.getIndiceTuileDebutChemin()) {
-//					noeud.ajouterDestination(newNode, 0);
-//				}
-//				else {
-//					noeud.ajouterDestination(newNode,16);
-//				}
-//			}
-//		}
-//		if(comte == terrain.nbrTuileChemin()) {
-//			System.out.println("meme nombre");
-//		}
-
-//		for(int i = 0; i < terrain.getMap().length; i++) {
-//			System.out.println("done1");
-//			Node newNode = new Node();
-//			graph.ajouterNode(newNode);
-//			if(terrain.getMap()[i] == terrain.getIndiceTuileDebutChemin()) {
-//				noeud.ajouterDestination(newNode, 0);
-//			}
-//			else {
-//				noeud.ajouterDestination(newNode,16);
-//			}
-//		}
-//
-//	}
+	public void associerNodeTuile() {
+		for(int i = 0; i < this.terrain.getMap().length; i++) {
+			if(terrain.dansChemin(i)) {
+				bfsNode newNode = new bfsNode();
+				graph.ajouterNode(newNode);
+				if(terrain.getMap()[i] == terrain.getIndiceTuileDebutChemin()) {
+					noeud.ajouterDestination(newNode, 0);
+				}
+				else {
+					noeud.ajouterDestination(newNode,16);
+				}
+			}
+		}
+	}
 	
-	public Node getNodeDepart() {
-		Node nodeDepart = new Node();
+	public bfsNode getNodeDepart() {
+		bfsNode nodeDepart = new bfsNode();
 		for(int i = 0; i < noeud.getListeNodeAdjacent().size(); i++) {
 			if(noeud.getListeNodeAdjacent().containsValue(0)) {
 				nodeDepart = noeud.getNodeAdjacent(i);
@@ -71,9 +54,7 @@ public class Dijkstra {
 	
 	//construire le chemin 
 	public void chemin() {
-		
-		Graphe graph = new Graphe();
-		graph = noeud.calculBFS(graph, getNodeDepart());
+		chemin = noeud.calculBFS(graph, getNodeDepart());
 	}
 	
 	
@@ -91,13 +72,7 @@ public class Dijkstra {
 	
 	//methode pour set les tuile d'arrivée
 	//add.terrain.indiceTuileFin aka destination 
-	
-	
-	
-	
-	
-	
-	 
+
 	
 	//BFS plus court chemin
 	//DFS parcours en profondeur aka arbre
