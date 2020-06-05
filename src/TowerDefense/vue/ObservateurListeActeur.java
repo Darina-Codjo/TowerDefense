@@ -47,6 +47,9 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 			circle.setFill(Color.RED);
 		else if (acteur instanceof SerpentSpeciale)
 			circle.setFill(Color.GREEN);
+		else if (acteur instanceof GrandeTour) {
+			circle.setFill(Color.BLACK);
+		}
 		/*else if(acteur instanceof GrandeTour) {
 			texture.setTranslateX(acteur.getX()+16);
 			texture.setTranslateY(acteur.getY()+16);
