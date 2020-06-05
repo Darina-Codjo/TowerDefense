@@ -1,7 +1,5 @@
 package TowerDefense.modele;
 
-import java.util.ArrayList;
-import java.util.Random;
 
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Terrain;
@@ -30,23 +28,10 @@ public class Tours  extends Acteur{
 		jeu.getListeActeurs().remove(ennemis);
 	}
 	
-	public 	ArrayList<Ennemis> listeEnnemis(){
-		
-		ArrayList<Ennemis> listeEnnemis = new ArrayList<Ennemis>();
-		
-		for(int i=0; i< jeu.getListeActeurs().size();i++) {
-			if (jeu.getListeActeurs().get(i) instanceof Ennemis) {
-				listeEnnemis.add((Ennemis) jeu.getListeActeurs().get(i));
-			}
-		}
-		
-		return listeEnnemis;
-		
-		
-	}
-	
 
-	
+	//Parcours de la liste de tourelle et leur fait tirer leur attaque respective
+	//Chaque tir à son projectile qui luicest propre. 
+	//Exemple: TourelleFeu tire un projectile de feu / TourelleGlace tire un projectile de glace
 	@Override
 	public void agit() {
 		

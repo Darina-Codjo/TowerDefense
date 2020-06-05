@@ -27,6 +27,9 @@ public class VueTerrain {
 		}
 
 	
+	//Gameloop: le tour de jeu des projectile est fait systématiquement 
+	//tandis que celui des acteur se fait tous les modulo 30
+	//permet d'avoir des projectiles plus rapides que les ennemis
 	public void initAnimation() {
 		this.gameLoop = new Timeline();
 		temps = 0;

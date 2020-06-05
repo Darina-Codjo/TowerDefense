@@ -45,12 +45,12 @@ public class ObservateurListeProjectile implements ListChangeListener<Projectile
 		
 		while(c.next()){
 			
-			// on cree leur sprite .
+			// on cree leur sprite dès qu'un projectile est ajouter à la liste .
 			for (Projectile nouveau: c.getAddedSubList()){
 				spriteProjectile(nouveau);
 			}
 			
-			// on enleve leur sprite .
+			// on enleve leur sprite dès qu'un projectile est retirer de la liste.
 			for (Projectile project: c.getRemoved()){
 				supprimerProjectile(project);
 			}

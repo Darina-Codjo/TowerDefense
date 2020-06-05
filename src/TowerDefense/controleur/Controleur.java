@@ -166,8 +166,6 @@ public class Controleur implements Initializable{
 
 	 }
 	 
-	
-
     @FXML
     int getTuile(MouseEvent clic) {
 		
