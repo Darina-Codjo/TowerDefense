@@ -121,6 +121,9 @@ public class Controleur implements Initializable{
 			double x = clic.getX();
 			double y = clic.getY();
 			
+			x=this.monTerrain.placerTourelleMilieuTuileCoordonnee(x);
+			y=this.monTerrain.placerTourelleMilieuTuileCoordonnee(y);
+			
 			if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
 				Acteur acteur;
 				if(selectedToggleButton.equals(ajoutTourelleGlace)) {

@@ -191,6 +191,22 @@ public class Terrain {
 		return indice;
 	}
 
+	
+	public double placerTourelleMilieuTuileCoordonnee(double coordonnee) {
+		
+		double newX;		
+		if(coordonnee %16 > 8) {		
+			newX= coordonnee-(coordonnee%16 - 8);
+		}
+		else if(coordonnee%16 < 8) {
+			newX=coordonnee+(8 - coordonnee%16);
+		}
+		else {
+			newX=coordonnee;
+		}
+		
+		return newX;
+	}
 
 
 
