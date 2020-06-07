@@ -152,9 +152,9 @@ public class Controleur implements Initializable{
 					}
 					else {
 						acteur = new TourelleTirMultiple(x,y,monTerrain, game);
-						this.game.acheterTourelleSpeciale();
-						this.ajoutTourelleTirMultiple.setVisible(false);
-						this.ajoutTourelleDestructible.setVisible(false);
+//						this.game.acheterTourelleSpeciale();
+//						this.ajoutTourelleTirMultiple.setVisible(false);
+//						this.ajoutTourelleDestructible.setVisible(false);
 
 					}
 
