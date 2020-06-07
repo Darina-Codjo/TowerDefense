@@ -7,9 +7,7 @@ import TowerDefense.modele.Acteur;
 import TowerDefense.modele.GrandeTour;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
-import TowerDefense.modele.dijkstra.Dijkstra;
-import TowerDefense.modele.dijkstra.Graphe;
-import TowerDefense.modele.dijkstra.bfsNode;
+import TowerDefense.modele.dijkstra.BreadthFirstSearch;
 import TowerDefense.modele.ennemis.Cactus;
 import TowerDefense.modele.ennemis.CactusSpeciale;
 import TowerDefense.modele.ennemis.Scorpion;
@@ -70,7 +68,7 @@ public class Controleur implements Initializable{
 	private static Timeline gameLoop;	
 	private CreerSprite sprite;	
 	private Jeu game;
-	private Dijkstra dijkstra;
+	private BreadthFirstSearch bfs;
 	
 	
 	@Override
@@ -81,7 +79,8 @@ public class Controleur implements Initializable{
 		this.sprite = new CreerSprite(plateau);
 		ConstruireMap construireMap = new ConstruireMap(map, game, plateau, monTerrain);
 		construireMap.remplirTileMap();
-
+		this.bfs = new BreadthFirstSearch(monTerrain);
+		
 		this.vue.initAnimation();
 		this.game.getListeActeurs().addListener(new ObservateurListeActeur(this.plateau)) ;
 		this.game.getListeProjectile().addListener(new ObservateurListeProjectile(this.plateau));
@@ -89,6 +88,8 @@ public class Controleur implements Initializable{
 		this.nbArgent.textProperty().bind(this.game.NbArgentProperty().asString()) ;		
 		this.ajoutTourelleTirMultiple.setVisible(false);
 		this.ajoutTourelleDestructible.setVisible(false);
+		this.monTerrain.placerNode();
+		this.bfs.setDistanceNode();
 	}
 
 	@FXML
