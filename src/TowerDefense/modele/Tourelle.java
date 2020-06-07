@@ -21,7 +21,6 @@ public class Tourelle extends Tours {
 		return false;
 	}
 	
-	
 
 }
 

@@ -124,34 +124,43 @@ public class Controleur implements Initializable{
 			x=this.monTerrain.placerTourelleMilieuTuileCoordonnee(x);
 			y=this.monTerrain.placerTourelleMilieuTuileCoordonnee(y);
 			
-			if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
-				Acteur acteur;
-				if(selectedToggleButton.equals(ajoutTourelleGlace)) {
-					acteur = new TourelleGlace(x,y, monTerrain, game);					
+			if(this.game.tuileDejaPrise(this.monTerrain.getTuileSansClic(x,y))) {
+				message.setText("Une tourelle a déjà été posé ici !!");
+			}
+			else if(this.game.tourelleProche(x,y)) {
+				message.setText("Vous êtes dans la zone d'une tourelle !");
+			}
+			
+			else {
+				message.setText("");
+				if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
+					Acteur acteur;
+					if(selectedToggleButton.equals(ajoutTourelleGlace)) {
+						acteur = new TourelleGlace(x,y, monTerrain, game);					
+					}
+					else if(selectedToggleButton.equals(ajoutTourelleFeu)) {
+						acteur = new TourelleFeu(x,y, monTerrain, game);
+					}
+					else if (selectedToggleButton.equals(ajoutTourelleRoche)){
+						acteur = new TourelleRoche(x,y,monTerrain, game);
+					}
+					else if (selectedToggleButton.equals(ajoutTourelleDestructible)) {
+						acteur = new TourelleDestructible(x,y,monTerrain, game,100);
+						this.game.acheterTourelleSpeciale();
+						this.ajoutTourelleTirMultiple.setVisible(false);
+						this.ajoutTourelleDestructible.setVisible(false);
+					}
+					else {
+						acteur = new TourelleTirMultiple(x,y,monTerrain, game);
+						this.game.acheterTourelleSpeciale();
+						this.ajoutTourelleTirMultiple.setVisible(false);
+						this.ajoutTourelleDestructible.setVisible(false);
+
+					}
+
+					this.game.ajouterActeur(acteur);
+					this.sprite.tourelleSprite(acteur, x, y);
 				}
-				else if(selectedToggleButton.equals(ajoutTourelleFeu)) {
-					acteur = new TourelleFeu(x,y, monTerrain, game);
-				}
-				else if (selectedToggleButton.equals(ajoutTourelleRoche)){
-					acteur = new TourelleRoche(x,y,monTerrain, game);
-				}
-				else if (selectedToggleButton.equals(ajoutTourelleDestructible)) {
-					acteur = new TourelleDestructible(x,y,monTerrain, game,100);
-					this.game.acheterTourelleSpeciale();
-					this.ajoutTourelleTirMultiple.setVisible(false);
-					this.ajoutTourelleDestructible.setVisible(false);
-				}
-				else {
-					acteur = new TourelleTirMultiple(x,y,monTerrain, game);
-					this.game.acheterTourelleSpeciale();
-					this.ajoutTourelleTirMultiple.setVisible(false);
-					this.ajoutTourelleDestructible.setVisible(false);
-					
-				}
-				
-				this.game.ajouterActeur(acteur);
-				this.sprite.tourelleSprite(acteur, x, y);
-				
 			}
 		});		
 	}

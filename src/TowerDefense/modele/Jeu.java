@@ -159,11 +159,34 @@ public class Jeu {
 	
 	
 	
+	public boolean tuileDejaPrise(int indice) {
+		
+		int indiceTuile;
+		for(int i=0; i< listeTourelle().size(); i++) {
+			indiceTuile=monTerrain.getTuileSansClic(listeTourelle().get(i).getX(),listeTourelle().get(i).getY());
+			
+			if(indice==indiceTuile) {			
+				return true;			
+			}
+		}
+		
+		return false;
+	}
 	
 	
-	
-	
-	
+	//Certainemement pas au bonne endroit
+	public boolean tourelleProche(double x, double y) {
+		
+		for(int i=0; i<listeTourelle().size();i++) {
+			if(		(y-16<= listeTourelle().get(i).getY() && listeTourelle().get(i).getY()<=y+16) &&
+					(x-16<= listeTourelle().get(i).getX() && listeTourelle().get(i).getX()<=x+16)  
+					){
+				return true;
+			}
+		}
+		return false;
+		
+	}
 	
 	
 	
