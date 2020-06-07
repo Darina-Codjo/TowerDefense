@@ -127,6 +127,9 @@ public class Controleur implements Initializable{
 			if(this.game.tuileDejaPrise(this.monTerrain.getTuileSansClic(x,y))) {
 				message.setText("Une tourelle a déjà été posé ici !!");
 			}
+			else if(this.game.tourelleProche(x,y)) {
+				message.setText("Vous êtes dans la zone d'une tourelle !");
+			}
 			
 			else {			
 				if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {

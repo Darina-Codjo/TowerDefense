@@ -61,5 +61,25 @@ public class Tours  extends Acteur{
 		
 		
 	}
+	
+		//Prend en paramètre la zone d'attaque de la tourelle
+		//parcours la liste d'ennemis et si un ennemis est dans cette zone 
+		//alors elle est retourner par la méthode est se fera donc tirer dessus
+		public Ennemis ennemieVisable(double zoneAttaque) {
+			
+			Ennemis ennemieVisable=null;
+		
+			for(Acteur a :getJeu().getListeActeurs()) {
+				if(a instanceof Ennemis) {
+					if(		(this.getY()-zoneAttaque<= a.getY() && a.getY()<=this.getY()+zoneAttaque) &&
+							(this.getX()-zoneAttaque<= a.getX() && a.getX()<=this.getX()+zoneAttaque)  
+							){
+						ennemieVisable=(Ennemis) a;
+						return ennemieVisable;
+					}
+				} 
+			}
+			return ennemieVisable;
+		}
 
 }

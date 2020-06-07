@@ -43,9 +43,10 @@ public class VueTerrain {
 					if (temps%30==0){
 						this.game.tourDeJeuActeur();						
 					}
-					//this.game.tourDeJeuProjectile();
+					if(temps%500==0) {
+						this.game.vagueEnnemis();
+					}
 						
-					
 					temps++;
 				})
 		);

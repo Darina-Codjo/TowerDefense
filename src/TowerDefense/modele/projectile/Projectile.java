@@ -10,6 +10,8 @@ import TowerDefense.modele.ennemis.Serpent;
 import TowerDefense.modele.tourelle.TourelleFeu;
 import TowerDefense.modele.tourelle.TourelleGlace;
 import TowerDefense.modele.tourelle.TourelleRoche;
+import TowerDefense.modele.GrandeTour;
+import TowerDefense.modele.tourelle.TourelleDestructible;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
@@ -117,6 +119,22 @@ public class Projectile {
 				
 				else {
 					positionEnnemis.setPvDegat(20);
+				}
+				
+				if(positionTourelle instanceof GrandeTour) {
+					positionEnnemis.setVitesse(5);
+					
+				}
+				
+				if(positionTourelle instanceof TourelleDestructible) {
+					((TourelleDestructible) positionTourelle).setPvDegat(25);
+					if(((TourelleDestructible) positionTourelle).getPv()<=0) {
+						jeu.getListeActeurs().remove(positionTourelle);
+					}
+				}
+				
+				if(positionTourelle instanceof GrandeTour) {
+					positionEnnemis.setVitesse(5);
 				}
 						
 				if(positionEnnemis.getPv()<=0) {
