@@ -28,14 +28,34 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	}
 	
 	public void acteurSprite(Acteur acteur) {
-		Circle circle = new Circle(3);
+		/*Circle circle = new Circle(3);*/
 		
-		/*ImageView texture = new ImageView("textures/tour.png");*/
-		
+		ImageView texture;
 			
-		
-		
 		if(acteur instanceof Cactus)
+			texture = new ImageView("textures/cactus.png");
+		else if (acteur instanceof Scorpion) 
+			texture = new ImageView("textures/scorpion.png");
+		else if (acteur instanceof Serpent) 
+			texture = new ImageView("textures/serpent.jpg");
+		else if (acteur instanceof CactusSpeciale)
+			texture = new ImageView("textures/cactusspecial.png");
+		else if (acteur instanceof ScorpionSpeciale)
+			texture = new ImageView("textures/scorpionspecial.png");
+		else if (acteur instanceof SerpentSpeciale)
+			texture = new ImageView("textures/serpentspecial.jpg");
+		else if (acteur instanceof GrandeTour) {
+			texture = new ImageView("textures/tour.png");
+		}
+		else {
+			texture = new ImageView("textures/tour.png");
+			texture.setOpacity(0);
+		}
+		
+	
+		
+		
+		/*if(acteur instanceof Cactus)
 			circle.setFill(Color.LIGHTGREEN);
 		else if (acteur instanceof Scorpion) 
 			circle.setFill(Color.BROWN);
@@ -50,21 +70,20 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		else if (acteur instanceof GrandeTour) {
 			circle.setFill(Color.BLACK);
 		}
-		/*else if(acteur instanceof GrandeTour) {
-			texture.setTranslateX(acteur.getX()+16);
-			texture.setTranslateY(acteur.getY()+16);
-			plateau.getChildren().add(texture);
-		}*/
 		else
-			circle.setOpacity(0);
+			circle.setOpacity(0);*/
+		texture.setFitWidth(16);
+		texture.setFitHeight(16);
+		texture.translateXProperty().bind(acteur.xProperty());;
+		texture.translateYProperty().bind(acteur.yProperty());;
+		plateau.getChildren().add(texture);
 		
 		
 		
-		
-		circle.setId(acteur.getId());
+		/*circle.setId(acteur.getId());
 		circle.translateXProperty().bind(acteur.xProperty()) ;
 		circle.translateYProperty().bind(acteur.yProperty()) ;
-		plateau.getChildren().add(circle);
+		plateau.getChildren().add(circle);*/
 		
 		
 	}

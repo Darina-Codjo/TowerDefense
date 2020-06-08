@@ -67,6 +67,7 @@ public class Controleur implements Initializable{
     private RadioButton ajoutTourelleDestructible;
     @FXML
     private RadioButton ajoutTourelleTirMultiple;
+    @FXML
     private RadioButton ajoutTourelleRoche;  
 	private VueTerrain vue;	
 	private static Timeline gameLoop;	
