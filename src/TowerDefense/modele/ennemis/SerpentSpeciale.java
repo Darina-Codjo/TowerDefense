@@ -1,4 +1,4 @@
-package TowerDefense.modele;
+package TowerDefense.modele.ennemis;
 
 import TowerDefense.modele.EnnemisSpeciales;
 import TowerDefense.modele.Terrain;
@@ -7,18 +7,11 @@ public class SerpentSpeciale extends EnnemisSpeciales {
 	
 	
 	public SerpentSpeciale(Terrain terrain) {
-		super(terrain);
-	
-	}
-
-	public SerpentSpeciale(Terrain terrain, int pv, int v) {
-		super(terrain, pv, v);
+		super(terrain,100,10);
 	}
 	
 	public void destructeurs(int pvInflige) {
-		
-		//setPVTourelle(pvInflige);
-		
+		setPvDegat(pvInflige);	
 	}
 
 }

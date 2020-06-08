@@ -1,11 +1,11 @@
-package TowerDefense.modele;
-
+package TowerDefense.modele.ennemis;
 import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.Terrain;
 
-public class EnnemisSpeciales extends Ennemis {
-
-	public EnnemisSpeciales(Terrain terrain, int pv, int v) {
-		super(terrain, pv, v);
+public class Scorpion extends Ennemis{
+	
+	public Scorpion (Terrain monTerrain){
+		super(monTerrain, 100, 10);
 	}
 	
 
@@ -16,5 +16,7 @@ public class EnnemisSpeciales extends Ennemis {
 				+ ", getId()=" + getId() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
 				+ super.toString() + "]";
 	}
-
+	
+	
+	
 }

@@ -2,46 +2,78 @@ package TowerDefense.modele;
 
 import java.util.Random;
 
+
+import TowerDefense.modele.Terrain;
+import TowerDefense.exceptions.DejaMort;
+import TowerDefense.exceptions.PasMort;
+import TowerDefense.modele.Jeu;
+
 public class Ennemis extends Acteur{
 
-	private int pointsDeVie;
 	private int vitesse;
 	private double directionX;
 	private double directionY;
+	private int pv;
+	//private Jeu jeu;
 	
-	/*private Terrain terrain;
-	private int rng = (int)(Math.random()*terrain.getTuileSpawn().size()+1);
-	private int xSpawn = terrain.getXTuile(terrain.getTuileSpawn().get(rng-1));
-	private int ySpawn = terrain.getXTuile(terrain.getTuileSpawn().get(rng-1));*/
-	
-	public Ennemis(double x, double y, Terrain terrain, int pv, int v) {
-		super(x, y, terrain);
-		/*this.setX(xSpawn);
-		this.setY(ySpawn);*/
-		this.pointsDeVie = pv;
-		this.vitesse = v;
-
-	}
-
 	public Ennemis(Terrain terrain, int pv, int v) {
-		super(terrain);
-		this.pointsDeVie = pv;
-		this.vitesse = 10;
+		super((terrain.getIndiceTuileDebutChemin()%30)*16+8, (terrain.getIndiceTuileDebutChemin()/30)*16+8 , terrain);
+		this.pv=pv;
+		this.vitesse = v;
+		this.directionX=0;
+		this.directionY=0;
+		//this.jeu=jeu;
 	}
-	
-	public Ennemis(Terrain terrain) {
-		super(terrain);
-		this.directionX = 0;
-		this.directionY = 0;
-		this.vitesse = 10;
-		this.pointsDeVie = 100;
-		//System.out.println(this.toString());
+
+//permet au ennemis de se péplacer aleatoirement 
+	private void directionAleatoire() {
+		Random random = new Random();
+
+		double randomInt = random.nextInt(3);
+		directionX = randomInt-1;
+
+		randomInt = random.nextInt(3);
+		directionY = randomInt-1;
+
+		while(!(this.terrain.dansChemin(this.terrain.getTuileSansClic(this.directionX*this.vitesse+this.getX(), this.directionY*this.vitesse + this.getY())) && 
+				this.terrain.dansTerrain(this.directionX*this.vitesse + this.getX(), this.directionY*this.vitesse + this.getY()))) {
+			this.seDeplacer();
+		}
 	}
-	
-	public int getPointsDeVie() {
-		return pointsDeVie;
+
+	public void seDeplacer() {
+
+		directionAleatoire();
+		double newPositionX = this.getX()+(this.vitesse*directionX);
+		double newPositionY = this.getY()+(this.vitesse*directionY);
+
+		this.setX(newPositionX);
+		this.setY(newPositionY);   
 	}
-	
+
+	public int meurt()throws PasMort {
+		if (pv == 0) {
+			return this.pv;
+		} else
+			throw new PasMort();
+	}
+
+	public boolean estVivant() throws DejaMort{
+		if (this.pv > 0)
+			return true;
+			else 
+				throw new DejaMort();
+	}
+
+	@Override
+	public void agit() {
+		this.seDeplacer();
+	}
+
+	public int getPv() {
+		return this.pv;
+	}
+
 	public int getVitesse() {
 		return vitesse;
 	}
@@ -53,54 +85,30 @@ public class Ennemis extends Acteur{
 	public double getySuivant() {
 		return directionY;
 	}
-	
-	public String getId() {
-		return id;
+
+	public void setPv(int newPv) {
+		this.pv=newPv;
 	}
 
-	public void setPointsDeVie(int pv) {
-		this.pointsDeVie = pv;
+	public void setPvDegat(int degatRecu) {
+		this.pv -= degatRecu;
 	}
+
 
 	public void setVitesse(int v) {
 		this.vitesse = v;
 	}
 
-	private void directionAleatoire() {
-        Random random = new Random();
-        
-        double randomInt = random.nextInt(3);
-        directionX = randomInt-1;
-        
-        randomInt = random.nextInt(3);
-        directionY = randomInt-1;
-        
-        while(!(this.terrain.dansChemin(this.terrain.getTuileSansClic(this.directionX*this.vitesse+this.getX(), this.directionY*this.vitesse + this.getY())) && this.terrain.dansTerrain(this.directionX*this.vitesse + this.getX(), this.directionY*this.vitesse + this.getY()))) {
-        	this.seDeplacer();
-    	}
-    }
-	
-	public void seDeplacer() {
-		
-		directionAleatoire();
-		double newPositionX = this.getX()+(this.vitesse*directionX);
-		double newPositionY = this.getY()+(this.vitesse*directionY);
-    
-	   this.setX(newPositionX);
-	   this.setY(newPositionY);   
-	}
-    
 	@Override
 	public String toString() {
-		return "Ennemis [pointsDeVie=" + pointsDeVie + ", vitesse=" + vitesse + ", xSuivant=" + directionX + ", ySuivant="
+		return "Ennemis [pointsDeVie=" + this.pv + ", vitesse=" + vitesse + ", xSuivant=" + directionX + ", ySuivant="
 				+ directionY + "]";
 	}
 
-	@Override
-	public void agit() {
-		seDeplacer();
-	}
 
 
-	
+
+
+
+
 }

@@ -1,51 +1,87 @@
 package TowerDefense.modele;
-import java.util.Random;
-import TowerDefense.modele.Ennemis;
+
+
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 
 public abstract class Acteur {
 	
-	private double x;
-	private double y;
-	protected String id;
+	private DoubleProperty xProperty ;
+	private DoubleProperty yProperty ;
+	private String id;
 	protected Terrain terrain;
-	static private int compteur=0;
-	
+	public static int compteur=0;
+	private int pv;
+	private Jeu jeu;
 	
 	public Acteur(double x, double y, Terrain terrain) {
-		Random random = new Random();
-		this.x = x;//random.nextInt(terrain.getWidth()-1);
-		this.y = y;//random.nextInt(terrain.getHeight()-1);
-		this.terrain = terrain;
-		this.id ="A"+compteur;
-		compteur++;
-	}
-	public Acteur(Terrain terrain) {
-		//random de position dans tab[][][][]
 		this.terrain = terrain;	
-		this.x=(this.terrain.indiceTuileDebutChemin()%30)*16;
-		this.y=(this.terrain.indiceTuileDebutChemin()/30)*16;
+		this.xProperty =new SimpleDoubleProperty(x) ;
+		this.yProperty =new SimpleDoubleProperty(y) ;
 		this.id="A"+compteur;
 		compteur++;
 	}
+	
+	public int getCompteur() {
+		return compteur;
+	}
+	
+	public void setCompteur(int newCompteur) {
+		compteur=newCompteur;
+	}
+	
 	public double getX() {
-		return x;
+		return xProperty.getValue();
 	}
+	
 	public void setX(double newPositionX) {
-		this.x = newPositionX;
+		xProperty.setValue(newPositionX) ;
 	}
+	
+	public DoubleProperty xProperty() {
+		return this.xProperty ;
+	}
+	
 	public double getY() {
-		return y;
+		return yProperty.getValue() ;
 	}
+	
 	public void setY(double newPositionY) {
-		this.y = newPositionY;
+		yProperty.setValue(newPositionY) ;
 	}
+	
+	public final DoubleProperty yProperty(){
+		return this.yProperty ;
+	}
+	
 	public String getId() {
 		return id;
 	}
-	public abstract void  setPointsDeVie(int pv) ;
-	public abstract int getPointsDeVie();
 	
+		
 	public abstract void agit();
 	
+//	public String toString() {
+//		return "Position: x="+ this.x + " y="+ this.y+ "\n Id:" + this.id;
+//		
+//		
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
-
