@@ -183,7 +183,7 @@ public class Jeu {
 	
 	
 	
-	//Certainemement pas au bonne endroit
+	//Certainemement pas au bonne endroit (classe tourelle surement)
 	public boolean tourelleProche(double x, double y) {
 
 		for(int i=0; i<listeTourelle().size();i++) {
