@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import TowerDefense.modele.dijkstra.Node;
-import javafx.beans.property.DoubleProperty;
 import javafx.scene.layout.TilePane;
 
 public class Terrain {
@@ -17,35 +16,35 @@ public class Terrain {
 	private Node noeud;
 
 	private int[] mapDesert = {	5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5,  4 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1,
-			5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
-			5 , 5 , 5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
-			5 , 5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 51, 
-			5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 51, 
-			5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 51, 
-			6 , 7 , 8 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
-			5 , 9 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
-			5 , 10, 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
-			4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
-			1 , 3 , 3 , 3 , 3 , 11, 12, 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
-			1 , 3 , 3 , 3 , 3 , 13, 14, 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 3 , 15, 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 49, 3 , 3 , 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 46, 47, 48, 3 , 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 45, 44, 43, 3 , 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2,  3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
-			1 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 41, 42, 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 40, 39, 38, 37, 36, 3 , 3 , 3 , 1,
-			50, 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 31, 32, 33, 35, 34, 3 , 3 , 3 , 1,
-			50, 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 19, 20, 21, 3 , 3 , 3 , 3 , 3 , 3 , 3 , 29, 30, 3 , 26, 3 , 3 , 3 , 3 , 1,
-			50, 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 18, 17, 16, 3 , 3 , 3 , 3 , 3 , 3 , 3 , 28, 27, 3 , 25, 3 , 3 , 3 , 3 , 1,
-			1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 24, 23, 3 , 3 , 3 , 1, 
-			1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 22, 3 , 3 , 3 , 1,
-			1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1};
+								5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
+								5 , 5 , 5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
+								5 , 5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 51, 
+								5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 51, 
+								5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 51, 
+								6 , 7 , 8 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
+								5 , 9 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
+								5 , 10, 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
+								4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
+								1 , 3 , 3 , 3 , 3 , 11, 12, 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
+								1 , 3 , 3 , 3 , 3 , 13, 14, 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 3 , 15, 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 49, 3 , 3 , 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 46, 47, 48, 3 , 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 45, 44, 43, 3 , 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2,  3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
+								1 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 41, 42, 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 40, 39, 38, 37, 36, 3 , 3 , 3 , 1,
+								50, 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 31, 32, 33, 35, 34, 3 , 3 , 3 , 1,
+								50, 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 19, 20, 21, 3 , 3 , 3 , 3 , 3 , 3 , 3 , 29, 30, 3 , 26, 3 , 3 , 3 , 3 , 1,
+								50, 2 , 2 , 2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 18, 17, 16, 3 , 3 , 3 , 3 , 3 , 3 , 3 , 28, 27, 3 , 25, 3 , 3 , 3 , 3 , 1,
+								1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 24, 23, 3 , 3 , 3 , 1, 
+								1 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 22, 3 , 3 , 3 , 1,
+								1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1};
 
 
 
@@ -84,18 +83,7 @@ public class Terrain {
 	}
 
 	public int getTuileSansClic(double x, double y) {
-		double valeurX = x;
-		double valeurY = y;
-		int indice = 0;
-		while (valeurX >= 16) {
-			valeurX-=16;
-			indice ++;
-		}
-		while (valeurY >= 16) {
-			valeurY -= 16;
-			indice += 30;
-		}
-		return indice;
+		return (int) (y*30+x);
 	}
 
 
@@ -110,6 +98,13 @@ public class Terrain {
 		else {
 			return false;
 		}
+	}
+	
+	public boolean dansCheminV2(int indice) {
+		if(this.codeTuile(indice)%2 == 0) {
+			return true;
+		}
+		return false;
 	}
 
 	public int getIndiceTuileChemin() {
@@ -157,8 +152,8 @@ public class Terrain {
 			if(mapDesert[i] == 50) {
 				compteurCase50++;
 			}
-			if(mapDesert[i] == 50 && compteurCase50 == 1) {
-				indice = i;
+			if(mapDesert[i] == 50 /*&& compteurCase50 == 1*/) {
+				indiceTuile1 = i;
 			}
 			if(mapDesert[i] == 50 && compteurCase50 == 2) {
 				indiceTuile2 = i;
@@ -167,17 +162,17 @@ public class Terrain {
 				indiceTuile3 = i;
 			}
 		}
-//		Random random = new Random();
-//		int alea = random.nextInt(3);
-//		if (alea == 0) {
-//			indice = indiceTuile1;
-//		}
-//		if (alea == 1) {
-//			indice = indiceTuile2;
-//		}
-//		if (alea == 2) {
-//			indice = indiceTuile3;
-//		}
+				Random random = new Random();
+				int alea = random.nextInt(3);
+				if (alea == 0) {
+					indice = indiceTuile1;
+				}
+				if (alea == 1) {
+					indice = indiceTuile2;
+				}
+				if (alea == 2) {
+					indice = indiceTuile3;
+				}
 		return indice; 
 	}
 
@@ -197,7 +192,7 @@ public class Terrain {
 				compteurCase51++;
 			}
 			if(mapDesert[i] == 51 && compteurCase51 == 1) {
-				indice = i;
+				indiceTuile1 = i;
 			}
 			if(mapDesert[i] == 51 && compteurCase51 == 2) {
 				indiceTuile2 = i;
@@ -206,18 +201,18 @@ public class Terrain {
 				indiceTuile3 = i;
 			}
 		}
-//		random random = new random();
-//		int alea = random.nextint(3);
-//
-//		if (alea == 0) {
-//			indice = indicetuile1;
-//		}
-//		if (alea == 1) {
-//			indice = indicetuile2;
-//		}
-//		if (alea == 2) {
-//			indice = indicetuile3;
-//		}
+				Random random = new Random();
+				int alea = random.nextInt(3);
+		
+				if (alea == 0) {
+					indice = indiceTuile1;
+				}
+				if (alea == 1) {
+					indice = indiceTuile2;
+				}
+				if (alea == 2) {
+					indice = indiceTuile3;
+				}
 		return indice;
 	}
 
@@ -236,20 +231,49 @@ public class Terrain {
 
 	//parcourir les tuile du chemin et creer et ajouter un node pour chaque tuile dans l'attribut listeNode
 	public void placerNode() {
-		int compteur = 0;
-		
-		for(int i = 0; i < this.getMap().length; i++) {
-			if(dansChemin(i)) {
-				Node noeud = new Node(i%30*16+8, i/30*16+8, 0);
-				this.listeNode.add(noeud);
-				compteur++;
-			}		
-		}
-		if(compteur != getNbrTuileChemin()) {
-			System.out.println("c'est different " + compteur);
-		}
-		else {
-			System.out.println("c'est egal " + compteur);
+		//recuperation coordonnees de la tuile finChemin
+		int xFin = (this.getIndiceTuileFinChemin()%30);
+		int yFin = (this.getIndiceTuileFinChemin()/30);
+
+		Node noeudFin = new Node(xFin, yFin, 0);
+		this.listeNode.add(noeudFin);
+
+		int coordonneesNodeX = 0;
+		int coordonneesNodeY = 0;
+
+		//pour chaque i dans la liste de node on recupere les coordonnes X et Y
+		for(int indiceNode = 0; indiceNode < this.listeNode.size(); indiceNode++) {
+			coordonneesNodeX = this.listeNode.get(indiceNode).getX();
+			coordonneesNodeY = this.listeNode.get(indiceNode).getY();
+			
+			//gauche
+			if(this.dansChemin(coordonneesNodeY*30+coordonneesNodeX-1)) {
+				if(this.getIfContainsNodeXY(coordonneesNodeX-1, coordonneesNodeY) == false) {
+					Node noeud = new Node(coordonneesNodeX-1, coordonneesNodeY, this.listeNode.get(indiceNode).getDistance()+1);
+					this.listeNode.add(noeud);
+				}
+			}
+			//droit
+			if(this.dansChemin(coordonneesNodeY*30+coordonneesNodeX+1)) {
+				if(this.getIfContainsNodeXY(coordonneesNodeX+1, coordonneesNodeY) == false) {
+					Node noeud = new Node(coordonneesNodeX+1, coordonneesNodeY, this.listeNode.get(indiceNode).getDistance()+1);
+					this.listeNode.add(noeud);
+				}
+			}
+			//bas
+			if(this.dansChemin(coordonneesNodeY*30+coordonneesNodeX-30)) {
+				if(this.getIfContainsNodeXY(coordonneesNodeX, coordonneesNodeY-1) == false) {
+					Node noeud = new Node(coordonneesNodeX, coordonneesNodeY-1, this.listeNode.get(indiceNode).getDistance()+1);
+					this.listeNode.add(noeud);
+				}
+			}
+			//haut
+			if(this.dansChemin(coordonneesNodeY*30+coordonneesNodeX+30)) {
+				if(this.getIfContainsNodeXY(coordonneesNodeX, coordonneesNodeY+1) == false) {
+					Node noeud = new Node(coordonneesNodeX, coordonneesNodeY+1, this.listeNode.get(indiceNode).getDistance()+1);
+					this.listeNode.add(noeud);
+				}
+			}
 		}
 	}
 
@@ -261,6 +285,15 @@ public class Terrain {
 		this.listeNode = listeNode;
 	}
 
+	public boolean getIfContainsNodeXY(int x, int y) {
+		for(int i = 0; i < this.listeNode.size(); i++) {
+			if(this.listeNode.get(i).getX() == x && this.listeNode.get(i).getY() == y) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public Node getNode(int indice) {
 		for(int i = 0; i < this.listeNode.size(); i++) {
 			if(i == indice) {
@@ -270,6 +303,16 @@ public class Terrain {
 		return null;
 	}
 	
+	public Node getNodeInXY(int x, int y) {
+		for(int i = 0; i < this.listeNode.size(); i++) {
+			if(this.listeNode.get(i).getX() == x && this.listeNode.get(i).getY() == y) {
+				return listeNode.get(i);
+			}
+		}
+		return null;
+	}
+
+
 }
 
 

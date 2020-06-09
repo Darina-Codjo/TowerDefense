@@ -5,10 +5,9 @@ import TowerDefense.modele.Terrain;
 public class Scorpion extends Ennemis{
 	
 	public Scorpion (Terrain monTerrain){
-		super(monTerrain, 100, 10);
+		super(monTerrain, 100, 0.5);
 	}
 	
-
 	@Override
 	public String toString() {
 		return "Cactus [getPointsDeVie()=" + getPv() + ", getVitesse()=" + getVitesse() + ", getxSuivant()="

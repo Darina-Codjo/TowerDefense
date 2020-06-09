@@ -3,12 +3,9 @@ package TowerDefense.vue;
 
 //import TowerDefense.modele.Projectile;
 
-import TowerDefense.modele.Acteur;
 import TowerDefense.modele.projectile.Projectile;
 import TowerDefense.modele.projectile.ProjectileFeu;
 import TowerDefense.modele.projectile.ProjectileGlace;
-import TowerDefense.modele.projectile.ProjectileRoche;
-
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -35,8 +32,8 @@ public class ObservateurListeProjectile implements ListChangeListener<Projectile
 			p = new Circle(2, Color.GRAY);
 		}
 		p.setId(projectile.getId());
-		p.translateXProperty().bind(projectile.xProperty()) ;
-		p.translateYProperty().bind(projectile.yProperty()) ;
+		p.translateXProperty().bind(projectile.xProperty().multiply(16).add(8)) ;
+		p.translateYProperty().bind(projectile.yProperty().multiply(16).add(8)) ;
 		plateau.getChildren().add(p);
 	}
 	
@@ -46,22 +43,15 @@ public class ObservateurListeProjectile implements ListChangeListener<Projectile
 
 	@Override
 	public void onChanged(Change<? extends Projectile> c) {
-		
 		while(c.next()){
-			
 			// on cree leur sprite .
 			for (Projectile nouveau: c.getAddedSubList()){
 				spriteProjectile(nouveau);
 			}
-			
 			// on enleve leur sprite .
 			for (Projectile project: c.getRemoved()){
 				supprimerProjectile(project);
 			}
 		}
-		
-
-		
 	}
-
 }

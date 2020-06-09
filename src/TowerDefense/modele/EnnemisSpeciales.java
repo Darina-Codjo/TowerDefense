@@ -4,10 +4,10 @@ import TowerDefense.modele.Ennemis;
 
 public class EnnemisSpeciales extends Ennemis {
 
-	public EnnemisSpeciales(Terrain terrain, int pv, int v) {
+	public EnnemisSpeciales(Terrain terrain, int pv, double v) {
 		super(terrain, pv, v);
 	}
-	
+
 
 	@Override
 	public String toString() {

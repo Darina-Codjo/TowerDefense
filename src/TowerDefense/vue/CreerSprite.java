@@ -55,14 +55,10 @@ public class CreerSprite {
 			texture.setFitWidth(32);
 			texture.setPreserveRatio(true);
 		}
-		
 
-		
 		texture.setTranslateX(x);
 		texture.setTranslateY(y);
 		plateau.getChildren().add(texture);
-		
-		
 	}
 	
 	

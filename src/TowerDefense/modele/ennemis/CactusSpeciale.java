@@ -7,9 +7,8 @@ public class CactusSpeciale extends EnnemisSpeciales{
 	
 	
 	public CactusSpeciale(Terrain terrain) {
-		super(terrain,100,10);
+		super(terrain,100,0.5);
 	}
-	
 	
 	public void rechargement() {
 		int temps=0;

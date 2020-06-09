@@ -11,13 +11,12 @@ public class ScorpionSpeciale extends EnnemisSpeciales {
 	private Jeu jeu;
 	
 	public ScorpionSpeciale(Terrain terrain) {
-		super(terrain,100,10);
+		super(terrain, 100, 0.5);
 	}
 	
 	public void dedoublement() {
-		if(this.pv==0) {
+		if(this.pv == 0) {
 			Scorpion scorpionDouble = new Scorpion(terrain);
-			//jeu.ajouterActeur(scorpionDouble);
 		}
 	}
 

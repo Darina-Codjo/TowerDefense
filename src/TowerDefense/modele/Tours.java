@@ -12,7 +12,7 @@ public class Tours  extends Acteur{
 	
 	private Jeu jeu;
 	
-	public Tours(double x, double y, Terrain terrain, Jeu jeu) {
+	public Tours(int x, int y, Terrain terrain, Jeu jeu) {
 		super(x, y, terrain);
 		this.jeu=jeu;
 	}
@@ -28,18 +28,13 @@ public class Tours  extends Acteur{
 	}
 	
 	public 	ArrayList<Ennemis> listeEnnemis(){
-		
 		ArrayList<Ennemis> listeEnnemis = new ArrayList<Ennemis>();
-		
 		for(int i=0; i< jeu.getListeActeurs().size();i++) {
 			if (jeu.getListeActeurs().get(i) instanceof Ennemis) {
 				listeEnnemis.add((Ennemis) jeu.getListeActeurs().get(i));
 			}
 		}
-		
 		return listeEnnemis;
-		
-		
 	}
 	
 
@@ -48,30 +43,18 @@ public class Tours  extends Acteur{
 	public void agit() {
 		
 		for(int i=0; i< jeu.listeTourelle().size();i++) {
-			
-			if (jeu.listeTourelle().get(i) instanceof TourelleFeu) {
+			if(jeu.listeTourelle().get(i) instanceof TourelleFeu) {
 				((TourelleFeu) jeu.listeTourelle().get(i)).tir();			
 			}
-			
 			else if (jeu.listeTourelle().get(i) instanceof TourelleGlace) {
 				((TourelleGlace) jeu.listeTourelle().get(i)).tir();
 			}
 			else if(jeu.listeTourelle().get(i) instanceof TourelleRoche) {
-				((TourelleRoche) jeu.listeTourelle().get(i)).tir();
-				
+				((TourelleRoche) jeu.listeTourelle().get(i)).tir();	
 			}
 			else if(jeu.listeTourelle().get(i) instanceof TourelleTirMultiple){
 				((TourelleTirMultiple) jeu.listeTourelle().get(i)).tirMultiple();
 			}
-			
-			else {
-				
-			}
 		}
-			
-			
-		
-		
 	}
-
 }

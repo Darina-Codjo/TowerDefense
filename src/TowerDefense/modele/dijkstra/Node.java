@@ -1,8 +1,8 @@
 package TowerDefense.modele.dijkstra;
 
 public class Node {
-	private double x;
-	private double y;
+	private int x;
+	private int y;
 	private int distance;
 	
 	public Node(int x, int y, int distance) {
@@ -11,20 +11,16 @@ public class Node {
 		this.y = y;
 	}
 
-	public double getX() {
+	public int getX() {
 		return x;
 	}
 
-	public double getY() {
+	public int getY() {
 		return y;
 	}
 
 	public int getDistance() {
 		return distance;
-	}
-
-	public void setDistance(int distance) {
-		this.distance = distance;
 	}
 	
 }

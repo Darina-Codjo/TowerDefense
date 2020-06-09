@@ -1,86 +1,60 @@
 package TowerDefense.modele;
 
-import java.util.Random;
-
-import TowerDefense.modele.dijkstra.BreadthFirstSearch;
-
 
 public class Ennemis extends Acteur{
 
-	private int vitesse;
-	private double directionX;
-	private double directionY;
+	private double vitesse;
+	private int directionX;
+	private int directionY;
 	private int pv;
 	private Jeu jeu;
-	
-		
-	public Ennemis(Terrain terrain, int pv, int v) {
-		super((terrain.getIndiceTuileDebutChemin()%30)*16+8, (terrain.getIndiceTuileDebutChemin()/30)*16+8 , terrain);
+
+
+	public Ennemis(Terrain terrain, int pv, double v) {
+		super(terrain.getIndiceTuileDebutChemin()%30, terrain.getIndiceTuileDebutChemin()/30, terrain);
 		this.pv = pv;
 		this.vitesse = v;
 		this.directionX = 0;
 		this.directionY = 0;
-		this.directionX = 0;
-		this.directionY = 0;
 	}
-
-
-//permet au ennemis de se péplacer aleatoirement 
-//	private void directionAleatoire() {
-//		Random random = new Random();
-//
-//		double randomInt = random.nextInt(3);
-//		directionX = randomInt-1;
-//
-//		randomInt = random.nextInt(3);
-//		directionY = randomInt-1;
-//
-//		while(!(this.terrain.dansChemin(this.terrain.getTuileSansClic(this.directionX*this.vitesse+this.getX(), this.directionY*this.vitesse + this.getY())) && 
-//				this.terrain.dansTerrain(this.directionX*this.vitesse + this.getX(), this.directionY*this.vitesse + this.getY()))) {
-//			this.seDeplacer();
-//		}
-//	}
-//
-//	public void seDeplacer() {
-//		directionAleatoire();
-//		double newPositionX = this.getX()+(this.vitesse*directionX);
-//		double newPositionY = this.getY()+(this.vitesse*directionY);
-//
-//		this.setX(newPositionX);
-//		this.setY(newPositionY);   
-//	}
 
 	public void seDeplacerDijkstra() {
-		double posXCurrentEnnemi = this.getX();
-		double posYCurrentEnnemi = this.getY();
-		double currentDistance = 0;
+
+		int posX = (int) this.getX();
+		int posY = (int) this.getY();
+		int currentIndicePosEnnemi = (posY*30 + posX); 
+		int currentDistanceNode = this.terrain.getNodeInXY(posX,posY).getDistance();
 		
-		//recuperer la distace du node sur lequel se trouve l'ennemi
-		for(int i = 0; i < this.terrain.getListeNode().size(); i++) {
-			System.out.println("for 1 sedeplace");
-			if(this.terrain.getListeNode().get(i).getX() == posXCurrentEnnemi && this.terrain.getListeNode().get(i).getY() == posYCurrentEnnemi) {
-				currentDistance = this.terrain.getListeNode().get(i).getDistance();
-				System.out.println("if 1 sedeplace");
-			}
-			if(this.terrain.getListeNode().get(i).getDistance() == currentDistance-1) {
-				this.setX(this.terrain.getListeNode().get(i).getX()+this.vitesse);
-				this.setY(this.terrain.getListeNode().get(i).getY()+this.vitesse);
-				System.out.println("if 2 sedeplace");
-			}
+		//a droite
+		if(this.terrain.dansCheminV2(currentIndicePosEnnemi+1) && this.terrain.getIfContainsNodeXY(posX+1, posY) && this.terrain.getNodeInXY(posX+1,posY).getDistance() < currentDistanceNode) {
+			this.directionX = 1;
+			this.directionY = 0;
+			this.setX(this.getX() + this.vitesse*this.directionX);
+			this.setY(this.getY() + this.vitesse*this.directionY);
 		}
-		//parcourir la liste et trouver le node dont la distance est 1 cran inferieur aka currentNode.getDistance-1
-//		for(int i = 0; i < this.terrain.getlistenode().size(); i++) {
-//			if(this.terrain.getlistenode().get(i).getdistance() == currentdistance-1) {
-//				this.setx(this.terrain.getlistenode().get(i).getx()+this.vitesse);
-//				this.sety(this.terrain.getlistenode().get(i).gety()+this.vitesse);
-//				system.out.println("if 2 sedeplace");
-//			}
-//		}
-		
-		
-		this.terrain.getListeNode();
+		//a gauche
+		else if(this.terrain.dansCheminV2(currentIndicePosEnnemi-1) && this.terrain.getIfContainsNodeXY(posX-1, posY) && this.terrain.getNodeInXY(posX-1, posY).getDistance() < currentDistanceNode) {
+			this.directionX = -1;
+			this.directionY = 0;
+			this.setX(this.getX() + this.vitesse*this.directionX);
+			this.setY(this.getY() + this.vitesse*this.directionY);
+		}
+		//en bas
+		else if(this.terrain.dansCheminV2(currentIndicePosEnnemi+30) && this.terrain.getIfContainsNodeXY(posX, posY+1) && this.terrain.getNodeInXY(posX, posY+1).getDistance() < currentDistanceNode) {
+			this.directionX = 0;
+			this.directionY = 1;
+			this.setX(this.getX() + this.vitesse*this.directionX);
+			this.setY(this.getY() + this.vitesse*this.directionY);
+		}
+		//en haut
+		else if(this.terrain.dansCheminV2(currentIndicePosEnnemi-30) && this.terrain.getIfContainsNodeXY(posX, posY-1) && this.terrain.getNodeInXY(posX, posY-1).getDistance() < currentDistanceNode) {
+			this.directionX = 0;
+			this.directionY = -1;
+			this.setX(this.getX() + this.vitesse*this.directionX);
+			this.setY(this.getY() + this.vitesse*this.directionY);
+		}
 	}
-	
+
 	public void meurt(){
 		this.pv = 0;
 	}
@@ -91,17 +65,14 @@ public class Ennemis extends Acteur{
 
 	@Override
 	public void agit() {
-		//this.seDeplacer();
-		System.out.println("agit ennemi");
 		this.seDeplacerDijkstra();
 	}
-
 
 	public int getPv() {
 		return this.pv;
 	}
 
-	public int getVitesse() {
+	public double getVitesse() {
 		return vitesse;
 	}
 
@@ -121,8 +92,7 @@ public class Ennemis extends Acteur{
 		this.pv -= degatRecu;
 	}
 
-
-	public void setVitesse(int v) {
+	public void setVitesse(double v) {
 		this.vitesse = v;
 	}
 

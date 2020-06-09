@@ -8,13 +8,13 @@ import TowerDefense.modele.tourelle.TourelleBasique;
 
 public class TourelleGlace extends TourelleBasique {
 
-	public TourelleGlace(double x, double y, Terrain terrain,Jeu jeu) {
+	public TourelleGlace(int x, int y, Terrain terrain,Jeu jeu) {
 		super(x, y, terrain,jeu);
 	}
 	
 	public void tir() {
 		
-		Ennemis ennemiViser= ennemieVisable(50);
+		Ennemis ennemiViser= ennemieVisable(3);
 		
 		if (ennemiViser != null) {
 			if(!getJeu().projectileExisteSurEnnemi(ennemiViser.getId())) {				

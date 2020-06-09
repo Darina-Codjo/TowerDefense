@@ -26,7 +26,7 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	}
 	
 	public void acteurSprite(Acteur acteur) {
-		Circle circle;
+		Circle circle; 
 		if (acteur instanceof GrandeTour) {
 			circle = new Circle(10);
 		}
@@ -49,24 +49,21 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 			circle.setFill(Color.PURPLE);
 		
 		circle.setId(acteur.getId());
-		circle.translateXProperty().bind(acteur.xProperty()) ;
-		circle.translateYProperty().bind(acteur.yProperty()) ;
+		circle.translateXProperty().bind(acteur.xProperty().multiply(16).add(8)) ;
+		circle.translateYProperty().bind(acteur.yProperty().multiply(16).add(8)) ;
 		plateau.getChildren().add(circle);
 	}
 	
 	
 	
 	private void enleverSprite (Acteur mort) {
-		//System.out.println(”enlever sprite ”);
 		this.plateau.getChildren().remove(this.plateau.lookup("#" + mort.getId()));
 	}
 	
 	
 	@Override
 	public void onChanged(Change<? extends Acteur> c) {
-		
 		while(c.next()){
-		
 			// on cree leur sprite .
 			for (Acteur nouveau: c.getAddedSubList()){
 				acteurSprite(nouveau);
@@ -79,21 +76,4 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
