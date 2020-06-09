@@ -72,6 +72,7 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		}
 		else
 			circle.setOpacity(0);*/
+		texture.setId(acteur.getId());
 		texture.setFitWidth(16);
 		texture.setFitHeight(16);
 		texture.translateXProperty().bind(acteur.xProperty());;
