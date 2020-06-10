@@ -2,11 +2,9 @@ package TowerDefense.modele;
 
 import java.util.ArrayList;
 import java.util.Random;
-
-
-
 import TowerDefense.modele.projectile.Projectile;
 import TowerDefense.modele.tourelle.Tourelle;
+import TowerDefense.modele.Acteur;
 import TowerDefense.modele.ennemis.Cactus;
 import TowerDefense.modele.ennemis.CactusSpeciale;
 import TowerDefense.modele.ennemis.Scorpion;
@@ -161,16 +159,19 @@ public class Jeu {
 	}
 	
 	//Certainemement pas au bonne endroit (classe tourelle surement)
-	public boolean tourelleProche(double x, double y) {
+	public Acteur tourelleProche(double x, double y) {
 
+		Acteur tours=null;
+		
 		for(int i=0; i<listeTourelle().size();i++) {
 			if(		(y-16<= listeTourelle().get(i).getY() && listeTourelle().get(i).getY()<=y+16) &&
 					(x-16<= listeTourelle().get(i).getX() && listeTourelle().get(i).getX()<=x+16)  
 					){
-				return true;
+				tours=listeTourelle().get(i);
+				return tours;
 			}
 		}
-		return false;
+		return tours ;
 	}
 	
 	public void vagueEnnemis() {
@@ -197,4 +198,45 @@ public class Jeu {
         	listeActeur.add(liste.get(i));
         }
 	}
+	
+	
+	public boolean partieEnCours() {
+		if(listeActeur.size()!=0 || listeProjectile.size()!=0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public Acteur getActeur(String id) {
+		for(Acteur a:listeActeur){
+			if(a.getId().equals(id)){
+				return a;
+			}
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
