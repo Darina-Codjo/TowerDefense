@@ -1,13 +1,19 @@
 package TowerDefense.modele;
 
+import java.util.ArrayList;
 import java.util.Random;
 
+import TowerDefense.modele.dijkstra.Node;
 import javafx.scene.layout.TilePane;
 
 public class Terrain {
 	private int width = 480;
 	private int height = 480;
-
+	private double x;
+	private double y;
+	private TilePane map;
+	private ArrayList<Node> listeNode;
+	private Node noeud;
 
 	private int[] mapDesert = {	5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5,  4 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1,
 								5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 
@@ -41,9 +47,12 @@ public class Terrain {
 								1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1};
 
 
-	public Terrain() {
-		
 
+
+	public Terrain() {
+		this.x = 0;
+		this.y = 0;
+		this.listeNode = new ArrayList<>();
 	}
 
 	public int getWidth() {
@@ -61,27 +70,21 @@ public class Terrain {
 		return mapDesert;
 	}
 	
+	public int nbrTuileMap(TilePane map) {
+		int nbrTuile = 0;
+		for(int i = 0; i < this.mapDesert.length; i++) {
+			nbrTuile++;
+		}
+		return nbrTuile;
+	}
 	
 	public int codeTuile(int indice) {
 		return this.getNumeroTuile(indice);
 	}
 
 	public int getTuileSansClic(double x, double y) {
-		double valeurX = x;
-		double valeurY = y;
-		int indice = 0;
-		while (valeurX >= 16) {
-			valeurX-=16;
-			indice ++;
-		}
-		while (valeurY >= 16) {
-			valeurY-=16;
-			indice += 30;
-		}
-		return indice;
+		return (int) (y*30+x);
 	}
-
-	
 	
 	//Ces 2 méthodes empêchent les ennemis de sortir du chemin et de se balader sur la carte
 	public boolean dansTerrain(double d, double e) {
@@ -89,15 +92,41 @@ public class Terrain {
 	}
 
 	public boolean dansChemin(int indice) {
-		if(this.codeTuile(indice) ==2 || this.codeTuile(indice) == 50 || this.codeTuile(indice) == 51) {
+		if(this.codeTuile(indice) == 2 || this.codeTuile(indice) == 50 || this.codeTuile(indice) == 51) {
 			return true;
 		}
 		else {
 			return false;
 		}
 	}
+	
+	public boolean dansCheminV2(int indice) {
+		if(this.codeTuile(indice)%2 == 0) {
+			return true;
+		}
+		return false;
+	}
 
+	//utilisé pour verifier dijkstra a retirer si possible
+	public int getNbrTuileChemin() {
+		int nbrTuileChemin = 0;
+		for(int i = 0; i < mapDesert.length; i++) {
+			if(this.codeTuile(i) == 2 || this.codeTuile(i) == 50 || this.codeTuile(i) == 51) {
+				nbrTuileChemin++;
+			}
+		}
+		return nbrTuileChemin;
+	}
 
+	public int getIndiceTuileCheminSansDebutEtFin() {
+		int indiceCase2 = 0;	
+		for(int i = 0; i < mapDesert.length; i++) {
+			if(mapDesert[i] == 2) {
+				indiceCase2 = i;
+			}
+		}
+		return indiceCase2;
+	}
 
 	
 	
@@ -110,124 +139,184 @@ public class Terrain {
 		int compteurCase50 = 0;
 
 		//recupere l'indice du 1ere, 2eme et 3eme occurence de 50
-		int indice50_1 = 0;
-		int indice50_2 = 0;
-		int indice50_3 = 0;
-
+		int indiceTuile1 = 0;
+		int indiceTuile2 = 0;
+		int indiceTuile3 = 0;
 		for(int i = 0; i < mapDesert.length; i++) {
-
 			if(mapDesert[i] == 50) {
 				compteurCase50++;
 			}
-
-			if(mapDesert[i] == 50 && compteurCase50 == 1) {
-				indice50_1 = i;
+			if(mapDesert[i] == 50 /*&& compteurCase50 == 1*/) {
+				indiceTuile1 = i;
 			}
 			if(mapDesert[i] == 50 && compteurCase50 == 2) {
-				indice50_2 = i;
+				indiceTuile2 = i;
 			}
 			if(mapDesert[i] == 50 && compteurCase50 == 3) {
-				indice50_3 = i;
+				indiceTuile3 = i;
 			}
 		}
-
-		Random random = new Random();
-		int alea = random.nextInt(3);
-
-		if (alea == 0) {
-			indice = indice50_1;
-		}
-		if (alea == 1) {
-			indice = indice50_2;
-		}
-		if (alea == 2) {
-			indice = indice50_3;
-		}
-
+				Random random = new Random();
+				int alea = random.nextInt(3);
+				if (alea == 0) {
+					indice = indiceTuile1;
+				}
+				if (alea == 1) {
+					indice = indiceTuile2;
+				}
+				if (alea == 2) {
+					indice = indiceTuile3;
+				}
 		return indice; 
 	}
 
 	public int getIndiceTuileFinChemin() {
 
 		int indice = 0;
-		//compte nombre d'occurence de 
-		int compteurCase50 = 0;
+		//compte nombre d'occurence de 51 
+		int compteurCase51 = 0;
 
 		//recupere l'indice du 1ere, 2eme et 3eme occurence de 50
-		int indice51_1 = 0;
-		int indice51_2 = 0;
-		int indice51_3 = 0;
+		int indiceTuile1 = 0;
+		int indiceTuile2 = 0;
+		int indiceTuile3 = 0;
 
 		for(int i = 0; i < mapDesert.length; i++) {
-
 			if(mapDesert[i] == 51) {
-				compteurCase50++;
+				compteurCase51++;
 			}
-
-			if(mapDesert[i] == 51 && compteurCase50 == 1) {
-				indice51_1 = i;
+			if(mapDesert[i] == 51 && compteurCase51 == 1) {
+				indiceTuile1 = i;
 			}
-			if(mapDesert[i] == 51 && compteurCase50 == 2) {
-				indice51_2 = i;
+			if(mapDesert[i] == 51 && compteurCase51 == 2) {
+				indiceTuile2 = i;
 			}
-			if(mapDesert[i] == 51 && compteurCase50 == 3) {
-				indice51_3 = i;
+			if(mapDesert[i] == 51 && compteurCase51 == 3) {
+				indiceTuile3 = i;
 			}
 		}
-
-		Random random = new Random();
-		int alea = random.nextInt(3);
-
-		if (alea == 0) {
-			indice = indice51_1;
-		}
-		if (alea == 1) {
-			indice = indice51_2;
-		}
-		if (alea == 2) {
-			indice = indice51_3;
-		}
-
+				Random random = new Random();
+				int alea = random.nextInt(3);
+		
+				if (alea == 0) {
+					indice = indiceTuile1;
+				}
+				if (alea == 1) {
+					indice = indiceTuile2;
+				}
+				if (alea == 2) {
+					indice = indiceTuile3;
+				}
 		return indice;
 	}
-
 	
-	public double placerTourelleMilieuTuileCoordonnee(double coordonnee) {
+	
+	//Cette méthode est peut être à placeer dans la classe tourelle
+	public int placerTourelleMilieuTuileCoordonnee(int coordonnee) {
 		
-		double newX;		
+		int newX;		
 		if(coordonnee %16 > 8) {		
-			newX= coordonnee-(coordonnee%16 - 8);
+			newX = coordonnee-(coordonnee%16 - 8);
 		}
 		else if(coordonnee%16 < 8) {
-			newX=coordonnee+(8 - coordonnee%16);
+			newX = coordonnee+(8 - coordonnee%16);
 		}
 		else {
-			newX=coordonnee;
+			newX = coordonnee;
 		}
-		
 		return newX;
 	}
 
 
+	public boolean dansTerrain(int x, int y) {
+		return (0 <= x && x<this.width && 0<=y && y< this.height);
+	}
 
+	public double getX() {
+		return this.x;
+	}	
+	public double getY() {
+		return this.y;
+	}
 
+	//parcourir les tuile du chemin et creer et ajouter un node pour chaque tuile dans l'attribut listeNode
+	public void placerNode() {
+		//recuperation coordonnees de la tuile finChemin
+		int xFin = (this.getIndiceTuileFinChemin()%30);
+		int yFin = (this.getIndiceTuileFinChemin()/30);
 
+		Node noeudFin = new Node(xFin, yFin, 0);
+		this.listeNode.add(noeudFin);
 
+		int coordonneesNodeX = 0;
+		int coordonneesNodeY = 0;
 
+		//pour chaque i dans la liste de node on recupere les coordonnes X et Y
+		for(int indiceNode = 0; indiceNode < this.listeNode.size(); indiceNode++) {
+			coordonneesNodeX = this.listeNode.get(indiceNode).getX();
+			coordonneesNodeY = this.listeNode.get(indiceNode).getY();
+			
+			//gauche
+			if(this.dansChemin(coordonneesNodeY*30+coordonneesNodeX-1)) {
+				if(this.getIfContainsNodeXY(coordonneesNodeX-1, coordonneesNodeY) == false) {
+					Node noeud = new Node(coordonneesNodeX-1, coordonneesNodeY, this.listeNode.get(indiceNode).getDistance()+1);
+					this.listeNode.add(noeud);
+				}
+			}
+			//droit
+			if(this.dansChemin(coordonneesNodeY*30+coordonneesNodeX+1)) {
+				if(this.getIfContainsNodeXY(coordonneesNodeX+1, coordonneesNodeY) == false) {
+					Node noeud = new Node(coordonneesNodeX+1, coordonneesNodeY, this.listeNode.get(indiceNode).getDistance()+1);
+					this.listeNode.add(noeud);
+				}
+			}
+			//bas
+			if(this.dansChemin(coordonneesNodeY*30+coordonneesNodeX-30)) {
+				if(this.getIfContainsNodeXY(coordonneesNodeX, coordonneesNodeY-1) == false) {
+					Node noeud = new Node(coordonneesNodeX, coordonneesNodeY-1, this.listeNode.get(indiceNode).getDistance()+1);
+					this.listeNode.add(noeud);
+				}
+			}
+			//haut
+			if(this.dansChemin(coordonneesNodeY*30+coordonneesNodeX+30)) {
+				if(this.getIfContainsNodeXY(coordonneesNodeX, coordonneesNodeY+1) == false) {
+					Node noeud = new Node(coordonneesNodeX, coordonneesNodeY+1, this.listeNode.get(indiceNode).getDistance()+1);
+					this.listeNode.add(noeud);
+				}
+			}
+		}
+	}
 
+	public ArrayList<Node> getListeNode() {
+		return listeNode;
+	}
 
+	public boolean getIfContainsNodeXY(int x, int y) {
+		for(int i = 0; i < this.listeNode.size(); i++) {
+			if(this.listeNode.get(i).getX() == x && this.listeNode.get(i).getY() == y) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-
-
-
-
-
-
-
-
-
-
-
+	public Node getNode(int indice) {
+		for(int i = 0; i < this.listeNode.size(); i++) {
+			if(i == indice) {
+				return listeNode.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public Node getNodeInXY(int x, int y) {
+		for(int i = 0; i < this.listeNode.size(); i++) {
+			if(this.listeNode.get(i).getX() == x && this.listeNode.get(i).getY() == y) {
+				return listeNode.get(i);
+			}
+		}
+		return null;
+	}
 
 }
 

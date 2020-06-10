@@ -8,7 +8,7 @@ import TowerDefense.modele.tourelle.Tourelle;
 
 public class TourelleFeu extends Tourelle{
 
-	public TourelleFeu(double x, double y, Terrain terrain, Jeu jeu ) {
+	public TourelleFeu(int x, int y, Terrain terrain, Jeu jeu ) {
 		super(x, y, terrain, jeu);
 	}
 	

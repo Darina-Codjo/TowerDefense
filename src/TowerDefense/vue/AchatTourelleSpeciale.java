@@ -11,12 +11,12 @@ public class AchatTourelleSpeciale implements ChangeListener<Number> {
 	
 	public AchatTourelleSpeciale(Label message2) {
 		super();
-		this.message=message2;
+		this.message = message2;
 	}
-	
 
 	//Regarde si la somme d'argent posséder par le jouer est supérieur au seuil donné
 	//Si c'est la cas alors un message s'affiche sur l'écran indiquant au joueur qu'il peut acheter une tourelle spéciale
+
 	@Override
 	public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 		
@@ -25,18 +25,4 @@ public class AchatTourelleSpeciale implements ChangeListener<Number> {
 		}
 		
 	}
-
-
-
-
-	
-	
-	
-	
-
-	
-
-
-	
-
 }

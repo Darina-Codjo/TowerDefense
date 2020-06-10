@@ -28,45 +28,43 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	}
 	
 	public void acteurSprite(Acteur acteur) {
-		Circle circle = new Circle(3);
+		/*Circle circle = new Circle(3);*/
 		
-		/*ImageView texture = new ImageView("textures/tour.png");*/
-		
+		ImageView texture;
 			
-		
-		
 		if(acteur instanceof Cactus)
-			circle.setFill(Color.LIGHTGREEN);
+			texture = new ImageView("textures/cactus.png");
 		else if (acteur instanceof Scorpion) 
-			circle.setFill(Color.BROWN);
+			texture = new ImageView("textures/scorpion.png");
 		else if (acteur instanceof Serpent) 
-			circle.setFill(Color.ORANGE);
+			texture = new ImageView("textures/serpent.jpg");
 		else if (acteur instanceof CactusSpeciale)
-			circle.setFill(Color.PURPLE);
+			texture = new ImageView("textures/cactusspecial.png");
 		else if (acteur instanceof ScorpionSpeciale)
-			circle.setFill(Color.RED);
+			texture = new ImageView("textures/scorpionspecial.png");
 		else if (acteur instanceof SerpentSpeciale)
-			circle.setFill(Color.GREEN);
+			texture = new ImageView("textures/serpentspecial.jpg");
 		else if (acteur instanceof GrandeTour) {
-			circle.setFill(Color.BLACK);
+			texture = new ImageView("textures/tour.png");
 		}
-		/*else if(acteur instanceof GrandeTour) {
-			texture.setTranslateX(acteur.getX()+16);
-			texture.setTranslateY(acteur.getY()+16);
-			plateau.getChildren().add(texture);
-		}*/
-		else
-			circle.setOpacity(0);
+		else {
+			texture = new ImageView("textures/tour.png");
+			texture.setOpacity(0);
+		}
+		
+		texture.setId(acteur.getId());
+		texture.setFitWidth(16);
+		texture.setFitHeight(16);
+		texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(8));
+		texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(8));
+		plateau.getChildren().add(texture);
 		
 		
-		
-		
-		circle.setId(acteur.getId());
+		/*circle.setId(acteur.getId());
 		circle.translateXProperty().bind(acteur.xProperty()) ;
 		circle.translateYProperty().bind(acteur.yProperty()) ;
-		plateau.getChildren().add(circle);
-		
-		
+		plateau.getChildren().add(circle);*/
+
 	}
 	
 	
@@ -78,9 +76,7 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	
 	@Override
 	public void onChanged(Change<? extends Acteur> c) {
-		
-		while(c.next()){
-		
+		while(c.next()) {		
 			// on cree leur sprite dès qu'un ennemis est ajouter à la liste .
 			for (Acteur nouveau: c.getAddedSubList()){
 				acteurSprite(nouveau);
@@ -93,21 +89,4 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

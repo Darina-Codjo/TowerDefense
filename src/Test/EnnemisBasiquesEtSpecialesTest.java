@@ -4,14 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import TowerDefense.modele.Ennemis;
-import TowerDefense.modele.Terrain;
+
 import TowerDefense.modele.ennemis.CactusSpeciale;
+import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.ennemis.ScorpionSpeciale;
+import TowerDefense.modele.Terrain;
 
 class EnnemisBasiquesEtSpecialesTest {
-
 	
 	Terrain terrain1 = new Terrain();
 	Ennemis ennemis1 = new Ennemis(terrain1,50,18);
@@ -30,11 +30,11 @@ class EnnemisBasiquesEtSpecialesTest {
 	@Test
 	public final void testdirectionAleatoire() {
 		
-		assertEquals(0,ennemis1.getxSuivant(), " avant appel de la méthode directionAleatoire directionX à 0");
-		assertEquals(0, ennemis1.getySuivant()," avant appel de la méthode directionAleatoire directionX à 0");
+		assertEquals(0,ennemis1.getXSuivant(), " avant appel de la méthode directionAleatoire directionX à 0");
+		assertEquals(0, ennemis1.getYSuivant()," avant appel de la méthode directionAleatoire directionX à 0");
 	}
-	
-	
+
+	//Méthode de cactus spéciale
 	@Test
 	public final void testRechargement() {
 		
@@ -48,35 +48,35 @@ class EnnemisBasiquesEtSpecialesTest {
 		
 	}
 	
+	//Méthode scorpion spéciale
+	@Test
+	public final void testDedoublement() {
+		
+		Terrain terrain= new Terrain();	
+		Jeu jeu= new Jeu(terrain);
+		ScorpionSpeciale scorpSpeciale1= new ScorpionSpeciale(terrain);
+		jeu.ajouterActeur(scorpSpeciale1);
+		scorpSpeciale1.setPv(0);
+		
+		assertEquals(0, scorpSpeciale1.getPv(), "verification que les pv ont été mis à 0");
+		assertEquals(1, jeu.getListeActeurs().size(), "verification que la liste n'est composée que d'une acteur : scorpSpeciale");
+		
+		//appel de la méthode
+		//scorpSpeciale1.dedoublement();
+		
+		//assertEquals(2,jeu.getListeActeurs().size(), "verification que la liste est maintenant composée de 2 acteur : scorpSpeciale s'est dédoublé");
+			
+		
+	}
 	
 	//Il faut d'abord crée la tourelle qui possède des pv pour pouvoir tester cette méthode
 
 		@Test
-		public final void testDestructeurs(){
+		public final void testDestructeurs() {
 			
 			
 			
 		}
 		
-//		//Méthode scorpion spéciale
-		@Test
-		public final void testDedoublement() {
-			
-			Terrain terrain= new Terrain();	
-			Jeu jeu= new Jeu(terrain);
-			ScorpionSpeciale scorpSpeciale1= new ScorpionSpeciale(terrain);
-			jeu.ajouterActeur(scorpSpeciale1);
-			scorpSpeciale1.setPvDegat(100);
-			
-			assertEquals(0, scorpSpeciale1.getPv(), "verification que les pv ont été mis à 0");
-			assertEquals(1, jeu.getListeActeurs().size(), "verification que la liste n'est composée que d'une acteur : scorpSpeciale");
-			
-			//appel de la méthode
-			//scorpSpeciale1.dedoublement();
-			
-			assertEquals(2,jeu.getListeActeurs().size(), "verification que la liste est maintenant composée de 2 acteur : scorpSpeciale s'est dédoublé");
-				
-			
-		}
 
 }
