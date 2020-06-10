@@ -24,7 +24,7 @@ public class Ennemis extends Acteur{
 		int posY = (int) this.getY();
 		int currentIndicePosEnnemi = (posY*30 + posX); 
 		int currentDistanceNode = this.terrain.getNodeInXY(posX,posY).getDistance();
-		
+
 		//a droite
 		if(this.terrain.dansCheminV2(currentIndicePosEnnemi+1) && this.terrain.getIfContainsNodeXY(posX+1, posY) && this.terrain.getNodeInXY(posX+1,posY).getDistance() < currentDistanceNode) {
 			this.directionX = 1;
@@ -55,47 +55,41 @@ public class Ennemis extends Acteur{
 		}
 	}
 
-	public void meurt(){
-		this.pv = 0;
-	}
 
-	public boolean estVivant() {
-		return this.pv > 0;
-	}
 
 	@Override
 	public void agit() {
 		this.seDeplacerDijkstra();
 	}
 
+	//Les méthodes get et set relatives au pv
 	public int getPv() {
 		return this.pv;
 	}
+	public void setPv(int newPv) {
+		this.pv = newPv;
+	}
 
+	//Les méthodes get et set relatives à la vitesse
 	public double getVitesse() {
 		return vitesse;
 	}
+	public void setVitesse(int v) {
+		this.vitesse = v;
+	}
 
-	public double getxSuivant() {
+	//Les méthodes get et set relatives aux nouvelles coordonnées
+	public double getXSuivant() {
 		return directionX;
 	}
 
-	public double getySuivant() {
+	public double getYSuivant() {
 		return directionY;
-	}
-
-	public void setPv(int newPv) {
-		this.pv = newPv;
 	}
 
 	public void setPvDegat(int degatRecu) {
 		this.pv -= degatRecu;
 	}
-
-	public void setVitesse(double v) {
-		this.vitesse = v;
-	}
-
 
 	@Override
 	public String toString() {

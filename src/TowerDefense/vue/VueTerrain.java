@@ -22,20 +22,27 @@ public class VueTerrain {
 		this.plateau = plateau;
 	}
 
+	// Gameloop: le tour de jeu des projectile est fait systématiquement
+	// tandis que celui des acteur se fait tous les modulo 30
+	// permet d'avoir des projectiles plus rapides que les ennemis
 	public void initAnimation() {
 		this.gameLoop = new Timeline();
 		temps = 0;
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.017), (ev -> {
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.017), 
+				(ev ->{
+					this.game.tourDeJeuProjectile();
+					if (temps%30==0){
+						this.game.tourDeJeuActeur();						
+					}
+					if(temps%500==0) {
+						this.game.vagueEnnemis();
+					}
 
-			this.game.tourDeJeuProjectile();
-			if (temps % 30 == 0) {
-				this.game.tourDeJeuActeur();
-			}
-			temps++;
-		}));
-
+					temps++;
+				})
+				);
 		gameLoop.getKeyFrames().add(kf);
 	}
 

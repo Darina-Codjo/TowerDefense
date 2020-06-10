@@ -11,8 +11,6 @@ public abstract class Acteur {
 	private String id;
 	protected Terrain terrain;
 	public static int compteur=0;
-	private int pv;
-	private Jeu jeu;
 	
 	public Acteur(double x, double y, Terrain terrain) {
 		this.terrain = terrain;	
@@ -22,6 +20,7 @@ public abstract class Acteur {
 		compteur++;
 	}
 	
+	
 	public int getCompteur() {
 		return compteur;
 	}
@@ -29,6 +28,8 @@ public abstract class Acteur {
 	public void setCompteur(int newCompteur) {
 		this.compteur = newCompteur;
 	}
+	
+	
 	
 	public double getX() {
 		return this.xProperty.getValue();
@@ -54,6 +55,9 @@ public abstract class Acteur {
 		return this.yProperty ;
 	}
 	
+	
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -61,6 +65,10 @@ public abstract class Acteur {
 		
 	public abstract void agit();
 	
+	public String toString() {
+		return "Position: x="+ this.xProperty + " y="+ this.yProperty+ "\n Id:" + this.id;
+	}
+
 	
 	
 	

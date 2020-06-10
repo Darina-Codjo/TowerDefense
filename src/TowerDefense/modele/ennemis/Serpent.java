@@ -12,11 +12,8 @@ public class Serpent extends Ennemis{
 	@Override
 	public String toString() {
 		return "Cactus [getPointsDeVie()=" + getPv() + ", getVitesse()=" + getVitesse() + ", getxSuivant()="
-				+ getxSuivant() + ", getySuivant()=" + getySuivant() + ", getX()=" + getX() + ", getY()=" + getY()
+				+ getXSuivant() + ", getySuivant()=" + getYSuivant() + ", getX()=" + getX() + ", getY()=" + getY()
 				+ ", getId()=" + getId() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
 				+ super.toString() + "]";
 	}
-	
-	
-	
 }

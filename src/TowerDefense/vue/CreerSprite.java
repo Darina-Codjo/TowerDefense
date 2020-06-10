@@ -28,7 +28,6 @@ public class CreerSprite {
 	public void tourelleSprite(Acteur acteur, double x, double y) {
 
 		ImageView texture;
-		
 		if (acteur instanceof TourelleGlace ) {
 			texture = new ImageView("textures/tourelleglace.png");
 			texture.setFitWidth(32);
@@ -55,7 +54,6 @@ public class CreerSprite {
 			texture.setFitWidth(32);
 			texture.setPreserveRatio(true);
 		}
-
 		texture.setTranslateX(x);
 		texture.setTranslateY(y);
 		plateau.getChildren().add(texture);

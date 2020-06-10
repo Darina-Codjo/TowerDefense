@@ -5,6 +5,7 @@ import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.GrandeTour;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.ennemis.Cactus;
+import TowerDefense.modele.ennemis.CactusSpeciale;
 import TowerDefense.modele.ennemis.Scorpion;
 import TowerDefense.modele.ennemis.ScorpionSpeciale;
 import TowerDefense.modele.ennemis.Serpent;
@@ -15,6 +16,7 @@ import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.image.ImageView;
 
 public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 
@@ -26,32 +28,43 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	}
 	
 	public void acteurSprite(Acteur acteur) {
-		Circle circle; 
-		if (acteur instanceof GrandeTour) {
-			circle = new Circle(10);
+		/*Circle circle = new Circle(3);*/
+		
+		ImageView texture;
+			
+		if(acteur instanceof Cactus)
+			texture = new ImageView("textures/cactus.png");
+		else if (acteur instanceof Scorpion) 
+			texture = new ImageView("textures/scorpion.png");
+		else if (acteur instanceof Serpent) 
+			texture = new ImageView("textures/serpent.jpg");
+		else if (acteur instanceof CactusSpeciale)
+			texture = new ImageView("textures/cactusspecial.png");
+		else if (acteur instanceof ScorpionSpeciale)
+			texture = new ImageView("textures/scorpionspecial.png");
+		else if (acteur instanceof SerpentSpeciale)
+			texture = new ImageView("textures/serpentspecial.jpg");
+		else if (acteur instanceof GrandeTour) {
+			texture = new ImageView("textures/tour.png");
 		}
 		else {
-			circle = new Circle(3);
+			texture = new ImageView("textures/tour.png");
+			texture.setOpacity(0);
 		}
 		
-		if(acteur instanceof Cactus)
-			circle.setFill(Color.LIGHTGREEN);
-			//Color.web("color en hexa")
-		else if (acteur instanceof Scorpion) 
-			circle.setFill(Color.BROWN);
-		else if (acteur instanceof Serpent) 
-			circle.setFill(Color.ORANGE);
-		else if (acteur instanceof ScorpionSpeciale)
-			circle.setFill(Color.RED);
-		else if (acteur instanceof SerpentSpeciale)
-			circle.setFill(Color.GREEN);
-		else
-			circle.setFill(Color.PURPLE);
+		texture.setId(acteur.getId());
+		texture.setFitWidth(16);
+		texture.setFitHeight(16);
+		texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(8));
+		texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(8));
+		plateau.getChildren().add(texture);
 		
-		circle.setId(acteur.getId());
-		circle.translateXProperty().bind(acteur.xProperty().multiply(16).add(8)) ;
-		circle.translateYProperty().bind(acteur.yProperty().multiply(16).add(8)) ;
-		plateau.getChildren().add(circle);
+		
+		/*circle.setId(acteur.getId());
+		circle.translateXProperty().bind(acteur.xProperty()) ;
+		circle.translateYProperty().bind(acteur.yProperty()) ;
+		plateau.getChildren().add(circle);*/
+
 	}
 	
 	
@@ -63,13 +76,13 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	
 	@Override
 	public void onChanged(Change<? extends Acteur> c) {
-		while(c.next()){
-			// on cree leur sprite .
+		while(c.next()) {		
+			// on cree leur sprite dès qu'un ennemis est ajouter à la liste .
 			for (Acteur nouveau: c.getAddedSubList()){
 				acteurSprite(nouveau);
 			}
-			// gestion des morts
-			// on enleve leur sprite .
+			// gestion des ennemis morts
+			// on enleve leur sprite dès qu'un ennemis est retirer de la liste .
 			for (Acteur mort: c.getRemoved()){
 				enleverSprite (mort);
 			}

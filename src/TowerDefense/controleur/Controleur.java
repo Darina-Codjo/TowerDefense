@@ -52,19 +52,20 @@ public class Controleur implements Initializable{
 	private Label nbrEnnemis;
 	@FXML
 	private Label nbArgent;
-	@FXML
-	private Label message;
-	@FXML
-	private ToggleGroup Tourelle;
-	@FXML
-	private RadioButton ajoutTourelleGlace; 
-	@FXML
-	private RadioButton ajoutTourelleFeu; 
-	@FXML
-	private RadioButton ajoutTourelleDestructible;
-	@FXML
-	private RadioButton ajoutTourelleTirMultiple;
-	private RadioButton ajoutTourelleRoche;  
+    @FXML
+    private Label message;
+    @FXML
+    private ToggleGroup Tourelle;
+    @FXML
+    private RadioButton ajoutTourelleGlace; 
+    @FXML
+    private RadioButton ajoutTourelleFeu; 
+    @FXML
+    private RadioButton ajoutTourelleDestructible;
+    @FXML
+    private RadioButton ajoutTourelleTirMultiple;
+    @FXML
+    private RadioButton ajoutTourelleRoche;  
 	private VueTerrain vue;	
 	private static Timeline gameLoop;	
 	private CreerSprite sprite;	
@@ -110,13 +111,6 @@ public class Controleur implements Initializable{
 	}
 
 	@FXML
-	void ajouterTourelle(ActionEvent event) {
-
-
-	}
-
-
-	@FXML
 	void AcheterTourelleSpeciale(ActionEvent event) {
 		if(this.game.achatTourelleSpécialePossible()) {
 			this.ajoutTourelleTirMultiple.setVisible(true);
@@ -124,10 +118,8 @@ public class Controleur implements Initializable{
 		}
 	}
 
-
-
 	@FXML
-	void getTuile(MouseEvent clic) {
+    void ajouterTourelle(MouseEvent clic) {
 		RadioButton selectedToggleButton = (RadioButton) Tourelle.getSelectedToggle();
 		int x = (int) clic.getX()/16;
 		int y = (int) clic.getY()/16;

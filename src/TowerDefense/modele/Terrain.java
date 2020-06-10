@@ -69,7 +69,7 @@ public class Terrain {
 	public int[] getMap() {
 		return mapDesert;
 	}
-
+	
 	public int nbrTuileMap(TilePane map) {
 		int nbrTuile = 0;
 		for(int i = 0; i < this.mapDesert.length; i++) {
@@ -77,7 +77,7 @@ public class Terrain {
 		}
 		return nbrTuile;
 	}
-
+	
 	public int codeTuile(int indice) {
 		return this.getNumeroTuile(indice);
 	}
@@ -85,8 +85,8 @@ public class Terrain {
 	public int getTuileSansClic(double x, double y) {
 		return (int) (y*30+x);
 	}
-
-
+	
+	//Ces 2 méthodes empêchent les ennemis de sortir du chemin et de se balader sur la carte
 	public boolean dansTerrain(double d, double e) {
 		return (0 <= d && d<this.width && 0<=e && e< this.height);
 	}
@@ -107,17 +107,7 @@ public class Terrain {
 		return false;
 	}
 
-	public int getIndiceTuileChemin() {
-		int indice = 0;
-		for(int i = 0; i < mapDesert.length; i++) {
-			if(this.codeTuile(i) == 2 || this.codeTuile(i) == 50 || this.codeTuile(i) == 51) {
-				indice = i;
-			}
-		}
-		return indice;
-	}
-
-	//utilisé pour verifier dijkstra
+	//utilisé pour verifier dijkstra a retirer si possible
 	public int getNbrTuileChemin() {
 		int nbrTuileChemin = 0;
 		for(int i = 0; i < mapDesert.length; i++) {
@@ -138,6 +128,10 @@ public class Terrain {
 		return indiceCase2;
 	}
 
+	
+	
+	//Ces 2 méthode permettent de récupérer une des 3 tuiles du début et fin de chemin 
+	//ce qui nous permet de placer les ennemis et la frande Tour au bonne endroit 
 	public int getIndiceTuileDebutChemin() {
 
 		int indice = 0;
@@ -215,10 +209,25 @@ public class Terrain {
 				}
 		return indice;
 	}
-
+	
+	
+	//Cette méthode est peut être à placeer dans la classe tourelle
+	public double placerTourelleMilieuTuileCoordonnee(double coordonnee) {
+		
+		double newX;		
+		if(coordonnee %16 > 8) {		
+			newX = coordonnee-(coordonnee%16 - 8);
+		}
+		else if(coordonnee%16 < 8) {
+			newX = coordonnee+(8 - coordonnee%16);
+		}
+		else {
+			newX = coordonnee;
+		}
+		return newX;
+	}
 
 	public boolean dansTerrain(int x, int y) {
-
 		return (0 <= x && x<this.width && 0<=y && y< this.height);
 	}
 
@@ -281,10 +290,6 @@ public class Terrain {
 		return listeNode;
 	}
 
-	public void setListeNode(ArrayList<Node> listeNode) {
-		this.listeNode = listeNode;
-	}
-
 	public boolean getIfContainsNodeXY(int x, int y) {
 		for(int i = 0; i < this.listeNode.size(); i++) {
 			if(this.listeNode.get(i).getX() == x && this.listeNode.get(i).getY() == y) {
@@ -311,7 +316,6 @@ public class Terrain {
 		}
 		return null;
 	}
-
 
 }
 

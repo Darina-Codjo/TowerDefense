@@ -1,8 +1,5 @@
 package TowerDefense.vue;
 
-
-//import TowerDefense.modele.Projectile;
-
 import TowerDefense.modele.projectile.Projectile;
 import TowerDefense.modele.projectile.ProjectileFeu;
 import TowerDefense.modele.projectile.ProjectileGlace;
@@ -43,12 +40,12 @@ public class ObservateurListeProjectile implements ListChangeListener<Projectile
 
 	@Override
 	public void onChanged(Change<? extends Projectile> c) {
-		while(c.next()){
-			// on cree leur sprite .
+		while(c.next()) {			
+			// on cree leur sprite dès qu'un projectile est ajouter à la liste .
 			for (Projectile nouveau: c.getAddedSubList()){
 				spriteProjectile(nouveau);
-			}
-			// on enleve leur sprite .
+			}			
+			// on enleve leur sprite dès qu'un projectile est retirer de la liste.
 			for (Projectile project: c.getRemoved()){
 				supprimerProjectile(project);
 			}

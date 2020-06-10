@@ -10,6 +10,8 @@ import TowerDefense.modele.ennemis.Serpent;
 import TowerDefense.modele.tourelle.TourelleFeu;
 import TowerDefense.modele.tourelle.TourelleGlace;
 import TowerDefense.modele.tourelle.TourelleRoche;
+import TowerDefense.modele.GrandeTour;
+import TowerDefense.modele.tourelle.TourelleDestructible;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
@@ -34,7 +36,7 @@ public class Projectile {
 
 	}
 
-	public String getIdEnnemi() {
+	public String getIdEnnemi(){
 		return this.positionEnnemis.getId();
 	}
 
@@ -71,45 +73,56 @@ public class Projectile {
 	}
 
 	public void agit() {
-
-		double variablex = this.getX() - positionEnnemis.getX();
+		//Regarde la différence de coordonées entre le projectile est l'ennemi
+		//pour savoir vers où le projectile doit se déplacer
+		double variablex= this.getX() - positionEnnemis.getX();
 		double variabley = this.getY() - positionEnnemis.getY();
 
-		if (variablex > 0) {
-			this.setX(this.getX() - 1);
-		} else if (variablex < 0) {
-			this.setX(this.getX() + 1);
-
+		//Modification des coordonées de la projectile en fonction du calcul précédent
+		if (variablex >0) { 
+			this.setX(this.getX()-1);
+		}
+		else if (variablex <0) {
+			this.setX(this.getX()+1);
+		}
+		if (variabley >0) {
+			this.setY(this.getY()-1);
+		}
+		else if (variabley <0) {
+			this.setY(this.getY()+1);
 		}
 
-		if (variabley > 0) {
-			this.setY(this.getY() - 1);
-		} else if (variabley < 0) {
-			this.setY(this.getY() + 1);
-
-		}
-
+		//Cas où le projectile à toucher l'ennemi
+		//Retire  les pv à l'ennemi
+		//Si 'ennemi n'a plus de pv et est donc mort il est retirer de la liste d'acteur et le joueur gagne de l'argent
+		//Le projectile est aussi retirer de la liste de projectile
 		if (variablex == 0 && variabley == 0) {
-
-			if ((positionEnnemis instanceof Scorpion && positionTourelle instanceof TourelleGlace)
-					|| (positionEnnemis instanceof Serpent && positionTourelle instanceof TourelleRoche)
-					|| (positionEnnemis instanceof Cactus && positionTourelle instanceof TourelleFeu)) {
+			if((positionEnnemis instanceof Scorpion && positionTourelle instanceof TourelleGlace) || 
+					(positionEnnemis instanceof Serpent && positionTourelle instanceof TourelleRoche) ||
+					(positionEnnemis instanceof Cactus && positionTourelle instanceof TourelleFeu)) {
 
 				positionEnnemis.setPvDegat(30);
 			}
-
 			else {
 				positionEnnemis.setPvDegat(20);
 			}
-
-			if (positionEnnemis.getPv() <= 0) {
+			if(positionTourelle instanceof GrandeTour) {
+				positionEnnemis.setVitesse(5);
+			}
+			if(positionTourelle instanceof TourelleDestructible) {
+				((TourelleDestructible) positionTourelle).setPvDegat(25);
+				if(((TourelleDestructible) positionTourelle).getPv()<=0) {
+					jeu.getListeActeurs().remove(positionTourelle);
+				}
+			}
+			if(positionTourelle instanceof GrandeTour) {
+				positionEnnemis.setVitesse(5);
+			}
+			if(positionEnnemis.getPv()<=0) {
 				jeu.getListeActeurs().remove(positionEnnemis);
 				jeu.incrementerArgent(10);
 			}
 			jeu.getListeProjectile().remove(this);
-
 		}
-
 	}
-
 }
