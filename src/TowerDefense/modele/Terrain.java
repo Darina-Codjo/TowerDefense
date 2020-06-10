@@ -212,9 +212,9 @@ public class Terrain {
 	
 	
 	//Cette méthode est peut être à placeer dans la classe tourelle
-	public double placerTourelleMilieuTuileCoordonnee(double coordonnee) {
+	public int placerTourelleMilieuTuileCoordonnee(int coordonnee) {
 		
-		double newX;		
+		int newX;		
 		if(coordonnee %16 > 8) {		
 			newX = coordonnee-(coordonnee%16 - 8);
 		}

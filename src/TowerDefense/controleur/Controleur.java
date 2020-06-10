@@ -65,7 +65,9 @@ public class Controleur implements Initializable{
     @FXML
     private RadioButton ajoutTourelleTirMultiple;
     @FXML
-    private RadioButton ajoutTourelleRoche;  
+    private RadioButton ajoutTourelleRoche; 
+    @FXML
+    private RadioButton retirerTourelle;
 	private VueTerrain vue;	
 	private static Timeline gameLoop;	
 	private CreerSprite sprite;	
@@ -77,7 +79,7 @@ public class Controleur implements Initializable{
 		this.monTerrain = new Terrain();
 		this.game = new Jeu(monTerrain);
 		this.vue = new VueTerrain(game, plateau);
-		this.sprite = new CreerSprite(plateau);
+		this.sprite = new CreerSprite(plateau,game);
 		ConstruireMap construireMap = new ConstruireMap(map, game, plateau, monTerrain);
 		construireMap.remplirTileMap();
 
@@ -91,24 +93,24 @@ public class Controleur implements Initializable{
 		this.monTerrain.placerNode();
 	}
 
-	@FXML
-	void ajouterActeur(ActionEvent event) {
-		Acteur cactus = new Cactus(monTerrain);
-		Acteur grandeTour = new GrandeTour(monTerrain, game);
-		Acteur serpent = new Serpent(monTerrain);
-		Acteur scorpion = new Scorpion(monTerrain);
-		Acteur scorpionSpeciale = new ScorpionSpeciale(monTerrain);
-		Acteur serpentSpeciale = new SerpentSpeciale(monTerrain);
-		Acteur cactusSpeciale = new CactusSpeciale(monTerrain);
-		
-		this.game.ajouterActeur(cactus);
-		this.game.ajouterActeur(grandeTour);
-		this.game.ajouterActeur(serpent);
-		this.game.ajouterActeur(scorpion);
-		this.game.ajouterActeur(scorpionSpeciale);
-		this.game.ajouterActeur(serpentSpeciale);
-		this.game.ajouterActeur(cactusSpeciale);
-	}
+//	@FXML
+//	void ajouterActeur(ActionEvent event) {
+//		Acteur cactus = new Cactus(monTerrain);
+//		Acteur grandeTour = new GrandeTour(monTerrain, game);
+//		Acteur serpent = new Serpent(monTerrain);
+//		Acteur scorpion = new Scorpion(monTerrain);
+//		Acteur scorpionSpeciale = new ScorpionSpeciale(monTerrain);
+//		Acteur serpentSpeciale = new SerpentSpeciale(monTerrain);
+//		Acteur cactusSpeciale = new CactusSpeciale(monTerrain);
+//		
+//		this.game.ajouterActeur(cactus);
+//		this.game.ajouterActeur(grandeTour);
+//		this.game.ajouterActeur(serpent);
+//		this.game.ajouterActeur(scorpion);
+//		this.game.ajouterActeur(scorpionSpeciale);
+//		this.game.ajouterActeur(serpentSpeciale);
+//		this.game.ajouterActeur(cactusSpeciale);
+//	}
 
 	@FXML
 	void AcheterTourelleSpeciale(ActionEvent event) {
@@ -123,38 +125,86 @@ public class Controleur implements Initializable{
 		RadioButton selectedToggleButton = (RadioButton) Tourelle.getSelectedToggle();
 		int x = (int) clic.getX()/16;
 		int y = (int) clic.getY()/16;
+		
+		
+		//x=this.monTerrain.placerTourelleMilieuTuileCoordonnee(x%16+16);
+		//y=this.monTerrain.placerTourelleMilieuTuileCoordonnee(y/16+16);
+		
+//		if(this.game.tuileDejaPrise(this.monTerrain.getTuileSansClic(x,y))) {
+//			message.setText("Une tourelle a déjà été posé ici !!");
+//		}
+//		else if(this.game.tourelleProche(x,y) != null) {
+//		message.setText("Vous êtes dans la zone d'une tourelle !");
+//		}
+//		else {
 
-		if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
-			Acteur acteur;
-			if(selectedToggleButton.equals(ajoutTourelleGlace)) {
-				acteur = new TourelleGlace(x,y, monTerrain, game);					
+			if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
+				Acteur acteur;
+				if(selectedToggleButton.equals(ajoutTourelleGlace)) {
+					acteur = new TourelleGlace(x,y, monTerrain, game);					
+				}
+				else if(selectedToggleButton.equals(ajoutTourelleFeu)) {
+					acteur = new TourelleFeu(x,y, monTerrain, game);
+				}
+				else if (selectedToggleButton.equals(ajoutTourelleRoche)){
+					acteur = new TourelleRoche(x,y, monTerrain, game);
+				}
+				else if (selectedToggleButton.equals(ajoutTourelleDestructible)) {
+					acteur = new TourelleDestructible(x,y, monTerrain, game,100);
+					this.game.acheterTourelleSpeciale();
+					this.ajoutTourelleTirMultiple.setVisible(false);
+					this.ajoutTourelleDestructible.setVisible(false);
+				}
+				else {
+					acteur = new TourelleTirMultiple(x,y, monTerrain, game);
+					this.game.acheterTourelleSpeciale();
+					this.ajoutTourelleTirMultiple.setVisible(false);
+					this.ajoutTourelleDestructible.setVisible(false);
+	
+				}
+				this.game.ajouterActeur(acteur);
+				this.sprite.tourelleSprite(acteur, x*16-16, y*16-16);
 			}
-			else if(selectedToggleButton.equals(ajoutTourelleFeu)) {
-				acteur = new TourelleFeu(x,y, monTerrain, game);
-			}
-			else if (selectedToggleButton.equals(ajoutTourelleRoche)){
-				acteur = new TourelleRoche(x,y, monTerrain, game);
-			}
-			else if (selectedToggleButton.equals(ajoutTourelleDestructible)) {
-				acteur = new TourelleDestructible(x,y, monTerrain, game,100);
-				this.game.acheterTourelleSpeciale();
-				this.ajoutTourelleTirMultiple.setVisible(false);
-				this.ajoutTourelleDestructible.setVisible(false);
-			}
-			else {
-				acteur = new TourelleTirMultiple(x,y, monTerrain, game);
-				this.game.acheterTourelleSpeciale();
-				this.ajoutTourelleTirMultiple.setVisible(false);
-				this.ajoutTourelleDestructible.setVisible(false);
-
-			}
-			this.game.ajouterActeur(acteur);
-			this.sprite.tourelleSprite(acteur, x*16-16, y*16-16);
-		}
+		//}
 	}
+	
+	@FXML
+    void retirerTourelle(MouseEvent event) {
+		RadioButton selectedToggleButton =(RadioButton) Tourelle.getSelectedToggle();
+		 
+		 this.plateau.setOnMouseClicked(clic -> {
+				int x = (int) clic.getX();
+				int y = (int) clic.getY();
+				
+				x=this.monTerrain.placerTourelleMilieuTuileCoordonnee(x);
+				y=this.monTerrain.placerTourelleMilieuTuileCoordonnee(y);
+				
+		 if(selectedToggleButton.equals(retirerTourelle)) {					
+				Acteur tours=this.game.tourelleProche(x, y);
+				if(this.game.tourelleProche(x,y) != null) {
+					this.sprite.retirerSpriteTourelle(tours);
+					this.game.getListeActeurs().remove(tours);
+				}
+				else {
+					message.setText("Aucune tourelle à enlever");
+				}
+				
+		}
+	});	
+    }
 
 	@FXML
 	void start(ActionEvent event) {
+		if( this.game.partieEnCours()){	
+			for(int i=0;i<this.game.getListeActeurs().size();i++) {
+				this.sprite.retirerSpriteTourelle(this.game.getListeActeurs().get(i));
+				
+			}
+			this.game.getListeActeurs().clear();
+			this.game.getListeProjectile().clear();
+			
+			
+		}
 		vue.getGameLoop().play();
 	}
 
