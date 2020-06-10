@@ -60,7 +60,7 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		plateau.getChildren().add(texture);
 		
 		
-		/*circle.setId(acteur.getId());
+		/*circle.setId(acteur.getId()); 
 		circle.translateXProperty().bind(acteur.xProperty()) ;
 		circle.translateYProperty().bind(acteur.yProperty()) ;
 		plateau.getChildren().add(circle);*/
