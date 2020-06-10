@@ -7,8 +7,8 @@ import TowerDefense.modele.dijkstra.Node;
 import javafx.scene.layout.TilePane;
 
 public class Terrain {
-	private int width = 480;
-	private int height = 480;
+	private double width = 480;
+	private double height = 480;
 	private double x;
 	private double y;
 	private TilePane map;
@@ -55,10 +55,10 @@ public class Terrain {
 		this.listeNode = new ArrayList<>();
 	}
 
-	public int getWidth() {
+	public double getWidth() {
 		return width;
 	}
-	public int getHeight() {
+	public double getHeight() {
 		return height;
 	}
 
