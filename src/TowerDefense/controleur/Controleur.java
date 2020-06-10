@@ -146,7 +146,7 @@ public class Controleur implements Initializable{
 	
 				}
 				this.game.ajouterActeur(acteur);
-				this.sprite.tourelleSprite(acteur, x*16-16, y*16-16);
+				this.sprite.tourelleSprite(acteur, x*16-8, y*16-8);
 			}
 		//}
 	}
