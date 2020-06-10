@@ -20,13 +20,13 @@ public class ObservateurListeProjectile implements ListChangeListener<Projectile
 	public void spriteProjectile(Projectile projectile) {	
 		Circle p;
 		if (projectile instanceof ProjectileFeu) {
-			p = new Circle(2, Color.RED);
+			p = new Circle(4, Color.RED);
 		}
 		else if (projectile instanceof ProjectileGlace) {
-			p = new Circle(2, Color.LIGHTBLUE);		
+			p = new Circle(4, Color.LIGHTBLUE);		
 		}
 		else {
-			p = new Circle(2, Color.GRAY);
+			p = new Circle(4, Color.GRAY);
 		}
 		p.setId(projectile.getId());
 		p.translateXProperty().bind(projectile.xProperty().multiply(16).add(8)) ;

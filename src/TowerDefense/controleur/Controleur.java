@@ -138,6 +138,11 @@ public class Controleur implements Initializable{
 //		}
 //		else {
 
+
+		if(this.game.tourelleProche(x,y) != null) {
+			message.setText("Vous êtes dans la zone d'une tourelle !");
+		}
+		else {
 			if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
 				Acteur acteur;
 				if(selectedToggleButton.equals(ajoutTourelleGlace)) {
@@ -163,9 +168,9 @@ public class Controleur implements Initializable{
 	
 				}
 				this.game.ajouterActeur(acteur);
-				this.sprite.tourelleSprite(acteur, x*16-16, y*16-16);
+				this.sprite.tourelleSprite(acteur, x*16-8, y*16-8);
 			}
-		//}
+		}
 	}
 	
 	@FXML
