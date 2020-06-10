@@ -37,13 +37,13 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		else if (acteur instanceof Scorpion) 
 			texture = new ImageView("textures/scorpion.png");
 		else if (acteur instanceof Serpent) 
-			texture = new ImageView("textures/serpent.jpg");
+			texture = new ImageView("textures/serpent.png");
 		else if (acteur instanceof CactusSpeciale)
 			texture = new ImageView("textures/cactusspecial.png");
 		else if (acteur instanceof ScorpionSpeciale)
 			texture = new ImageView("textures/scorpionspecial.png");
 		else if (acteur instanceof SerpentSpeciale)
-			texture = new ImageView("textures/serpentspecial.jpg");
+			texture = new ImageView("textures/serpentspecial.png");
 		else if (acteur instanceof GrandeTour) {
 			texture = new ImageView("textures/tour.png");
 		}
