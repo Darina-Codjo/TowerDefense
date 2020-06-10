@@ -99,7 +99,7 @@ public class Controleur implements Initializable{
 		Acteur scorpionSpeciale = new ScorpionSpeciale(monTerrain);
 		Acteur serpentSpeciale = new SerpentSpeciale(monTerrain);
 		Acteur cactusSpeciale = new CactusSpeciale(monTerrain);
-		System.out.println("kuku");
+		
 		this.game.ajouterActeur(cactus);
 		this.game.ajouterActeur(grandeTour);
 		this.game.ajouterActeur(serpent);

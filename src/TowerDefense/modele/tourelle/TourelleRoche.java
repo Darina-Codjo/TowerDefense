@@ -18,13 +18,9 @@ public class TourelleRoche extends TourelleBasique {
 		
 		if (ennemiViser != null) {
 			if(!getJeu().projectileExisteSurEnnemi(ennemiViser.getId())) {				
-				getJeu().getListeProjectile().add(new ProjectileFeu(this,ennemiViser,getJeu()));
-				
+				getJeu().getListeProjectile().add(new ProjectileFeu(this,ennemiViser,getJeu()));	
 			}			
 		}
 			
 	}
-
-
-
 }

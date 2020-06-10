@@ -17,9 +17,6 @@ public class TourelleTirMultiple extends Tourelle {
 			if(ennemisProcheTirTourelleMultiple(3,listeEnnemis().get(i)) && !getJeu().projectileExisteSurEnnemi(listeEnnemis().get(i).getId())) {
 				getJeu().getListeProjectile().add(new ProjectileRoche(this,listeEnnemis().get(i),getJeu()));
 			}
-		}
-		
-		
+		}	
 	}
-
 }

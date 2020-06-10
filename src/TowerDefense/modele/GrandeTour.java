@@ -12,8 +12,4 @@ public class GrandeTour extends Tours {
 	public void agit() {
 		
 	}
-	
-	
-	
-
 }

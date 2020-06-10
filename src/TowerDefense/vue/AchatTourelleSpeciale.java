@@ -11,11 +11,9 @@ public class AchatTourelleSpeciale implements ChangeListener<Number> {
 	
 	public AchatTourelleSpeciale(Label message2) {
 		super();
-		this.message=message2;
+		this.message = message2;
 	}
 	
-
-
 	@Override
 	public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 		
@@ -24,18 +22,4 @@ public class AchatTourelleSpeciale implements ChangeListener<Number> {
 		}
 		
 	}
-
-
-
-
-	
-	
-	
-	
-
-	
-
-
-	
-
 }

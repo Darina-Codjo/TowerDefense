@@ -19,7 +19,6 @@ public class TourelleFeu extends TourelleBasique{
 		if (ennemiViser != null) {
 			if(!getJeu().projectileExisteSurEnnemi(ennemiViser.getId())) {				
 				getJeu().getListeProjectile().add(new ProjectileFeu(this,ennemiViser,getJeu()));
-				
 			}			
 		}			
 	}

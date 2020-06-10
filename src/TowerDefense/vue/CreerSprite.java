@@ -59,27 +59,5 @@ public class CreerSprite {
 		texture.setTranslateX(x);
 		texture.setTranslateY(y);
 		plateau.getChildren().add(texture);
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }
