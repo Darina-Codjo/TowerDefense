@@ -60,8 +60,8 @@ public class CreerSprite {
 		}
 		
 		texture.setId(acteur.getId());
-		texture.setTranslateX(x);
-		texture.setTranslateY(y);
+		texture.setTranslateX(x-16);
+		texture.setTranslateY(y-16);
 		plateau.getChildren().add(texture);
 	}
 	
