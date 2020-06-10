@@ -78,6 +78,7 @@ public class Terrain {
 		return (int) (y*30+x);
 	}
 	
+	
 	//Ces 2 méthodes empêchent les ennemis de sortir du chemin et de se balader sur la carte
 	public boolean dansTerrain(double d, double e) {
 		return (0 <= d && d<this.width && 0<=e && e< this.height);
