@@ -22,6 +22,7 @@ public class Jeu {
 	private ObservableList<Acteur> listeActeur;
 	private ObservableList<Projectile> listeProjectile;
 	private SimpleIntegerProperty argent;
+	private static int nbVagues;
 	
 	
 	public Jeu(Terrain terrain) {
@@ -29,6 +30,7 @@ public class Jeu {
 		this.listeActeur = FXCollections.observableArrayList() ;
 		this.listeProjectile = FXCollections.observableArrayList() ;
 		this.argent = new SimpleIntegerProperty(0);
+		this.nbVagues=0;
 		
 	}
 	
@@ -145,6 +147,14 @@ public class Jeu {
 		return false;
 	}
 	
+	public int getNbVagues() {
+		return this.nbVagues;
+	}
+	
+	public void incrementerVagues() {
+		this.nbVagues++;
+	}
+	
 	
 	public Acteur tuileDejaPrise(double x, double y) {
 		Acteur tours=null;
@@ -177,28 +187,33 @@ public class Jeu {
 	}
 	
 	public void vagueEnnemis() {
-		Acteur cactus = new Cactus(monTerrain);
-		Acteur grandeTour = new GrandeTour(monTerrain, this);
-		Acteur serpent= new Serpent(monTerrain);
-		Acteur scorpion= new Scorpion(monTerrain);
-		Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
-		Acteur serpentSpeciale= new SerpentSpeciale(monTerrain);
-		Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
-		
-		ArrayList<Ennemis> liste = new ArrayList<Ennemis>();
-		liste.add((Ennemis) cactus);
-		liste.add((Ennemis) serpent);
-		liste.add((Ennemis) scorpion);
-		liste.add((Ennemis) scorpionSpeciale);
-		liste.add((Ennemis) cactusSpeciale);
-		liste.add((Ennemis) serpentSpeciale);
-		
-		Random random = new Random();      
-        int randomInt = random.nextInt(liste.size());
+		if(getNbVagues()<6) {
+			
+			Acteur cactus = new Cactus(monTerrain);
+			Acteur grandeTour = new GrandeTour(monTerrain, this);
+			Acteur serpent= new Serpent(monTerrain);
+			Acteur scorpion= new Scorpion(monTerrain);
+			Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
+			Acteur serpentSpeciale= new SerpentSpeciale(monTerrain);
+			Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
+
+			ArrayList<Ennemis> liste = new ArrayList<Ennemis>();
+			liste.add((Ennemis) cactus);
+			liste.add((Ennemis) serpent);
+			liste.add((Ennemis) scorpion);
+			liste.add((Ennemis) scorpionSpeciale);
+			liste.add((Ennemis) cactusSpeciale);
+			liste.add((Ennemis) serpentSpeciale);
+
+			Random random = new Random();      
+			int randomInt = random.nextInt(liste.size());
+
+			for(int i=0; i<=randomInt; i++) {
+				listeActeur.add(liste.get(i));
+			}
+			incrementerVagues();
+		}
         
-        for(int i=0; i<=randomInt; i++) {
-        	listeActeur.add(liste.get(i));
-        }
 	}
 	
 	

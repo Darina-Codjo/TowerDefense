@@ -173,8 +173,7 @@ public class Controleur implements Initializable{
 			}
 			this.game.getListeActeurs().clear();
 			this.game.getListeProjectile().clear();
-			
-			
+						
 		}
 		vue.getGameLoop().play();
 	}
