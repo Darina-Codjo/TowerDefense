@@ -12,7 +12,6 @@ public class ScorpionSpeciale extends Ennemis {
 	
 	public ScorpionSpeciale(Terrain terrain) {
 		super(terrain, 100, 0.5);
-		this.jeu=new Jeu(terrain);
 	}
 	
 	public void dedoublement() {

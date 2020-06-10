@@ -13,7 +13,7 @@ public class Tours  extends Acteur{
 
 	private Jeu jeu;
 
-	public Tours(int x, int y, Terrain terrain, Jeu jeu) {
+	public Tours(double x, double y, Terrain terrain, Jeu jeu) {
 		super(x, y, terrain);
 		this.jeu = jeu;
 	}

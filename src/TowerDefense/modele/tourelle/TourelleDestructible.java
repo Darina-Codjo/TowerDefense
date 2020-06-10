@@ -9,7 +9,7 @@ public class TourelleDestructible extends Tourelle {
 	
 	private int pv;
 
-	public TourelleDestructible(int x, int y, Terrain terrain, Jeu jeu, int pv) {
+	public TourelleDestructible(double x, double y, Terrain terrain, Jeu jeu, int pv) {
 		super(x, y, terrain, jeu);
 		this.pv = pv;		
 	}

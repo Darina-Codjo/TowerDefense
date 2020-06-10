@@ -8,7 +8,7 @@ import TowerDefense.modele.tourelle.Tourelle;
 
 public class TourelleGlace extends Tourelle {
 
-	public TourelleGlace(int x,int y, Terrain terrain,Jeu jeu) {
+	public TourelleGlace(double x, double y, Terrain terrain,Jeu jeu) {
 		super(x, y, terrain,jeu);
 	}
 	

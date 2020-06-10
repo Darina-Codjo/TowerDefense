@@ -7,7 +7,7 @@ import TowerDefense.modele.tourelle.Tourelle;
 
 public class TourelleTirMultiple extends Tourelle {
 
-	public TourelleTirMultiple(int x, int y, Terrain terrain, Jeu jeu) {
+	public TourelleTirMultiple(double x, double y, Terrain terrain, Jeu jeu) {
 		super(x, y, terrain, jeu);
 	}
 	

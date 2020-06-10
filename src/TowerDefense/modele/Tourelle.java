@@ -4,7 +4,7 @@ import TowerDefense.modele.Tours;
 
 public class Tourelle extends Tours {
 
-	public Tourelle(int x, int y, Terrain terrain, Jeu jeu) {
+	public Tourelle(double x,double y, Terrain terrain, Jeu jeu) {
 		super(x, y, terrain,jeu);
 	}
 	

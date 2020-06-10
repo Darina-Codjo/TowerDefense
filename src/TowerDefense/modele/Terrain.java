@@ -85,6 +85,20 @@ public class Terrain {
 	public int getTuileSansClic(double x, double y) {
 		return (int) (y*30+x);
 	}
+	public int getTuileSansClic2(double x, double y) {
+		double valeurX = x;
+		double valeurY = y;
+		int indice = 0;
+		while (valeurX >= 16) {
+			valeurX-=16;
+			indice ++;
+		}
+		while (valeurY >= 16) {
+			valeurY-=16;
+			indice += 30;
+		}
+		return indice;
+	}
 	
 	//Ces 2 méthodes empêchent les ennemis de sortir du chemin et de se balader sur la carte
 	public boolean dansTerrain(double d, double e) {
@@ -212,9 +226,9 @@ public class Terrain {
 	
 	
 	//Cette méthode est peut être à placeer dans la classe tourelle
-	public int placerTourelleMilieuTuileCoordonnee(int coordonnee) {
+	public double placerTourelleMilieuTuileCoordonnee(double coordonnee) {
 		
-		int newX;		
+		double newX;		
 		if(coordonnee %16 > 8) {		
 			newX = coordonnee-(coordonnee%16 - 8);
 		}
