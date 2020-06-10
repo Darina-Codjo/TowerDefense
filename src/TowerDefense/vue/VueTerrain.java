@@ -32,9 +32,10 @@ public class VueTerrain {
 
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.017), 
 				(ev ->{
-					this.game.tourDeJeuProjectile();
 					if (temps%30==0){
-						this.game.tourDeJeuActeur();						
+						this.game.tourDeJeuActeur();
+						this.game.tourDeJeuProjectile();
+
 					}
 					if(temps%500==0) {
 						this.game.vagueEnnemis();
