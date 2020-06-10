@@ -164,8 +164,8 @@ public class Jeu {
 		Acteur tours=null;
 		
 		for(int i=0; i<listeTourelle().size();i++) {
-			if(		(y-16<= listeTourelle().get(i).getY() && listeTourelle().get(i).getY()<=y+16) &&
-					(x-16<= listeTourelle().get(i).getX() && listeTourelle().get(i).getX()<=x+16)  
+			if(		(y-1<= listeTourelle().get(i).getY() && listeTourelle().get(i).getY()<=y+1) &&
+					(x-1<= listeTourelle().get(i).getX() && listeTourelle().get(i).getX()<=x+1)  
 					){
 				tours=listeTourelle().get(i);
 				return tours;

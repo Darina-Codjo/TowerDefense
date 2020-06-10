@@ -110,16 +110,16 @@ public class Controleur implements Initializable{
 		int y = (int) clic.getY()/16;
 		
 		
-		//x=this.monTerrain.placerTourelleMilieuTuileCoordonnee(x%16+16);
-		//y=this.monTerrain.placerTourelleMilieuTuileCoordonnee(y/16+16);
+		//x=(int) this.monTerrain.placerTourelleMilieuTuileCoordonnee(x%16+16);
+		//y=(int) this.monTerrain.placerTourelleMilieuTuileCoordonnee(y/16+16);
 		
-//		if(this.game.tuileDejaPrise(this.monTerrain.getTuileSansClic(x,y))) {
-//			message.setText("Une tourelle a déjà été posé ici !!");
-//		}
-//		else if(this.game.tourelleProche(x,y) != null) {
-//		message.setText("Vous êtes dans la zone d'une tourelle !");
-//		}
-//		else {
+		if(this.game.tuileDejaPrise(this.monTerrain.getTuileSansClic(x,y))) {
+			message.setText("Une tourelle a déjà été posé ici !!");
+		}
+		else if(this.game.tourelleProche(x,y) != null) {
+		message.setText("Vous êtes dans la zone d'une tourelle !");
+		}
+		else {
 
 			if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
 				Acteur acteur;
@@ -148,7 +148,7 @@ public class Controleur implements Initializable{
 				this.game.ajouterActeur(acteur);
 				this.sprite.tourelleSprite(acteur, x*16-8, y*16-8);
 			}
-		//}
+		}
 	}
 	
 
