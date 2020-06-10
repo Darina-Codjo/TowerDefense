@@ -117,7 +117,7 @@ public class Controleur implements Initializable{
 			this.ajoutTourelleDestructible.setVisible(true);
 		}
 	}
-
+	
 	@FXML
     void ajouterTourelle(MouseEvent clic) {
 		RadioButton selectedToggleButton = (RadioButton) Tourelle.getSelectedToggle();
