@@ -4,12 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import TowerDefense.modele.Acteur;
-import TowerDefense.modele.GrandeTour;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
-import TowerDefense.modele.ennemis.Cactus;
-import TowerDefense.modele.ennemis.CactusSpeciale;
-import TowerDefense.modele.ennemis.Scorpion;
 import TowerDefense.modele.tourelle.TourelleDestructible;
 import TowerDefense.modele.tourelle.TourelleFeu;
 import TowerDefense.modele.tourelle.TourelleGlace;
@@ -21,16 +17,11 @@ import TowerDefense.vue.CreerSprite;
 import TowerDefense.vue.ObservateurListeActeur;
 import TowerDefense.vue.ObservateurListeProjectile;
 import TowerDefense.vue.VueTerrain;
-import TowerDefense.modele.ennemis.ScorpionSpeciale;
-import TowerDefense.modele.ennemis.Serpent;
-import TowerDefense.modele.ennemis.SerpentSpeciale;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.TilePane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -93,25 +84,6 @@ public class Controleur implements Initializable{
 		this.monTerrain.placerNode();
 	}
 
-//	@FXML
-//	void ajouterActeur(ActionEvent event) {
-//		Acteur cactus = new Cactus(monTerrain);
-//		Acteur grandeTour = new GrandeTour(monTerrain, game);
-//		Acteur serpent = new Serpent(monTerrain);
-//		Acteur scorpion = new Scorpion(monTerrain);
-//		Acteur scorpionSpeciale = new ScorpionSpeciale(monTerrain);
-//		Acteur serpentSpeciale = new SerpentSpeciale(monTerrain);
-//		Acteur cactusSpeciale = new CactusSpeciale(monTerrain);
-//		
-//		this.game.ajouterActeur(cactus);
-//		this.game.ajouterActeur(grandeTour);
-//		this.game.ajouterActeur(serpent);
-//		this.game.ajouterActeur(scorpion);
-//		this.game.ajouterActeur(scorpionSpeciale);
-//		this.game.ajouterActeur(serpentSpeciale);
-//		this.game.ajouterActeur(cactusSpeciale);
-//	}
-
 	@FXML
 	void AcheterTourelleSpeciale(ActionEvent event) {
 		if(this.game.achatTourelleSpécialePossible()) {
@@ -125,19 +97,6 @@ public class Controleur implements Initializable{
 		RadioButton selectedToggleButton = (RadioButton) Tourelle.getSelectedToggle();
 		int x = (int) clic.getX()/16;
 		int y = (int) clic.getY()/16;
-		
-		
-		//x=this.monTerrain.placerTourelleMilieuTuileCoordonnee(x%16+16);
-		//y=this.monTerrain.placerTourelleMilieuTuileCoordonnee(y/16+16);
-		
-//		if(this.game.tuileDejaPrise(this.monTerrain.getTuileSansClic(x,y))) {
-//			message.setText("Une tourelle a déjà été posé ici !!");
-//		}
-//		else if(this.game.tourelleProche(x,y) != null) {
-//		message.setText("Vous êtes dans la zone d'une tourelle !");
-//		}
-//		else {
-
 
 		if(this.game.tourelleProche(x,y) != null) {
 			message.setText("Vous êtes dans la zone d'une tourelle !");
