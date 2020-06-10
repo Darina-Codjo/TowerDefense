@@ -37,13 +37,13 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		else if (acteur instanceof Scorpion) 
 			texture = new ImageView("textures/scorpion.png");
 		else if (acteur instanceof Serpent) 
-			texture = new ImageView("textures/serpent.jpg");
+			texture = new ImageView("textures/serpent.png");
 		else if (acteur instanceof CactusSpeciale)
 			texture = new ImageView("textures/cactusspecial.png");
 		else if (acteur instanceof ScorpionSpeciale)
 			texture = new ImageView("textures/scorpionspecial.png");
 		else if (acteur instanceof SerpentSpeciale)
-			texture = new ImageView("textures/serpentspecial.jpg");
+			texture = new ImageView("textures/serpentspecial.png");
 		else if (acteur instanceof GrandeTour) {
 			texture = new ImageView("textures/tour.png");
 		}
@@ -53,14 +53,14 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		}
 		
 		texture.setId(acteur.getId());
-		texture.setFitWidth(16);
-		texture.setFitHeight(16);
+		texture.setFitWidth(32);
+		texture.setFitHeight(32);
 		texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(8));
 		texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(8));
 		plateau.getChildren().add(texture);
 		
 		
-		/*circle.setId(acteur.getId());
+		/*circle.setId(acteur.getId()); 
 		circle.translateXProperty().bind(acteur.xProperty()) ;
 		circle.translateYProperty().bind(acteur.yProperty()) ;
 		plateau.getChildren().add(circle);*/

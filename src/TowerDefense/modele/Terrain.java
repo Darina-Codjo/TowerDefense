@@ -70,14 +70,6 @@ public class Terrain {
 		return mapDesert;
 	}
 	
-	public int nbrTuileMap(TilePane map) {
-		int nbrTuile = 0;
-		for(int i = 0; i < this.mapDesert.length; i++) {
-			nbrTuile++;
-		}
-		return nbrTuile;
-	}
-	
 	public int codeTuile(int indice) {
 		return this.getNumeroTuile(indice);
 	}
@@ -100,6 +92,7 @@ public class Terrain {
 		return indice;
 	}
 	
+	
 	//Ces 2 méthodes empêchent les ennemis de sortir du chemin et de se balader sur la carte
 	public boolean dansTerrain(double d, double e) {
 		return (0 <= d && d<this.width && 0<=e && e< this.height);
@@ -121,28 +114,6 @@ public class Terrain {
 		return false;
 	}
 
-	//utilisé pour verifier dijkstra a retirer si possible
-	public int getNbrTuileChemin() {
-		int nbrTuileChemin = 0;
-		for(int i = 0; i < mapDesert.length; i++) {
-			if(this.codeTuile(i) == 2 || this.codeTuile(i) == 50 || this.codeTuile(i) == 51) {
-				nbrTuileChemin++;
-			}
-		}
-		return nbrTuileChemin;
-	}
-
-	public int getIndiceTuileCheminSansDebutEtFin() {
-		int indiceCase2 = 0;	
-		for(int i = 0; i < mapDesert.length; i++) {
-			if(mapDesert[i] == 2) {
-				indiceCase2 = i;
-			}
-		}
-		return indiceCase2;
-	}
-
-	
 	
 	//Ces 2 méthode permettent de récupérer une des 3 tuiles du début et fin de chemin 
 	//ce qui nous permet de placer les ennemis et la frande Tour au bonne endroit 
@@ -160,7 +131,7 @@ public class Terrain {
 			if(mapDesert[i] == 50) {
 				compteurCase50++;
 			}
-			if(mapDesert[i] == 50 /*&& compteurCase50 == 1*/) {
+			if(mapDesert[i] == 50 && compteurCase50 == 1) {
 				indiceTuile1 = i;
 			}
 			if(mapDesert[i] == 50 && compteurCase50 == 2) {

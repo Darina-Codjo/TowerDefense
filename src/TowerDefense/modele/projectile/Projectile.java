@@ -80,16 +80,16 @@ public class Projectile {
 
 		//Modification des coordonées de la projectile en fonction du calcul précédent
 		if (variablex >0) { 
-			this.setX(this.getX()-1);
+			this.setX(this.getX()-0.5);
 		}
 		else if (variablex <0) {
-			this.setX(this.getX()+1);
+			this.setX(this.getX()+0.5);
 		}
 		if (variabley >0) {
-			this.setY(this.getY()-1);
+			this.setY(this.getY()-0.5);
 		}
 		else if (variabley <0) {
-			this.setY(this.getY()+1);
+			this.setY(this.getY()+0.5);
 		}
 
 		//Cas où le projectile à toucher l'ennemi
