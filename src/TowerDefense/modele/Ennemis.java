@@ -14,13 +14,15 @@ public class Ennemis extends Acteur{
 	private Jeu jeu;
 
 
-	public Ennemis(Terrain terrain, int pv, double v) {
+	public Ennemis(Terrain terrain, int pv, double v,Jeu jeu) {
 		super(terrain.getIndiceTuileDebutChemin()%30, terrain.getIndiceTuileDebutChemin()/30, terrain);
 		this.pv = pv;
 		this.vitesse = v;
 		this.directionX = 0;
 		this.directionY = 0;
+		this.jeu=jeu;
 	}
+	
 
 	public void plusieurCheminDijkstra(){
 		
@@ -116,6 +118,7 @@ public class Ennemis extends Acteur{
 	@Override
 	public void agit() {
 		this.seDeplacerDijkstra();
+		
 		for(int i=0; i< jeu.listeEnnemis().size();i++) {
 			if(jeu.listeEnnemis().get(i) instanceof CactusSpeciale) {
 				((CactusSpeciale) jeu.listeEnnemis().get(i)).rechargement();

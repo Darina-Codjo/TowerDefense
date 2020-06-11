@@ -193,15 +193,15 @@ public class Jeu {
 			//Acteur grandeTour = new GrandeTour(monTerrain, this);
 			//Acteur serpent= new Serpent(monTerrain);
 			//Acteur scorpion= new Scorpion(monTerrain);
-			Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
-			Acteur serpentSpeciale= new SerpentSpeciale(monTerrain);
-			Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
+			//Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
+			Acteur serpentSpeciale= new SerpentSpeciale(monTerrain, this);
+			Acteur cactusSpeciale=new CactusSpeciale(monTerrain, this);
 
 			ArrayList<Ennemis> liste = new ArrayList<Ennemis>();
 //			liste.add((Ennemis) cactus);
 //			liste.add((Ennemis) serpent);
 //			liste.add((Ennemis) scorpion);
-			liste.add((Ennemis) scorpionSpeciale);
+			//liste.add((Ennemis) scorpionSpeciale);
 			liste.add((Ennemis) cactusSpeciale);
 			liste.add((Ennemis) serpentSpeciale);
 
