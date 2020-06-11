@@ -22,7 +22,8 @@ public class Jeu {
 	private ObservableList<Acteur> listeActeur;
 	private ObservableList<Projectile> listeProjectile;
 	private SimpleIntegerProperty argent;
-	private static int nbVagues;
+	private int nbVagues;
+
 	
 	
 	public Jeu(Terrain terrain) {
@@ -31,7 +32,7 @@ public class Jeu {
 		this.listeProjectile = FXCollections.observableArrayList() ;
 		this.argent = new SimpleIntegerProperty(0);
 		this.nbVagues=0;
-		
+
 	}
 	
 	//Ces 2 méthodes sont appelé dans la gameloop
@@ -134,6 +135,20 @@ public class Jeu {
 		return argent ;
 	}
 	
+	public int getNbVagues() {
+		return this.nbVagues;
+	}
+	
+	public void setNbVagues(int nbVague) {
+		this.nbVagues=nbVague;
+	}
+	public void incrementerVagues() {
+		this.nbVagues++;
+	}
+	
+	
+	
+	
 	public void acheterTourelleSpeciale() {
 		int nbArgent=getArgent()-50;
 		this.setArgent(nbArgent);
@@ -147,13 +162,6 @@ public class Jeu {
 		return false;
 	}
 	
-	public int getNbVagues() {
-		return this.nbVagues;
-	}
-	
-	public void incrementerVagues() {
-		this.nbVagues++;
-	}
 	
 	
 	public Acteur tuileDejaPrise(double x, double y) {
@@ -187,33 +195,32 @@ public class Jeu {
 	}
 	
 	public void vagueEnnemis() {
-		if(getNbVagues()<6) {
+if(getNbVagues()<=6) {
+			Acteur cactus = new Cactus(monTerrain,this);
+			Acteur grandeTour = new GrandeTour(monTerrain, this);
+			Acteur serpent= new Serpent(monTerrain,this);
+			Acteur scorpion= new Scorpion(monTerrain,this);
+			Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain,this);
+			Acteur serpentSpeciale= new SerpentSpeciale(monTerrain,this);
+			Acteur cactusSpeciale=new CactusSpeciale(monTerrain,this);
 			
-			//Acteur cactus = new Cactus(monTerrain);
-			//Acteur grandeTour = new GrandeTour(monTerrain, this);
-			//Acteur serpent= new Serpent(monTerrain);
-			//Acteur scorpion= new Scorpion(monTerrain);
-			//Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
-			Acteur serpentSpeciale= new SerpentSpeciale(monTerrain, this);
-			Acteur cactusSpeciale=new CactusSpeciale(monTerrain, this);
-
 			ArrayList<Ennemis> liste = new ArrayList<Ennemis>();
-//			liste.add((Ennemis) cactus);
-//			liste.add((Ennemis) serpent);
-//			liste.add((Ennemis) scorpion);
-			//liste.add((Ennemis) scorpionSpeciale);
+			liste.add((Ennemis) cactus);
+			liste.add((Ennemis) serpent);
+			liste.add((Ennemis) scorpion);
+			liste.add((Ennemis) scorpionSpeciale);
 			liste.add((Ennemis) cactusSpeciale);
 			liste.add((Ennemis) serpentSpeciale);
-
+			
 			Random random = new Random();      
-			int randomInt = random.nextInt(liste.size());
-
-			for(int i=0; i<=randomInt; i++) {
-				listeActeur.add(liste.get(i));
-			}
-			incrementerVagues();
+	        int randomInt = random.nextInt(liste.size());
+	        
+	        for(int i=0; i<=randomInt; i++) {
+	        	listeActeur.add(liste.get(i));
+	        }
+	        incrementerVagues();
+	        
 		}
-        
 	}
 	
 	

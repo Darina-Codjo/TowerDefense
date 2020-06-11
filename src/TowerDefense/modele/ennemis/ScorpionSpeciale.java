@@ -8,7 +8,6 @@ public class ScorpionSpeciale extends Ennemis {
 	
 	private int pv;
 	private Terrain terrain;
-	private Jeu jeu;
 	
 	public ScorpionSpeciale(Terrain terrain, Jeu jeu) {
 		super(terrain, 100, 0.5, jeu);
@@ -17,7 +16,7 @@ public class ScorpionSpeciale extends Ennemis {
 	public void dedoublement() {
 
 		if(this.pv <= 0) {
-			Scorpion scorpionDouble = new Scorpion(terrain, jeu);
+			Scorpion scorpionDouble = new Scorpion(terrain, getJeu());
 		}
 
 	}

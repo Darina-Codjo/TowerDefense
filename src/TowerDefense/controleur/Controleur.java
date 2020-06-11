@@ -16,7 +16,6 @@ import TowerDefense.vue.CreerSprite;
 import TowerDefense.vue.ObservateurListeActeur;
 import TowerDefense.vue.ObservateurListeProjectile;
 import TowerDefense.vue.VueTerrain;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -173,7 +172,9 @@ public class Controleur implements Initializable{
 			}
 			this.game.getListeActeurs().clear();
 			this.game.getListeProjectile().clear();
-						
+
+			this.game.setNbVagues(0);
+
 		}
 		vue.getGameLoop().play();
 	}

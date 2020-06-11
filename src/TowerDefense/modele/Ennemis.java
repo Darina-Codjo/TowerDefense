@@ -4,6 +4,8 @@ import java.util.Random;
 
 import TowerDefense.modele.ennemis.CactusSpeciale;
 import TowerDefense.modele.ennemis.SerpentSpeciale;
+import TowerDefense.modele.Jeu;
+import TowerDefense.modele.Terrain;
 
 public class Ennemis extends Acteur{
 
@@ -21,6 +23,20 @@ public class Ennemis extends Acteur{
 		this.directionX = 0;
 		this.directionY = 0;
 		this.jeu=jeu;
+	}
+	
+	public Ennemis(double x, double y,Terrain terrain,int pv, int v, Jeu jeu) {
+		super(x,y,terrain);
+		this.vitesse = v;
+		this.directionX=0;
+		this.directionY=0;
+		this.jeu=jeu;
+		
+		
+	}
+	
+	public Jeu getJeu() {
+		return this.jeu;
 	}
 	
 
