@@ -2,22 +2,35 @@ package TowerDefense.modele;
 
 import java.util.Random;
 
+import TowerDefense.modele.ennemis.ScorpionSpeciale;
+import TowerDefense.modele.Jeu;
+
 public class Ennemis extends Acteur{
 
 	private double vitesse;
 	private int directionX;
 	private int directionY;
 	private int pv;
+	private Jeu jeu;
 
 
-	public Ennemis(Terrain terrain, int pv, double v) {
+	public Ennemis(Terrain terrain, int pv, double v, Jeu jeu) {
 		super(terrain.getIndiceTuileDebutChemin()%30, terrain.getIndiceTuileDebutChemin()/30, terrain);
 		this.pv = pv;
 		this.vitesse = v;
 		this.directionX = 0;
 		this.directionY = 0;
+		this.jeu=jeu;
 	}
 
+	public Jeu getJeu() {
+		return this.jeu;
+	}
+	
+	public void incrementerPv() {
+		this.pv++;
+	}
+	
 	public void plusieurCheminDijkstra(){
 		
 		Random random = new Random();
@@ -112,6 +125,14 @@ public class Ennemis extends Acteur{
 	@Override
 	public void agit() {
 		this.seDeplacerDijkstra();
+		
+		for(int i=0; i< jeu.listeEnnemis().size();i++) {
+			if(jeu.listeEnnemis().get(i) instanceof ScorpionSpeciale) {
+				System.out.println(jeu.listeEnnemis().get(i).getPv());
+				((ScorpionSpeciale) jeu.listeEnnemis().get(i)).dedoublement();
+			
+			}		
+		}
 	}
 
 	//Les méthodes get et set relatives au pv

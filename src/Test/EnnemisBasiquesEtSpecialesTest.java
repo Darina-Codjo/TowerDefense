@@ -12,8 +12,9 @@ import TowerDefense.modele.Terrain;
 
 class EnnemisBasiquesEtSpecialesTest {
 	
+	Jeu jeu;
 	Terrain terrain1 = new Terrain();
-	Ennemis ennemis1 = new Ennemis(terrain1,50,18);
+	Ennemis ennemis1 = new Ennemis(terrain1,50,18,jeu);
 
 	@Test
 	public final void testSetPvetSetVitesse() {
@@ -38,7 +39,7 @@ class EnnemisBasiquesEtSpecialesTest {
 	public final void testRechargement() {
 		
 		Terrain terrain=new Terrain();
-		CactusSpeciale cactusSpec1 = new CactusSpeciale(terrain);
+		CactusSpeciale cactusSpec1 = new CactusSpeciale(terrain,jeu);
 		cactusSpec1.setPvDegat(100);
 		assertEquals(0, cactusSpec1.getPv(),"verification pv mis à 0");
 		
@@ -53,7 +54,7 @@ class EnnemisBasiquesEtSpecialesTest {
 		
 		Terrain terrain= new Terrain();	
 		Jeu jeu= new Jeu(terrain);
-		ScorpionSpeciale scorpSpeciale1= new ScorpionSpeciale(terrain);
+		ScorpionSpeciale scorpSpeciale1= new ScorpionSpeciale(terrain,jeu);
 		jeu.ajouterActeur(scorpSpeciale1);
 		scorpSpeciale1.setPv(0);
 		

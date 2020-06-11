@@ -5,13 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
 
 class ActeurTest {
-
+	Jeu jeu;
 	Terrain terrain1 = new Terrain();
-	Ennemis acteur1 = new Ennemis(terrain1,5,6);
-	Ennemis acteur2 = new Ennemis(terrain1, 12,16);
+	Ennemis acteur1 = new Ennemis(terrain1,5,6,jeu);
+	Ennemis acteur2 = new Ennemis(terrain1, 12,16,jeu);
 	
 
 	@Test

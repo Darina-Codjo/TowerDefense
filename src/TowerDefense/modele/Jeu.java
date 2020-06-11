@@ -193,13 +193,12 @@ public class Jeu {
 	
 	public void vagueEnnemis() {
 		if(getNbVagues()<=6) {
-			Acteur cactus = new Cactus(monTerrain);
-			Acteur grandeTour = new GrandeTour(monTerrain, this);
-			Acteur serpent= new Serpent(monTerrain);
-			Acteur scorpion= new Scorpion(monTerrain);
-			Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
-			Acteur serpentSpeciale= new SerpentSpeciale(monTerrain);
-			Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
+			Acteur cactus = new Cactus(monTerrain,this);
+			Acteur serpent= new Serpent(monTerrain,this);
+			Acteur scorpion= new Scorpion(monTerrain,this);
+			Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain,this);
+			Acteur serpentSpeciale= new SerpentSpeciale(monTerrain,this);
+			Acteur cactusSpeciale=new CactusSpeciale(monTerrain,this);
 			
 			ArrayList<Ennemis> liste = new ArrayList<Ennemis>();
 			liste.add((Ennemis) cactus);
@@ -238,6 +237,14 @@ public class Jeu {
 	}
 	
 	
+	public void rechargement() {
+		
+		for(int i=0;i<listeEnnemis().size(); i++) {
+			if(listeEnnemis().get(i) instanceof CactusSpeciale) {
+				listeEnnemis().get(i).incrementerPv();
+			}
+		}
+	}
 	
 	
 	

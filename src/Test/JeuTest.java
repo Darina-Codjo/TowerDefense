@@ -32,8 +32,8 @@ class JeuTest {
 		
 		Terrain terrain = new Terrain();
 		Jeu jeu= new Jeu(terrain);
-		Cactus cactus = new Cactus(terrain);
-		Serpent serpent= new Serpent(terrain);
+		Cactus cactus = new Cactus(terrain,jeu);
+		Serpent serpent= new Serpent(terrain,jeu);
 		Tourelle tours = new TourelleGlace(160,140,terrain, jeu);
 		Projectile projectile= new Projectile(tours,cactus,jeu);
 		jeu.getListeProjectile().add(projectile);

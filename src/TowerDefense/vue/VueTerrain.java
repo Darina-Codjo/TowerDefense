@@ -35,6 +35,7 @@ public class VueTerrain {
 			
 					if(temps%10==0) {
 						this.game.tourDeJeuProjectile();
+						this.game.rechargement();
 					}
 					if (temps%45==0){
 						this.game.tourDeJeuActeur();						
@@ -43,6 +44,7 @@ public class VueTerrain {
 					if(temps%500==0) {
 						this.game.vagueEnnemis();
 					}
+					
 
 					temps++;
 				})

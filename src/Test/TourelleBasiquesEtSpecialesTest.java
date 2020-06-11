@@ -26,7 +26,7 @@ class TourelleBasiquesEtSpecialesTest {
 		Jeu jeu= new Jeu(terrain1);
 		Tourelle tours = new TourelleFeu(10,30,terrain1,jeu);
 		Tourelle tours2 = new TourelleGlace(160,140,terrain1, jeu);
-		Cactus cactus = new Cactus(terrain1);
+		Cactus cactus = new Cactus(terrain1,jeu);
 		cactus.setX(200);
 		cactus.setY(130);
 		
@@ -41,7 +41,7 @@ class TourelleBasiquesEtSpecialesTest {
 		Terrain terrain1= new Terrain();
 		Jeu jeu= new Jeu(terrain1);
 		Tourelle tours = new TourelleGlace(160,140,terrain1, jeu);
-		Cactus cactus= new Cactus(terrain1);
+		Cactus cactus= new Cactus(terrain1,jeu);
 		cactus.setX(200);
 		cactus.setY(130);	
 		jeu.ajouterActeur(cactus);
@@ -57,7 +57,7 @@ class TourelleBasiquesEtSpecialesTest {
 		Jeu jeu= new Jeu(terrain1);
 		Tourelle tours = new TourelleGlace(160,140,terrain1, jeu);
 		
-		Serpent serpent= new Serpent(terrain1);
+		Serpent serpent= new Serpent(terrain1,jeu);
 		serpent.setX(2);
 		serpent.setY(6);
 		jeu.ajouterActeur(serpent);
