@@ -174,11 +174,16 @@ public class Controleur implements Initializable{
 
 	@FXML
 
-	void start(ActionEvent event) throws InexistantException {
-
-		TourelleExiste.tourellsPlus0();
+	void start(ActionEvent event) {
+		boolean tourExiste = true;
+		try {
+			TourelleExiste.tourellsPlus0();
+		}catch(InexistantException ie) {
+			tourExiste = false;
+		}
+		if (tourExiste) {
 		vue.getGameLoop().play();
-
+		}
 	}
 
 	@FXML
