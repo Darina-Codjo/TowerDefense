@@ -55,8 +55,8 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		texture.setId(acteur.getId());
 		texture.setFitWidth(32);
 		texture.setFitHeight(32);
-		texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(8));
-		texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(8));
+		texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(-24));
+		texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(-24));
 		plateau.getChildren().add(texture);
 		
 		
