@@ -26,28 +26,28 @@ public class CreerSprite {
 		ImageView texture;
 		if (acteur instanceof TourelleGlace ) {
 			texture = new ImageView("textures/tourelleglace.png");
-			texture.setFitWidth(64);
+			texture.setFitWidth(48);
 			texture.setPreserveRatio(true);
 		}
 		else if (acteur instanceof TourelleFeu) {
 			texture = new ImageView("textures/tourellefeu.png");
-			texture.setFitWidth(64);
+			texture.setFitWidth(48);
 			texture.setPreserveRatio(true);
 		}
 		else if (acteur instanceof TourelleRoche){
 			texture = new ImageView("textures/tourelleroche.png");
-			texture.setFitWidth(64);
+			texture.setFitWidth(48);
 			texture.setPreserveRatio(true);
 		}
 		
 		else if (acteur instanceof TourelleDestructible) {
 			texture = new ImageView("textures/tour.png");
-			texture.setFitWidth(64);
+			texture.setFitWidth(48);
 			texture.setPreserveRatio(true);
 		}
 		else {
 			texture = new ImageView("textures/toursnipe.png");
-			texture.setFitWidth(64);
+			texture.setFitWidth(48);
 			texture.setPreserveRatio(true);
 		}
 		

@@ -108,7 +108,7 @@ public class Controleur implements Initializable{
 			}
 			else {
 				Acteur acteur=null;
-				if(!this.monTerrain.dansChemin(this.monTerrain.getTuileSansClic(x, y))) {
+				if(!this.monTerrain.dansChemin(this.monTerrain.getTuile(x, y))) {
 					
 					if(selectedToggleButton.equals(ajoutTourelleGlace)) {
 						acteur = new TourelleGlace(x,y, monTerrain, game);					

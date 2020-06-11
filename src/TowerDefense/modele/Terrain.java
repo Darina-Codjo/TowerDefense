@@ -74,7 +74,7 @@ public class Terrain {
 		return this.getNumeroTuile(indice);
 	}
 
-	public int getTuileSansClic(double x, double y) {
+	public int getTuile(double x, double y) {
 		return (int) (y*30+x);
 	}
 	
