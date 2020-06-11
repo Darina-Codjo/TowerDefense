@@ -19,7 +19,7 @@ import javafx.collections.ObservableList;
 public class Jeu {
 	
 	private Terrain monTerrain;
-	private ObservableList<Acteur> listeActeur;
+	private static ObservableList<Acteur> listeActeur;
 	private ObservableList<Projectile> listeProjectile;
 	private SimpleIntegerProperty argent;
 	private int nbVagues;
@@ -59,7 +59,7 @@ public class Jeu {
 	//Toutes les méthodes qui renvoit des liste : liste d'acteur (ennemis et tourelle ensemble), 
 	//liste de tourelle, liste d'ennemis et la liste de projectile
 	//les liste d'acteur et de projectiles sont des observableListe puisqu'elles sont liés à la vue
-	public ArrayList<Tourelle> listeTourelle(){
+	public static ArrayList<Tourelle> listeTourelle(){
 		ArrayList<Tourelle> listeTourelle = new ArrayList<Tourelle>();
 		for(int i=0; i< getListeActeurs().size();i++) {
 			if (getListeActeurs().get(i) instanceof Tourelle) {
@@ -80,7 +80,7 @@ public class Jeu {
 		return listeEnnemis;	
 	}
 	
-	public ObservableList<Acteur> getListeActeurs() {
+	public static ObservableList<Acteur> getListeActeurs() {
 		return listeActeur;
 	}
 	
