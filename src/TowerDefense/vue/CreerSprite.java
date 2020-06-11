@@ -1,22 +1,14 @@
 package TowerDefense.vue;
 
 import TowerDefense.modele.Acteur;
-import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.tourelle.TourelleDestructible;
 import TowerDefense.modele.tourelle.TourelleFeu;
 import TowerDefense.modele.tourelle.TourelleGlace;
 import TowerDefense.modele.tourelle.TourelleRoche;
-import TowerDefense.modele.ennemis.Cactus;
-import TowerDefense.modele.ennemis.Scorpion;
-import TowerDefense.modele.ennemis.ScorpionSpeciale;
-import TowerDefense.modele.ennemis.Serpent;
-import TowerDefense.modele.ennemis.SerpentSpeciale;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
 public class CreerSprite {
 	

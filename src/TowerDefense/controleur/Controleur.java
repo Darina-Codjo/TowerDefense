@@ -16,7 +16,6 @@ import TowerDefense.vue.CreerSprite;
 import TowerDefense.vue.ObservateurListeActeur;
 import TowerDefense.vue.ObservateurListeProjectile;
 import TowerDefense.vue.VueTerrain;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

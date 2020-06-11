@@ -8,7 +8,6 @@ public class Ennemis extends Acteur{
 	private int directionX;
 	private int directionY;
 	private int pv;
-	private Jeu jeu;
 
 
 	public Ennemis(Terrain terrain, int pv, double v) {

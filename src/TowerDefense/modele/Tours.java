@@ -1,7 +1,5 @@
 package TowerDefense.modele;
 
-import java.util.ArrayList;
-
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.tourelle.TourelleFeu;
 import TowerDefense.modele.tourelle.TourelleGlace;
