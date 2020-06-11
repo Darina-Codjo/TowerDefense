@@ -2,6 +2,9 @@ package TowerDefense.modele;
 
 import java.util.Random;
 
+import TowerDefense.modele.ennemis.CactusSpeciale;
+import TowerDefense.modele.ennemis.SerpentSpeciale;
+
 public class Ennemis extends Acteur{
 
 	private double vitesse;
@@ -113,6 +116,16 @@ public class Ennemis extends Acteur{
 	@Override
 	public void agit() {
 		this.seDeplacerDijkstra();
+		for(int i=0; i< jeu.listeEnnemis().size();i++) {
+			if(jeu.listeEnnemis().get(i) instanceof CactusSpeciale) {
+				((CactusSpeciale) jeu.listeEnnemis().get(i)).rechargement();
+			}
+			else if(jeu.listeEnnemis().get(i) instanceof SerpentSpeciale) {
+				((SerpentSpeciale) jeu.listeEnnemis().get(i)).destructeurs(5);
+			}
+			
+			
+		}
 	}
 
 	//Les méthodes get et set relatives au pv

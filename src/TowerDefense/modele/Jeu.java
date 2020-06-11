@@ -189,18 +189,18 @@ public class Jeu {
 	public void vagueEnnemis() {
 		if(getNbVagues()<6) {
 			
-			Acteur cactus = new Cactus(monTerrain);
-			Acteur grandeTour = new GrandeTour(monTerrain, this);
-			Acteur serpent= new Serpent(monTerrain);
-			Acteur scorpion= new Scorpion(monTerrain);
+			//Acteur cactus = new Cactus(monTerrain);
+			//Acteur grandeTour = new GrandeTour(monTerrain, this);
+			//Acteur serpent= new Serpent(monTerrain);
+			//Acteur scorpion= new Scorpion(monTerrain);
 			Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
 			Acteur serpentSpeciale= new SerpentSpeciale(monTerrain);
 			Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
 
 			ArrayList<Ennemis> liste = new ArrayList<Ennemis>();
-			liste.add((Ennemis) cactus);
-			liste.add((Ennemis) serpent);
-			liste.add((Ennemis) scorpion);
+//			liste.add((Ennemis) cactus);
+//			liste.add((Ennemis) serpent);
+//			liste.add((Ennemis) scorpion);
 			liste.add((Ennemis) scorpionSpeciale);
 			liste.add((Ennemis) cactusSpeciale);
 			liste.add((Ennemis) serpentSpeciale);
