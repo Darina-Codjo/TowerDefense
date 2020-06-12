@@ -62,6 +62,7 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		
 		plateau.getChildren().add(texture);
 		
+		
 
 	}
 	
