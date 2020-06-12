@@ -102,10 +102,9 @@ public class Controleur implements Initializable{
 	}
 
 	@FXML
-	void ajouterTourelle(MouseEvent event) {
+	void ajouterTourelle(MouseEvent clic) {
 		RadioButton selectedToggleButton = (RadioButton) Tourelle.getSelectedToggle();
 		message.setText("");
-		this.plateau.setOnMouseClicked(clic -> {
 			int x = (int) clic.getX()/16;
 			int y = (int) clic.getY()/16;
 
@@ -117,6 +116,17 @@ public class Controleur implements Initializable{
 				if(this.game.tourelleProche(x,y) != null) {
 					message.setText("Vous êtes dans la zone d'une tourelle !");
 				}
+				/*else if(this.monTerrain.dansChemin(this.monTerrain.getTuile(x-48, y-48)) && 
+						this.monTerrain.dansChemin(this.monTerrain.getTuile(x+48, y+48)) && 
+						this.monTerrain.dansChemin(this.monTerrain.getTuile(x-48, y+48)) &&
+						this.monTerrain.dansChemin(this.monTerrain.getTuile(x+48, y-48)) &&
+						this.monTerrain.dansChemin(this.monTerrain.getTuile(x-48, y)) && 
+						this.monTerrain.dansChemin(this.monTerrain.getTuile(x, y-48)) && 
+						this.monTerrain.dansChemin(this.monTerrain.getTuile(x+48, y)) && 
+						this.monTerrain.dansChemin(this.monTerrain.getTuile(x, y+48))
+						) {
+					message.setText("Vous êtes trop éloignés du chemin!");
+				}*/
 				else {
 					Acteur acteur=null;
 					if(!this.monTerrain.dansChemin(this.monTerrain.getTuile(x, y))) {
@@ -152,7 +162,7 @@ public class Controleur implements Initializable{
 					}
 				}
 			}
-		});
+		
 	}
 
 
