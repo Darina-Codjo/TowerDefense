@@ -97,6 +97,7 @@ public class Controleur implements Initializable{
 		if(this.game.achatTourelleSpécialePossible()) {
 			this.ajoutTourelleTirMultiple.setVisible(true);
 			this.ajoutTourelleDestructible.setVisible(true);
+			this.game.acheterTourelleSpeciale();
 		}
 	}
 
