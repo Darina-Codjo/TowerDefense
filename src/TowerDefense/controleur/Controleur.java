@@ -11,6 +11,7 @@ import TowerDefense.modele.tourelle.TourelleFeu;
 import TowerDefense.modele.tourelle.TourelleGlace;
 import TowerDefense.modele.tourelle.TourelleRoche;
 import TowerDefense.modele.tourelle.TourelleTirMultiple;
+import TowerDefense.modele.GrandeTour;
 import TowerDefense.vue.AchatTourelleSpeciale;
 import TowerDefense.vue.ConstruireMap;
 import TowerDefense.vue.CreerSprite;
@@ -65,6 +66,7 @@ public class Controleur implements Initializable{
 	private Gameloop vue;		
 	private CreerSprite sprite;	
 	private Jeu game;
+	private GrandeTour tour;
 
 
 	@Override
@@ -73,6 +75,7 @@ public class Controleur implements Initializable{
 		this.game = new Jeu(monTerrain);
 		this.vue = new Gameloop(game, plateau);
 		this.sprite = new CreerSprite(plateau,game);
+		this.tour = new GrandeTour(monTerrain, game);
 		ConstruireMap construireMap = new ConstruireMap(map, game, plateau, monTerrain);
 		construireMap.remplirTileMap();
 
@@ -84,6 +87,7 @@ public class Controleur implements Initializable{
 		this.ajoutTourelleTirMultiple.setVisible(false);
 		this.ajoutTourelleDestructible.setVisible(false);
 		this.monTerrain.placerNode();
+		this.game.ajouterActeur(tour);
 	}
 
 
@@ -143,7 +147,7 @@ public class Controleur implements Initializable{
 					}
 					if (acteur!= null) {
 						this.game.ajouterActeur(acteur);
-						this.sprite.tourelleSprite(acteur, x*16-8, y*16-8);
+						this.sprite.tourelleSprite(acteur, x*16-16, y*16-32);
 					}
 				}
 			}
