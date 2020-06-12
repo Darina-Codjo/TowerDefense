@@ -22,7 +22,7 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	}
 	
 	public void acteurSprite(Acteur acteur) {
-		/*Circle circle = new Circle(3);*/
+		
 		
 		ImageView texture;
 			
@@ -53,11 +53,6 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(-24));
 		plateau.getChildren().add(texture);
 		
-		
-		/*circle.setId(acteur.getId()); 
-		circle.translateXProperty().bind(acteur.xProperty()) ;
-		circle.translateYProperty().bind(acteur.yProperty()) ;
-		plateau.getChildren().add(circle);*/
 
 	}
 	

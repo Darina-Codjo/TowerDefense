@@ -128,7 +128,6 @@ public class Ennemis extends Acteur{
 		
 		for(int i=0; i< jeu.listeEnnemis().size();i++) {
 			if(jeu.listeEnnemis().get(i) instanceof ScorpionSpeciale) {
-				System.out.println(jeu.listeEnnemis().get(i).getPv());
 				((ScorpionSpeciale) jeu.listeEnnemis().get(i)).dedoublement();
 			
 			}		

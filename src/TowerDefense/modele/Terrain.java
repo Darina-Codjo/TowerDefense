@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import TowerDefense.modele.dijkstra.Node;
-import javafx.scene.layout.TilePane;
 
 public class Terrain {
 	private int width = 480;
 	private int height = 480;
 	private double x;
 	private double y;
-	private TilePane map;
 	private ArrayList<Node> listeNode;
-	private Node noeud;
+
 
 	private int[] mapDesert = {	5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5,  4 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1,
 								5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 4 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 1, 

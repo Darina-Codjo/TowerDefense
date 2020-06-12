@@ -3,8 +3,6 @@ package TowerDefense.controleur;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Exceptions.InexistantException;
-import Exceptions.TourelleExiste;
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
@@ -18,7 +16,9 @@ import TowerDefense.vue.ConstruireMap;
 import TowerDefense.vue.CreerSprite;
 import TowerDefense.vue.ObservateurListeActeur;
 import TowerDefense.vue.ObservateurListeProjectile;
-import TowerDefense.vue.VueTerrain;
+import exceptions.InexistantException;
+import exceptions.TourelleExiste;
+import TowerDefense.vue.Gameloop;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -62,7 +62,7 @@ public class Controleur implements Initializable{
 	private RadioButton ajoutTourelleRoche; 
 	@FXML
 	private RadioButton retirerTourelle;
-	private VueTerrain vue;		
+	private Gameloop vue;		
 	private CreerSprite sprite;	
 	private Jeu game;
 
@@ -71,7 +71,7 @@ public class Controleur implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		this.monTerrain = new Terrain();
 		this.game = new Jeu(monTerrain);
-		this.vue = new VueTerrain(game, plateau);
+		this.vue = new Gameloop(game, plateau);
 		this.sprite = new CreerSprite(plateau,game);
 		ConstruireMap construireMap = new ConstruireMap(map, game, plateau, monTerrain);
 		construireMap.remplirTileMap();
@@ -99,6 +99,7 @@ public class Controleur implements Initializable{
 	@FXML
 	void ajouterTourelle(MouseEvent event) {
 		RadioButton selectedToggleButton = (RadioButton) Tourelle.getSelectedToggle();
+		message.setText("");
 		this.plateau.setOnMouseClicked(clic -> {
 			int x = (int) clic.getX()/16;
 			int y = (int) clic.getY()/16;
@@ -135,12 +136,10 @@ public class Controleur implements Initializable{
 							this.game.acheterTourelleSpeciale();
 							this.ajoutTourelleTirMultiple.setVisible(false);
 							this.ajoutTourelleDestructible.setVisible(false);
-
 						}
 						else {
 							message.setText("Aucune tourelle à enlever");
 						}
-
 					}
 					if (acteur!= null) {
 						this.game.ajouterActeur(acteur);
@@ -166,14 +165,11 @@ public class Controleur implements Initializable{
 					this.sprite.retirerSpriteTourelle(tours);
 					this.game.getListeActeurs().remove(tours);
 				}
-
-
 			}
 		});	
 	}
 
 	@FXML
-
 	void start(ActionEvent event) {
 		boolean tourExiste = true;
 		try {
@@ -189,6 +185,7 @@ public class Controleur implements Initializable{
 	@FXML
 	void restart(ActionEvent event) {
 		if( this.game.partieEnCours()){	
+			
 			for(int i=0;i<this.game.getListeActeurs().size();i++) {
 				this.sprite.retirerSpriteTourelle(this.game.getListeActeurs().get(i));
 			}
@@ -197,8 +194,5 @@ public class Controleur implements Initializable{
 			this.game.setNbVagues(0);
 
 		}
-
-
 	}
-
 }

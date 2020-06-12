@@ -3,7 +3,6 @@ package TowerDefense.modele;
 import java.util.ArrayList;
 import java.util.Random;
 import TowerDefense.modele.projectile.Projectile;
-import TowerDefense.modele.tourelle.Tourelle;
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.ennemis.Cactus;
 import TowerDefense.modele.ennemis.CactusSpeciale;
@@ -59,11 +58,11 @@ public class Jeu {
 	//Toutes les méthodes qui renvoit des liste : liste d'acteur (ennemis et tourelle ensemble), 
 	//liste de tourelle, liste d'ennemis et la liste de projectile
 	//les liste d'acteur et de projectiles sont des observableListe puisqu'elles sont liés à la vue
-	public static ArrayList<Tourelle> listeTourelle(){
-		ArrayList<Tourelle> listeTourelle = new ArrayList<Tourelle>();
+	public static ArrayList<Tours> listeTourelle(){
+		ArrayList<Tours> listeTourelle = new ArrayList<Tours>();
 		for(int i=0; i< getListeActeurs().size();i++) {
-			if (getListeActeurs().get(i) instanceof Tourelle) {
-				listeTourelle.add((Tourelle) getListeActeurs().get(i));
+			if (getListeActeurs().get(i) instanceof Tours) {
+				listeTourelle.add((Tours) getListeActeurs().get(i));
 			}
 		}
 		return listeTourelle;
@@ -146,7 +145,8 @@ public class Jeu {
 	
 	
 	
-	
+	//Ces 2 méthodes gèrent l'achat d'une tourelle spéciale
+	//La première fait l'achat et la deuxième vérifie que l'achat est possible
 	public void acheterTourelleSpeciale() {
 		int nbArgent=getArgent()-50;
 		this.setArgent(nbArgent);
@@ -161,21 +161,8 @@ public class Jeu {
 	}
 	
 	
-	public Acteur tuileDejaPrise(double x, double y) {
-		Acteur tours=null;
-		
-		for(int i=0; i<listeTourelle().size();i++) {
-			if(		(y-1<= listeTourelle().get(i).getY() && listeTourelle().get(i).getY()<=y+1) &&
-					(x-1<= listeTourelle().get(i).getX() && listeTourelle().get(i).getX()<=x+1)  
-					){
-				tours=listeTourelle().get(i);
-				return tours;
-			}
-		}
-		return tours ;
-	}
 	
-	//Certainemement pas au bonne endroit (classe tourelle surement)
+	
 	public Acteur tourelleProche(double x, double y) {
 
 		Acteur tours=null;
@@ -190,6 +177,7 @@ public class Jeu {
 		}
 		return tours ;
 	}
+	
 	
 	public void vagueEnnemis() {
 		if(getNbVagues()<=6) {
@@ -209,11 +197,9 @@ public class Jeu {
 			liste.add((Ennemis) serpentSpeciale);
 			
 			Random random = new Random();      
-	        int randomInt = random.nextInt(liste.size());
-	        
-	        for(int i=0; i<=randomInt; i++) {
-	        	listeActeur.add(liste.get(i));
-	        }
+	        int randomInt = random.nextInt(liste.size());      
+	        	listeActeur.add(liste.get(randomInt));
+	  
 	        incrementerVagues();
 	        
 		}
@@ -237,6 +223,7 @@ public class Jeu {
 	}
 	
 	
+	//Au cours du jeu si il y a un cactus spéciale, ses pv s'incrémentent
 	public void rechargement() {
 		
 		for(int i=0;i<listeEnnemis().size(); i++) {

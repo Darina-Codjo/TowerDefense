@@ -1,4 +1,4 @@
-package Test;
+package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,7 +9,7 @@ import TowerDefense.modele.Jeu;
 import TowerDefense.modele.projectile.Projectile;
 import TowerDefense.modele.ennemis.Serpent;
 import TowerDefense.modele.Terrain;
-import TowerDefense.modele.tourelle.Tourelle;
+import TowerDefense.modele.Tours;
 import TowerDefense.modele.tourelle.TourelleFeu;
 import TowerDefense.modele.tourelle.TourelleGlace;
 
@@ -19,7 +19,7 @@ class JeuTest {
 	void testTuileDejaPrise() {
 		Terrain terrain1= new Terrain();
 		Jeu jeu= new Jeu(terrain1);
-		Tourelle tours = new TourelleFeu(10,30,terrain1,jeu);
+		Tours tours = new TourelleFeu(10,30,terrain1,jeu);
 		jeu.ajouterActeur(tours);
 		
 //		assertTrue(jeu.tuileDejaPrise(terrain1.getTuileSansClic(10, 30)));
@@ -34,7 +34,7 @@ class JeuTest {
 		Jeu jeu= new Jeu(terrain);
 		Cactus cactus = new Cactus(terrain,jeu);
 		Serpent serpent= new Serpent(terrain,jeu);
-		Tourelle tours = new TourelleGlace(160,140,terrain, jeu);
+		Tours tours = new TourelleGlace(160,140,terrain, jeu);
 		Projectile projectile= new Projectile(tours,cactus,jeu);
 		jeu.getListeProjectile().add(projectile);
 		

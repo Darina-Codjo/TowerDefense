@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 import TowerDefense.modele.Jeu;
 import javafx.scene.control.Alert;
