@@ -1,29 +1,14 @@
 package TowerDefense.modele.ennemis;
 
 import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
 
 public class CactusSpeciale extends Ennemis{
-	
-	
-	public CactusSpeciale(Terrain terrain) {
-		super(terrain,100,10);
-	}
-	
-	
-	public void rechargement() {
-		int temps=0;
-		int newPV=0;
-		
-		while(newPV != 100) {
-			temps++;
-			newPV++;
-			if (temps%10==0)
-				this.setPv(newPV);
 
-		}
+
+	public CactusSpeciale(Terrain terrain,Jeu jeu) {
+		super(terrain,200,0.5, jeu);
 	}
-	
-	
 
 }

@@ -1,6 +1,7 @@
 package TowerDefense.vue;
 
 import TowerDefense.modele.Jeu;
+import TowerDefense.modele.Terrain;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
@@ -11,11 +12,13 @@ public class ConstruireMap {
 	private Jeu game;
 	@SuppressWarnings("unused")
 	private Pane plateau;
+	private Terrain terrain;
 	
-	public ConstruireMap (TilePane map, Jeu game, Pane plateau) {
+	public ConstruireMap (TilePane map, Jeu game, Pane plateau, Terrain terrain) {
 		this.map = map;
 		this.game = game;
 		this.plateau = plateau;
+		this.terrain = terrain;
 	}
 	
 	//rempli la TileMap par des blocs de texture
@@ -25,5 +28,8 @@ public class ConstruireMap {
 			this.map.getChildren().add(texture);
 		}
 	}
+	
+	
+	
 	
 }

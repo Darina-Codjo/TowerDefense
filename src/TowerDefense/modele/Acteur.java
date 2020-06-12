@@ -14,8 +14,8 @@ public abstract class Acteur {
 	
 	public Acteur(double x, double y, Terrain terrain) {
 		this.terrain = terrain;	
-		this.xProperty =new SimpleDoubleProperty(x) ;
-		this.yProperty =new SimpleDoubleProperty(y) ;
+		this.xProperty = new SimpleDoubleProperty(x) ;
+		this.yProperty = new SimpleDoubleProperty(y) ;
 		this.id="A"+compteur;
 		compteur++;
 	}
@@ -26,17 +26,17 @@ public abstract class Acteur {
 	}
 	
 	public void setCompteur(int newCompteur) {
-		compteur=newCompteur;
+		this.compteur = newCompteur;
 	}
 	
 	
 	
 	public double getX() {
-		return xProperty.getValue();
+		return this.xProperty.getValue();
 	}
 	
 	public void setX(double newPositionX) {
-		xProperty.setValue(newPositionX) ;
+		this.xProperty.setValue(newPositionX) ;
 	}
 	
 	public DoubleProperty xProperty() {
@@ -44,11 +44,11 @@ public abstract class Acteur {
 	}
 	
 	public double getY() {
-		return yProperty.getValue() ;
+		return this.yProperty.getValue() ;
 	}
 	
 	public void setY(double newPositionY) {
-		yProperty.setValue(newPositionY) ;
+		this.yProperty.setValue(newPositionY) ;
 	}
 	
 	public final DoubleProperty yProperty(){
@@ -67,9 +67,8 @@ public abstract class Acteur {
 	
 	public String toString() {
 		return "Position: x="+ this.xProperty + " y="+ this.yProperty+ "\n Id:" + this.id;
-		
-		
 	}
+
 	
 	
 	

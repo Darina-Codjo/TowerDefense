@@ -2,97 +2,112 @@ package TowerDefense.modele;
 
 import java.util.Random;
 
-
-import TowerDefense.modele.Terrain;
+import TowerDefense.modele.ennemis.ScorpionSpeciale;
 import TowerDefense.modele.Jeu;
 
 public class Ennemis extends Acteur{
 
-	private int vitesse;
-	private double directionX;
-	private double directionY;
+	private double vitesse;
+	private int directionX;
+	private int directionY;
 	private int pv;
-	
-	public Ennemis(Terrain terrain, int pv, int v) {
-		super((terrain.getIndiceTuileDebutChemin()%30)*16+8, (terrain.getIndiceTuileDebutChemin()/30)*16+8 , terrain);
-		this.pv=pv;
+	private Jeu jeu;
+
+
+	public Ennemis(Terrain terrain, int pv, double v, Jeu jeu) {
+		super(terrain.getIndiceTuileDebutChemin()%30, terrain.getIndiceTuileDebutChemin()/30, terrain);
+		this.pv = pv;
 		this.vitesse = v;
-		this.directionX=0;
-		this.directionY=0;
+		this.directionX = 0;
+		this.directionY = 0;
+		this.jeu=jeu;
 	}
 
+	public Jeu getJeu() {
+		return this.jeu;
+	}
 	
+	public void incrementerPv() {
+		this.pv++;
+	}
 	
-	//Permet au ennemis de se déplacer aleatoirement 
-	private void directionAleatoire() {
-		Random random = new Random();
+	public void seDeplacerDijkstra() {
+		
+		int posX = (int) this.getX();
+		int posY = (int) this.getY();
+		int currentIndicePosEnnemi = (posY*30 + posX); 
+		int currentDistanceNode = this.terrain.getNodeInXY(posX,posY).getDistance();
 
-		double randomInt = random.nextInt(3);
-		directionX = randomInt-1;
-
-		randomInt = random.nextInt(3);
-		directionY = randomInt-1;
-
-		while(!(this.terrain.dansChemin(this.terrain.getTuileSansClic(this.directionX*this.vitesse+this.getX(), this.directionY*this.vitesse + this.getY())) && 
-				this.terrain.dansTerrain(this.directionX*this.vitesse + this.getX(), this.directionY*this.vitesse + this.getY()))) {
-			this.seDeplacer();
+		//a droite
+		if(this.terrain.dansChemin(currentIndicePosEnnemi+1) && this.terrain.getIfContainsNodeXY(posX+1, posY) && this.terrain.getNodeInXY(posX+1,posY).getDistance() < currentDistanceNode) {
+			this.directionX = 1;
+			this.directionY = 0;
+			this.setX(this.getX() + this.vitesse*this.directionX);
+			this.setY(this.getY() + this.vitesse*this.directionY);
+		}
+		//a gauche
+		else if(this.terrain.dansChemin(currentIndicePosEnnemi-1) && this.terrain.getIfContainsNodeXY(posX-1, posY) && this.terrain.getNodeInXY(posX-1, posY).getDistance() < currentDistanceNode) {
+			this.directionX = -1;
+			this.directionY = 0;
+			this.setX(this.getX() + this.vitesse*this.directionX);
+			this.setY(this.getY() + this.vitesse*this.directionY);
+		}
+		//en bas
+		else if(this.terrain.dansChemin(currentIndicePosEnnemi+30) && this.terrain.getIfContainsNodeXY(posX, posY+1) && this.terrain.getNodeInXY(posX, posY+1).getDistance() < currentDistanceNode) {
+			this.directionX = 0;
+			this.directionY = 1;
+			this.setX(this.getX() + this.vitesse*this.directionX);
+			this.setY(this.getY() + this.vitesse*this.directionY);
+		}
+		//en haut
+		else if(this.terrain.dansChemin(currentIndicePosEnnemi-30) && this.terrain.getIfContainsNodeXY(posX, posY-1) && this.terrain.getNodeInXY(posX, posY-1).getDistance() < currentDistanceNode) {
+			this.directionX = 0;
+			this.directionY = -1;
+			this.setX(this.getX() + this.vitesse*this.directionX);
+			this.setY(this.getY() + this.vitesse*this.directionY);
 		}
 	}
 
-	public void seDeplacer() {
 
-		directionAleatoire();
-		double newPositionX = this.getX()+(this.vitesse*directionX);
-		double newPositionY = this.getY()+(this.vitesse*directionY);
-
-		this.setX(newPositionX);
-		this.setY(newPositionY);   
+	@Override
+	public void agit() {
+		this.seDeplacerDijkstra();
+		
+		for(int i=0; i< jeu.listeEnnemis().size();i++) {
+			if(jeu.listeEnnemis().get(i) instanceof ScorpionSpeciale) {
+				((ScorpionSpeciale) jeu.listeEnnemis().get(i)).dedoublement();
+			
+			}		
+		}
 	}
-
-
 
 	//Les méthodes get et set relatives au pv
 	public int getPv() {
 		return this.pv;
 	}
-	
 	public void setPv(int newPv) {
-		this.pv=newPv;
+		this.pv = newPv;
+	}
+
+	//Les méthodes get et set relatives à la vitesse
+	public double getVitesse() {
+		return vitesse;
+	}
+	public void setVitesse(int v) {
+		this.vitesse = v;
+	}
+
+	//Les méthodes get et set relatives aux nouvelles coordonnées
+	public double getXSuivant() {
+		return directionX;
+	}
+
+	public double getYSuivant() {
+		return directionY;
 	}
 
 	public void setPvDegat(int degatRecu) {
 		this.pv -= degatRecu;
-	}
-
-	
-	
-	//Les méthodes get et set relatives à la vitesse
-	public int getVitesse() {
-		return vitesse;
-	}
-	
-	public void setVitesse(int v) {
-		this.vitesse = v;
-	}
-	
-	
-	
-	
-	//Les méthodes get et set relatives aux nouvelles coordonnées
-	public double getxSuivant() {
-		return directionX;
-	}
-
-	public double getySuivant() {
-		return directionY;
-	}
-
-
-
-	
-	@Override
-	public void agit() {
-		this.seDeplacer();
 	}
 
 	@Override
@@ -100,11 +115,4 @@ public class Ennemis extends Acteur{
 		return "Ennemis [pointsDeVie=" + this.pv + ", vitesse=" + vitesse + ", xSuivant=" + directionX + ", ySuivant="
 				+ directionY + "]";
 	}
-
-
-
-
-
-
-
 }

@@ -9,5 +9,4 @@ public class ProjectileGlace extends Projectile {
 	public ProjectileGlace(Tours tourelleDepart, Ennemis ennemisArrivee, Jeu jeu) {
 		super(tourelleDepart, ennemisArrivee, jeu);
 	}
-
 }

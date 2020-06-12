@@ -2,14 +2,17 @@ package TowerDefense.modele.tourelle;
 
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
+import TowerDefense.modele.Tours;
+import TowerDefense.modele.Ennemis;
+import TowerDefense.modele.projectile.Projectile;
 
-public class TourelleDestructible extends Tourelle {
+public class TourelleDestructible extends Tours {
 	
 	private int pv;
 
-	public TourelleDestructible(double x, double y, Terrain terrain, Jeu jeu, int pv) {
+	public TourelleDestructible(int x, int y, Terrain terrain, Jeu jeu, int pv) {
 		super(x, y, terrain, jeu);
-		this.pv=pv;		
+		this.pv = pv;		
 	}
 	
 	public int getPv() {
@@ -20,6 +23,15 @@ public class TourelleDestructible extends Tourelle {
 		this.pv -= degatRecu;
 	}
 	
-	
-
+	public void tir() {	
+		
+		Ennemis ennemiViser= ennemieVisable(100);
+		if (ennemiViser != null) {
+			if(!getJeu().projectileExisteSurEnnemi(ennemiViser.getId())) {				
+				getJeu().getListeProjectile().add(new Projectile(this,ennemiViser,getJeu()));
+				
+			}			
+		}			
+	}
 }
+	
