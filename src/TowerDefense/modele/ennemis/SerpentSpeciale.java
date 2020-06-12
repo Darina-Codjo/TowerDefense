@@ -11,7 +11,4 @@ public class SerpentSpeciale extends Ennemis {
 		super(terrain,125,0.5,jeu);
 	}
 	
-	public void destructeurs(int pvInflige) {
-		setPvDegat(pvInflige);	
-	}
 }

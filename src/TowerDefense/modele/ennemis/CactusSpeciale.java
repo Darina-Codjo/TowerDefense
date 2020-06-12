@@ -11,7 +11,4 @@ public class CactusSpeciale extends Ennemis{
 		super(terrain,100,0.5, jeu);
 	}
 
-	public void rechargement() {
-	
-	}
 }

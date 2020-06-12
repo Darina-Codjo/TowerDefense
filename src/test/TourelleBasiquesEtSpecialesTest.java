@@ -17,30 +17,27 @@ import TowerDefense.modele.tourelle.TourelleGlace;
 
 class TourelleBasiquesEtSpecialesTest {
 
+	Terrain terrain= new Terrain();
+	Jeu jeu= new Jeu(terrain);
+	Tours tours = new TourelleGlace(160,140,terrain, jeu);
+	Tours tours2 = new TourelleFeu(10,30,terrain,jeu);
+	Cactus cactus = new Cactus(terrain,jeu);
+	Serpent serpent= new Serpent(terrain,jeu);
+	
 	@Test
 	void testEnnemisProcheTirTourelleMultiple() {
-	
-		
-		Terrain terrain1= new Terrain();
-		Jeu jeu= new Jeu(terrain1);
-		Tours tours = new TourelleFeu(10,30,terrain1,jeu);
-		Tours tours2 = new TourelleGlace(160,140,terrain1, jeu);
-		Cactus cactus = new Cactus(terrain1,jeu);
+
 		cactus.setX(200);
 		cactus.setY(130);
 		
-		assertFalse(tours.ennemisProcheTirTourelleMultiple(50,cactus));
-		assertTrue(tours2.ennemisProcheTirTourelleMultiple(100, cactus));
+		assertFalse(tours2.ennemisProcheTirTourelleMultiple(50,cactus));
+		assertTrue(tours.ennemisProcheTirTourelleMultiple(100, cactus));
 		
 	}
 	
 	@Test
 	void testEnnemisVisable() {
-		
-		Terrain terrain1= new Terrain();
-		Jeu jeu= new Jeu(terrain1);
-		Tours tours = new TourelleGlace(160,140,terrain1, jeu);
-		Cactus cactus= new Cactus(terrain1,jeu);
+
 		cactus.setX(200);
 		cactus.setY(130);	
 		jeu.ajouterActeur(cactus);
@@ -52,11 +49,7 @@ class TourelleBasiquesEtSpecialesTest {
 	
 	@Test
 	void testEnnemisVisableNull() {
-		Terrain terrain1= new Terrain();
-		Jeu jeu= new Jeu(terrain1);
-		Tours tours = new TourelleGlace(160,140,terrain1, jeu);
-		
-		Serpent serpent= new Serpent(terrain1,jeu);
+
 		serpent.setX(2);
 		serpent.setY(6);
 		jeu.ajouterActeur(serpent);
