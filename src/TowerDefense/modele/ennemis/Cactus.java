@@ -7,7 +7,7 @@ import TowerDefense.modele.Terrain;
 public class Cactus extends Ennemis {
 	
 	public Cactus(Terrain monTerrain,Jeu jeu){
-		super(monTerrain, 100,0.5, jeu);
+		super(monTerrain, 200,0.5, jeu);
 	}
 	
 	@Override

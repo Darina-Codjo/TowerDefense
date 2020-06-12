@@ -8,7 +8,7 @@ public class SerpentSpeciale extends Ennemis {
 	
 	
 	public SerpentSpeciale(Terrain terrain,Jeu jeu) {
-		super(terrain,125,0.5,jeu);
+		super(terrain, 250,0.5,jeu);
 	}
 	
 }

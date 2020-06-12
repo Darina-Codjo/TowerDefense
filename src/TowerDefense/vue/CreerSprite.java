@@ -35,10 +35,10 @@ public class CreerSprite {
 		}
 		
 		else if (acteur instanceof TourelleDestructible) {
-			texture = new ImageView("textures/tour.png");
+			texture = new ImageView("textures/tourelledestructible.png");
 		}
 		else {
-			texture = new ImageView("textures/toursnipe.png");
+			texture = new ImageView("textures/tourellemultiple.png");
 		}
 		
 		texture.setFitWidth(48);

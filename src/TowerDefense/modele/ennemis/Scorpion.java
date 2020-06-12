@@ -6,7 +6,7 @@ import TowerDefense.modele.Terrain;
 public class Scorpion extends Ennemis{
 	
 	public Scorpion (Terrain monTerrain,Jeu jeu){
-		super(monTerrain, 150, 0.5, jeu);
+		super(monTerrain, 300, 0.5, jeu);
 	}
 	
 	@Override

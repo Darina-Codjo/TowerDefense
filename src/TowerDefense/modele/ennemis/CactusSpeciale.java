@@ -8,7 +8,7 @@ public class CactusSpeciale extends Ennemis{
 
 
 	public CactusSpeciale(Terrain terrain,Jeu jeu) {
-		super(terrain,100,0.5, jeu);
+		super(terrain,200,0.5, jeu);
 	}
 
 }

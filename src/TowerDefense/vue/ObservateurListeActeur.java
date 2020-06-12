@@ -53,6 +53,12 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 			texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(-8));
 			texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(-32));
 		}
+		else if (acteur instanceof CactusSpeciale || acteur instanceof ScorpionSpeciale || acteur instanceof SerpentSpeciale) {
+			texture.setFitWidth(48);
+			texture.setFitHeight(48);
+			texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(-24));
+			texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(-24));
+		}
 		else {
 		texture.setFitWidth(32);
 		texture.setFitHeight(32);
