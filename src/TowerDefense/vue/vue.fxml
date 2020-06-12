@@ -86,6 +86,7 @@
                </children>
             </HBox>
             <RadioButton fx:id="retirerTourelle" mnemonicParsing="false" prefHeight="17.0" prefWidth="110.0" text="Retirer tourelle" toggleGroup="$Tourelle" />
+            <Button fx:id="niveau2" mnemonicParsing="false" onAction="#changerNiveau" text="Button" />
          </children>
       </VBox>
    </right>

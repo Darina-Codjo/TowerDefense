@@ -195,9 +195,9 @@ public class Jeu {
 	}
 	
 	public void vagueEnnemis() {
-if(getNbVagues()<=6) {
+		if(getNbVagues()<=6) {
 			Acteur cactus = new Cactus(monTerrain,this);
-			Acteur grandeTour = new GrandeTour(monTerrain, this);
+			//Acteur grandeTour = new GrandeTour(monTerrain, this);
 			Acteur serpent= new Serpent(monTerrain,this);
 			Acteur scorpion= new Scorpion(monTerrain,this);
 			Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain,this);
