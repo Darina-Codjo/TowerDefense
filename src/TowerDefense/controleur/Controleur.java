@@ -63,6 +63,9 @@ public class Controleur implements Initializable{
 	private RadioButton ajoutTourelleRoche; 
 	@FXML
 	private RadioButton retirerTourelle;
+	@FXML
+	private Button boutonPause;
+
 	private Gameloop vue;		
 	private CreerSprite sprite;	
 	private Jeu game;
@@ -212,4 +215,10 @@ public class Controleur implements Initializable{
 			this.game.ajouterActeur(tour);
 		}
 	}
+	
+	@FXML
+    void mettreEnPause(ActionEvent event) {
+		vue.getGameLoop().pause();
+
+    }
 }
