@@ -78,7 +78,7 @@ public class Controleur implements Initializable{
 		this.game = new Jeu(monTerrain);
 		this.vue = new Gameloop(game, plateau);
 		this.sprite = new CreerSprite(plateau,game);
-		this.tour = new GrandeTour(monTerrain, game);
+		this.tour = new GrandeTour(monTerrain, game,250);
 		ConstruireMap construireMap = new ConstruireMap(map, game, plateau, monTerrain);
 		construireMap.remplirTileMap();
 
@@ -119,17 +119,7 @@ public class Controleur implements Initializable{
 				if(this.game.tourelleProche(x,y) != null) {
 					message.setText("Vous êtes dans la zone d'une tourelle !");
 				}
-				/*else if(this.monTerrain.dansChemin(this.monTerrain.getTuile(x-48, y-48)) && 
-						this.monTerrain.dansChemin(this.monTerrain.getTuile(x+48, y+48)) && 
-						this.monTerrain.dansChemin(this.monTerrain.getTuile(x-48, y+48)) &&
-						this.monTerrain.dansChemin(this.monTerrain.getTuile(x+48, y-48)) &&
-						this.monTerrain.dansChemin(this.monTerrain.getTuile(x-48, y)) && 
-						this.monTerrain.dansChemin(this.monTerrain.getTuile(x, y-48)) && 
-						this.monTerrain.dansChemin(this.monTerrain.getTuile(x+48, y)) && 
-						this.monTerrain.dansChemin(this.monTerrain.getTuile(x, y+48))
-						) {
-					message.setText("Vous êtes trop éloignés du chemin!");
-				}*/
+
 				else {
 					Acteur acteur=null;
 					if(!this.monTerrain.dansChemin(this.monTerrain.getTuile(x, y))) {
@@ -211,7 +201,7 @@ public class Controleur implements Initializable{
 			this.game.getListeProjectile().clear();
 			this.game.setNbVagues(0);
 			vue.getGameLoop().stop();
-			this.tour = new GrandeTour(monTerrain, game);
+			this.tour = new GrandeTour(monTerrain, game,250);
 			this.game.ajouterActeur(tour);
 		}
 	}

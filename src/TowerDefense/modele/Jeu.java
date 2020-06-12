@@ -180,7 +180,7 @@ public class Jeu {
 	
 	
 	public void vagueEnnemis() {
-		if(getNbVagues()<=6) {
+		if(getNbVagues()<=20) {
 			Acteur cactus = new Cactus(monTerrain,this);
 			Acteur serpent= new Serpent(monTerrain,this);
 			Acteur scorpion= new Scorpion(monTerrain,this);
@@ -233,7 +233,18 @@ public class Jeu {
 		}
 	}
 	
-	
+	//Si la grande tour a perdu tout ses pv alors return true et donc la partie s'arrête
+	public boolean partiePerdue() {
+		
+		for(int i=0; i<listeActeur.size();i++) {
+			if(listeActeur.get(i) instanceof GrandeTour) {
+				if(((GrandeTour) listeActeur.get(i)).getPv() <= 0) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
 	
 	

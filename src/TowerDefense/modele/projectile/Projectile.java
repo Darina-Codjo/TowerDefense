@@ -107,10 +107,8 @@ public class Projectile {
 			else {
 				positionEnnemis.setPvDegat(20);
 			}
+				
 			
-			if(positionTourelle instanceof GrandeTour) {
-				positionEnnemis.setVitesse(5);
-			}			
 			if(positionTourelle instanceof TourelleDestructible  && positionEnnemis instanceof SerpentSpeciale) {
 				((TourelleDestructible) positionTourelle).setPvDegat(25);
 				if(((TourelleDestructible) positionTourelle).getPv()<=0) {

@@ -36,8 +36,9 @@ public class Gameloop {
 					if(temps%500==0) {
 						this.game.vagueEnnemis();
 					}
-					
-
+					if(this.game.partiePerdue()){
+						gameLoop.stop();
+					}
 					temps++;
 				})
 				);
