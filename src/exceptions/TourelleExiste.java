@@ -14,9 +14,9 @@ public class TourelleExiste {
 
 	}
 
-	public static void tourellsPlus0()throws InexistantException {
+	public void tourellesPlus0()throws InexistantException {
 		try {
-			if( Jeu.listeTourelle().size()==1)
+			if(this.jeu.listeTourelle().size()==1)
 				throw new InexistantException();
 
 
@@ -24,7 +24,7 @@ public class TourelleExiste {
 			Alert alert= new Alert(AlertType.INFORMATION);
 			alert.setTitle("Tourelle");
 			alert.setHeaderText(null);
-			alert.setContentText("veuillez mettre au moins une Tourelle!");
+			alert.setContentText("veuillez mettre au moins une Tourelle !");
 
 			alert.showAndWait();
 

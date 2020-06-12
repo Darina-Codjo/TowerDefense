@@ -33,7 +33,6 @@ public class CreerSprite {
 		else if (acteur instanceof TourelleRoche){
 			texture = new ImageView("textures/tourelleroche.png");
 		}
-		
 		else if (acteur instanceof TourelleDestructible) {
 			texture = new ImageView("textures/tourelledestructible.png");
 		}
@@ -49,12 +48,10 @@ public class CreerSprite {
 		plateau.getChildren().add(texture);
 	}
 	
-	
-	
 	public void retirerSpriteTourelle(Acteur tours) {
 		
-		for (int i=this.plateau.getChildren().size()-1; i>=0;i--){
-			Node c=this.plateau.getChildren().get(i);
+		for (int i = this.plateau.getChildren().size()-1; i >= 0; i--){
+			Node c = this.plateau.getChildren().get(i);
 			Acteur a = this.jeu.getActeur(c.getId());
 			if(a == tours) {
 				this.plateau.getChildren().remove(c);

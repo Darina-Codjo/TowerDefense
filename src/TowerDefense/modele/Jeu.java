@@ -3,6 +3,7 @@ package TowerDefense.modele;
 import java.util.ArrayList;
 import java.util.Random;
 import TowerDefense.modele.projectile.Projectile;
+import exceptions.InexistantException;
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.ennemis.Cactus;
 import TowerDefense.modele.ennemis.CactusSpeciale;
@@ -14,6 +15,8 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class Jeu {
 	
@@ -58,7 +61,7 @@ public class Jeu {
 	//Toutes les méthodes qui renvoit des liste : liste d'acteur (ennemis et tourelle ensemble), 
 	//liste de tourelle, liste d'ennemis et la liste de projectile
 	//les liste d'acteur et de projectiles sont des observableListe puisqu'elles sont liés à la vue
-	public static ArrayList<Tours> listeTourelle(){
+	public ArrayList<Tours> listeTourelle(){
 		ArrayList<Tours> listeTourelle = new ArrayList<Tours>();
 		for(int i=0; i< getListeActeurs().size();i++) {
 			if (getListeActeurs().get(i) instanceof Tours) {
@@ -79,7 +82,7 @@ public class Jeu {
 		return listeEnnemis;	
 	}
 	
-	public static ObservableList<Acteur> getListeActeurs() {
+	public ObservableList<Acteur> getListeActeurs() {
 		return listeActeur;
 	}
 	
@@ -246,7 +249,22 @@ public class Jeu {
 		return false;
 	}
 	
-	
+	public void tourellesPlus0()throws InexistantException {
+		try {
+			if(this.listeTourelle().size() == 1)
+				throw new InexistantException();
+		}catch (InexistantException i) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Tourelle");
+			alert.setHeaderText(null);
+			alert.setContentText("veuillez mettre au moins une Tourelle !");
+
+			alert.showAndWait();
+
+			throw i;
+
+		}
+	}
 	
 	
 	
