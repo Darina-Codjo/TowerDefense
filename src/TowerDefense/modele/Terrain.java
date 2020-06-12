@@ -164,7 +164,7 @@ public class Terrain {
 				indiceTuile3 = i;
 			}
 		}
-				Random random = new Random();
+				/*Random random = new Random();
 				int alea = random.nextInt(3);
 		
 				if (alea == 0) {
@@ -175,8 +175,8 @@ public class Terrain {
 				}
 				if (alea == 2) {
 					indice = indiceTuile3;
-				}
-		return indice;
+				}*/
+		return indiceTuile3;
 	}
 	
 	
