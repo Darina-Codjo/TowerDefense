@@ -124,7 +124,7 @@ public class Controleur implements Initializable{
 					this.game.acheterTourelleSpeciale();
 					this.ajoutTourelleTirMultiple.setVisible(false);
 					this.ajoutTourelleDestructible.setVisible(false);
-	
+
 				}
 				this.game.ajouterActeur(acteur);
 				this.sprite.tourelleSprite(acteur, x*16-8, y*16-8);

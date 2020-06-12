@@ -92,12 +92,12 @@ public class Terrain {
 		}
 	}
 	
-	public boolean dansCheminV2(int indice) {
-		if(this.codeTuile(indice)%2 == 0) {
-			return true;
-		}
-		return false;
-	}
+//	public boolean dansCheminV2(int indice) {
+//		if(this.codeTuile(indice)%2 == 0) {
+//			return true;
+//		}
+//		return false;
+//	}
 
 	
 	//Ces 2 méthode permettent de récupérer une des 3 tuiles du début et fin de chemin 
