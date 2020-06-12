@@ -21,7 +21,15 @@
    <right>
       <VBox prefHeight="516.0" prefWidth="116.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#start" prefHeight="43.0" prefWidth="121.0" text="START" />
+            <Button fx:id="boutonPause" mnemonicParsing="false" onAction="#mettreEnPause" prefHeight="25.0" prefWidth="107.0" text="pause" />
+            <Button mnemonicParsing="false" onAction="#start" prefHeight="43.0" prefWidth="121.0">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../textures/play-vert.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <Label prefHeight="26.0" prefWidth="100.0" text="Nombre ennemis" />
             <Label fx:id="nbrEnnemis" text="0" />
             <HBox prefHeight="35.0" prefWidth="155.0">

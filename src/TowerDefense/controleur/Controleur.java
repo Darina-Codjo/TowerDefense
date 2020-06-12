@@ -57,6 +57,8 @@ public class Controleur implements Initializable{
     private RadioButton ajoutTourelleRoche; 
     @FXML
     private RadioButton retirerTourelle;
+    @FXML
+    private Button boutonPause;
 	private VueTerrain vue;		
 	private CreerSprite sprite;	
 	private Jeu game;
@@ -164,19 +166,24 @@ public class Controleur implements Initializable{
     }
 
 	@FXML
+    void mettreEnPause(ActionEvent event) {
+		vue.getGameLoop().pause();
+    }
+	@FXML
 	void start(ActionEvent event) {
-		if( this.game.partieEnCours()){	
-			for(int i=0;i<this.game.getListeActeurs().size();i++) {
-				this.sprite.retirerSpriteTourelle(this.game.getListeActeurs().get(i));
-				
-			}
-			this.game.getListeActeurs().clear();
-			this.game.getListeProjectile().clear();
-
-			this.game.setNbVagues(0);
-
-		}
+//		if( this.game.partieEnCours()){	
+//			for(int i=0;i<this.game.getListeActeurs().size();i++) {
+//				this.sprite.retirerSpriteTourelle(this.game.getListeActeurs().get(i));
+//				
+//			}
+//			this.game.getListeActeurs().clear();
+//			this.game.getListeProjectile().clear();
+//
+//			this.game.setNbVagues(0);
+//
+//		}
 		vue.getGameLoop().play();
+		
 	}
 
 }
