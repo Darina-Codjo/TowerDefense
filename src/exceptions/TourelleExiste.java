@@ -16,7 +16,7 @@ public class TourelleExiste {
 
 	public static void tourellsPlus0()throws InexistantException {
 		try {
-			if( Jeu.listeTourelle().size()==0)
+			if( Jeu.listeTourelle().size()==1)
 				throw new InexistantException();
 
 
