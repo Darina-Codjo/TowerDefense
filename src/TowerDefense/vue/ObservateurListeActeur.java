@@ -1,21 +1,15 @@
 package TowerDefense.vue;
 
 import TowerDefense.modele.Acteur;
-import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.GrandeTour;
-import TowerDefense.modele.Jeu;
 import TowerDefense.modele.ennemis.Cactus;
 import TowerDefense.modele.ennemis.CactusSpeciale;
 import TowerDefense.modele.ennemis.Scorpion;
 import TowerDefense.modele.ennemis.ScorpionSpeciale;
 import TowerDefense.modele.ennemis.Serpent;
 import TowerDefense.modele.ennemis.SerpentSpeciale;
-import TowerDefense.modele.tourelle.TourelleFeu;
-import TowerDefense.modele.tourelle.TourelleGlace;
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.image.ImageView;
 
 public class ObservateurListeActeur implements ListChangeListener<Acteur> {
@@ -28,7 +22,7 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 	}
 	
 	public void acteurSprite(Acteur acteur) {
-		/*Circle circle = new Circle(3);*/
+		
 		
 		ImageView texture;
 			
@@ -53,18 +47,28 @@ public class ObservateurListeActeur implements ListChangeListener<Acteur> {
 		}
 		
 		texture.setId(acteur.getId());
+		if (acteur instanceof GrandeTour) {
+			texture.setFitHeight(48);
+			texture.setFitWidth(32);
+			texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(-8));
+			texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(-32));
+		}
+		else if (acteur instanceof CactusSpeciale || acteur instanceof ScorpionSpeciale || acteur instanceof SerpentSpeciale) {
+			texture.setFitWidth(48);
+			texture.setFitHeight(48);
+			texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(-24));
+			texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(-24));
+		}
+		else {
 		texture.setFitWidth(32);
 		texture.setFitHeight(32);
-		texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(8));
-		texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(8));
+		texture.translateXProperty().bind(acteur.xProperty().multiply(16).add(-24));
+		texture.translateYProperty().bind(acteur.yProperty().multiply(16).add(-24));
+		}
+		
 		plateau.getChildren().add(texture);
 		
-		
-		/*circle.setId(acteur.getId()); 
-		circle.translateXProperty().bind(acteur.xProperty()) ;
-		circle.translateYProperty().bind(acteur.yProperty()) ;
-		plateau.getChildren().add(circle);*/
-
+	
 	}
 	
 	

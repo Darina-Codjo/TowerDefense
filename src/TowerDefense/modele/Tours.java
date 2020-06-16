@@ -22,10 +22,6 @@ public class Tours  extends Acteur{
 		return this.jeu;
 	}
 
-	public void tirerSurEnnemis(Ennemis ennemis) {
-		ennemis.setPv(0);
-		this.jeu.getListeActeurs().remove(ennemis);
-	}
 
 	//Parcours de la liste de tourelle et leur fait tirer leur attaque respective
 	//Chaque tir à son projectile qui luicest propre. 
@@ -67,4 +63,22 @@ public class Tours  extends Acteur{
 		}
 		return ennemieVisable;
 	}
+	
+	
+		//Booléen qui prend en paramètre la zone d'attaque de la tourelle (à tant de pixel) et un ennemi
+		//vérifie si cette ennemi est à la portée de la tourelle et peut donc se faire tirer dessus par celui-ci
+		public boolean ennemisProcheTirTourelleMultiple(double zoneAttaque, Ennemis e) {
+
+					if(		(this.getY()-zoneAttaque<= e.getY() && e.getY()<=this.getY()+zoneAttaque) &&
+							(this.getX()-zoneAttaque<= e.getX() && e.getX()<=this.getX()+zoneAttaque)  
+							){
+						return true;
+					}		
+			return false;
+		}
+		
+		
+
+		
+		
 }

@@ -2,6 +2,9 @@ package TowerDefense.modele;
 
 import java.util.Random;
 
+import TowerDefense.modele.ennemis.ScorpionSpeciale;
+import TowerDefense.modele.Jeu;
+
 public class Ennemis extends Acteur{
 
 	private double vitesse;
@@ -11,91 +14,22 @@ public class Ennemis extends Acteur{
 	private Jeu jeu;
 
 
-	public Ennemis(Terrain terrain, int pv, double v) {
+	public Ennemis(Terrain terrain, int pv, double v, Jeu jeu) {
 		super(terrain.getIndiceTuileDebutChemin()%30, terrain.getIndiceTuileDebutChemin()/30, terrain);
 		this.pv = pv;
 		this.vitesse = v;
 		this.directionX = 0;
 		this.directionY = 0;
+		this.jeu=jeu;
 	}
 
-	public void seDeplacerDijkstraV2(){
 
-		int posX = (int) this.getX();
-		int posY = (int) this.getY();
-		int currentIndicePosEnnemi = (posY*30 + posX); 
-		int currentDistanceNode = this.terrain.getNodeInXY(posX,posY).getDistance();
+	public Jeu getJeu() {
+		return this.jeu;
+	}
 
-		Random random = new Random();
-		int alea = random.nextInt(3);
-
-		if (alea == 0 || alea == 1) {
-			//en bas
-			 if(this.terrain.dansChemin(currentIndicePosEnnemi+30) && this.terrain.getIfContainsNodeXY(posX, posY+1) && this.terrain.getNodeInXY(posX, posY+1).getDistance() < currentDistanceNode) {
-				this.directionX = 0;
-				this.directionY = 1;
-				this.setX(this.getX() + this.vitesse*this.directionX);
-				this.setY(this.getY() + this.vitesse*this.directionY);
-			}
-			//en haut
-			else if(this.terrain.dansChemin(currentIndicePosEnnemi-30) && this.terrain.getIfContainsNodeXY(posX, posY-1) && this.terrain.getNodeInXY(posX, posY-1).getDistance() < currentDistanceNode) {
-				this.directionX = 0;
-				this.directionY = -1;
-				this.setX(this.getX() + this.vitesse*this.directionX);
-				this.setY(this.getY() + this.vitesse*this.directionY);
-			}
-			//en haut
-			else if(this.terrain.dansChemin(currentIndicePosEnnemi-30) && this.terrain.getIfContainsNodeXY(posX, posY-1) && this.terrain.getNodeInXY(posX, posY-1).getDistance() < currentDistanceNode) {
-				this.directionX = 0;
-				this.directionY = -1;
-				this.setX(this.getX() + this.vitesse*this.directionX);
-				this.setY(this.getY() + this.vitesse*this.directionY);
-			}
-			//a droite
-			else if(this.terrain.dansChemin(currentIndicePosEnnemi+1) && this.terrain.getIfContainsNodeXY(posX+1, posY) && this.terrain.getNodeInXY(posX+1,posY).getDistance() < currentDistanceNode) {
-				this.directionX = 1;
-				this.directionY = 0;
-				this.setX(this.getX() + this.vitesse*this.directionX);
-				this.setY(this.getY() + this.vitesse*this.directionY);
-			}
-			//a gauche
-			else if(this.terrain.dansChemin(currentIndicePosEnnemi-1) && this.terrain.getIfContainsNodeXY(posX-1, posY) && this.terrain.getNodeInXY(posX-1, posY).getDistance() < currentDistanceNode) {
-				this.directionX = -1;
-				this.directionY = 0;
-				this.setX(this.getX() + this.vitesse*this.directionX);
-				this.setY(this.getY() + this.vitesse*this.directionY);
-			}
-		}
-		else {	
-			//a droite
-			if(this.terrain.dansChemin(currentIndicePosEnnemi+1) && this.terrain.getIfContainsNodeXY(posX+1, posY) && this.terrain.getNodeInXY(posX+1,posY).getDistance() < currentDistanceNode) {
-				this.directionX = 1;
-				this.directionY = 0;
-				this.setX(this.getX() + this.vitesse*this.directionX);
-				this.setY(this.getY() + this.vitesse*this.directionY);
-			}
-			//a gauche
-			else if(this.terrain.dansChemin(currentIndicePosEnnemi-1) && this.terrain.getIfContainsNodeXY(posX-1, posY) && this.terrain.getNodeInXY(posX-1, posY).getDistance() < currentDistanceNode) {
-				this.directionX = -1;
-				this.directionY = 0;
-				this.setX(this.getX() + this.vitesse*this.directionX);
-				this.setY(this.getY() + this.vitesse*this.directionY);
-			}
-			//en bas
-			else if(this.terrain.dansChemin(currentIndicePosEnnemi+30) && this.terrain.getIfContainsNodeXY(posX, posY+1) && this.terrain.getNodeInXY(posX, posY+1).getDistance() < currentDistanceNode) {
-				this.directionX = 0;
-				this.directionY = 1;
-				this.setX(this.getX() + this.vitesse*this.directionX);
-				this.setY(this.getY() + this.vitesse*this.directionY);
-			}
-			//en haut
-			else if(this.terrain.dansChemin(currentIndicePosEnnemi-30) && this.terrain.getIfContainsNodeXY(posX, posY-1) && this.terrain.getNodeInXY(posX, posY-1).getDistance() < currentDistanceNode) {
-				this.directionX = 0;
-				this.directionY = -1;
-				this.setX(this.getX() + this.vitesse*this.directionX);
-				this.setY(this.getY() + this.vitesse*this.directionY);
-			}
-		}
+	public void incrementerPv() {
+		this.pv++;
 	}
 
 	public void seDeplacerDijkstra() {
@@ -106,32 +40,34 @@ public class Ennemis extends Acteur{
 		int currentDistanceNode = this.terrain.getNodeInXY(posX,posY).getDistance();
 
 		//a droite
-		if(this.terrain.dansChemin(currentIndicePosEnnemi+1) && this.terrain.getIfContainsNodeXY(posX+1, posY) 
-				&& this.terrain.getNodeInXY(posX+1,posY).getDistance() < currentDistanceNode) {
+		if(this.terrain.dansChemin(currentIndicePosEnnemi+1) && this.terrain.getIfContainsNodeXY(posX+1, posY) && this.terrain.getNodeInXY(posX+1,posY).getDistance() < currentDistanceNode) {
 			this.directionX = 1;
 			this.directionY = 0;
 			this.setX(this.getX() + this.vitesse*this.directionX);
 			this.setY(this.getY() + this.vitesse*this.directionY);
 		}
 		//a gauche
-		else if(this.terrain.dansChemin(currentIndicePosEnnemi-1) && this.terrain.getIfContainsNodeXY(posX-1, posY) 
-				&& this.terrain.getNodeInXY(posX-1, posY).getDistance() < currentDistanceNode) {
+
+		else if(this.terrain.dansChemin(currentIndicePosEnnemi-1) && this.terrain.getIfContainsNodeXY(posX-1, posY) && this.terrain.getNodeInXY(posX-1, posY).getDistance() < currentDistanceNode) {
+
 			this.directionX = -1;
 			this.directionY = 0;
 			this.setX(this.getX() + this.vitesse*this.directionX);
 			this.setY(this.getY() + this.vitesse*this.directionY);
 		}
 		//en bas
-		else if(this.terrain.dansChemin(currentIndicePosEnnemi+30) && this.terrain.getIfContainsNodeXY(posX, posY+1) 
-				&& this.terrain.getNodeInXY(posX, posY+1).getDistance() < currentDistanceNode) {
+
+		else if(this.terrain.dansChemin(currentIndicePosEnnemi+30) && this.terrain.getIfContainsNodeXY(posX, posY+1) && this.terrain.getNodeInXY(posX, posY+1).getDistance() < currentDistanceNode) {
+
 			this.directionX = 0;
 			this.directionY = 1;
 			this.setX(this.getX() + this.vitesse*this.directionX);
 			this.setY(this.getY() + this.vitesse*this.directionY);
 		}
 		//en haut
-		else if(this.terrain.dansChemin(currentIndicePosEnnemi-30) && this.terrain.getIfContainsNodeXY(posX, posY-1) 
-				&& this.terrain.getNodeInXY(posX, posY-1).getDistance() < currentDistanceNode) {
+
+		else if(this.terrain.dansChemin(currentIndicePosEnnemi-30) && this.terrain.getIfContainsNodeXY(posX, posY-1) && this.terrain.getNodeInXY(posX, posY-1).getDistance() < currentDistanceNode) {
+
 			this.directionX = 0;
 			this.directionY = -1;
 			this.setX(this.getX() + this.vitesse*this.directionX);
@@ -140,10 +76,16 @@ public class Ennemis extends Acteur{
 	}
 
 
-
 	@Override
 	public void agit() {
-		this.seDeplacerDijkstraV2();
+		this.seDeplacerDijkstra();
+
+		for(int i=0; i< jeu.listeEnnemis().size();i++) {
+			if(jeu.listeEnnemis().get(i) instanceof ScorpionSpeciale) {
+				((ScorpionSpeciale) jeu.listeEnnemis().get(i)).dedoublement();
+
+			}		
+		}
 	}
 
 	//Les méthodes get et set relatives au pv

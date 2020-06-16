@@ -1,0 +1,59 @@
+Cahier d’initialisation
+
+Thème désert
+
+Les ennemis cherchent à atteindre une tour dans le désert, il faut donc chercher à éliminer ces ennemis avant qu'ils ne l'atteignent. Pour cela, nous disposons stratégiquement des tours dans les différents coins de la carte, chaque tourelle a une caractéristique différente. A nous d’être stratégique !
+
+Objectif du jeu →  tuer les ennemis à l’aide des tourelles afin de protéger La Grande Tour en construisant et en améliorant progressivement des tourelles défensives.
+
+Une map sera proposée au joueur et celui-ci va devoir mettre en place une stratégie d’attaque/défense pour éliminer tous les ennemis de la carte avant qu’ils n'atteignent La Grande Tour.
+Le joueur devra “click-and-drag” les tourelles de son inventaire sur la map, autour du chemin qu'empruntent les différents ennemis. Une fois la partie lancée, dès qu’un ennemi entre dans la zone d'attaque d’une tourelle, cette dernière pourra alors l’attaquer et ainsi lui infliger des dégats jusqu’à ce que ses points de vie soit à 0. 
+Il y aura un nombre maximum d’ennemi présent sur la map, dès lors qu’un certain nombre d’ennemis est tué, une nouvelle vague d’ennemi apparaîtra pour compléter le nombre d’ennemis sans excéder le nombre maximum prédéfini. 
+Si une vague d’ennemi parvient à contrer la stratégie du joueur et donc réussi à atteindre La Grande Tour, cette dernière se fera attaquer par les ennemis. Si ses points de vie sont à 0, la partie est perdue. Pour gagner, le joueur dispose “d’argent” qu’il pourra dépenser dans les différentes améliorations et autres items. 
+
+A la première partie, le joueur ne dispose que de l’équipement basique : 3 tourelles basiques (feu, glace et roche). Et n’a aucune ressources, il va devoir en collecter au fur et à mesure de la partie en tuant les différents ennemis dit basiques.
+Une fois qu’il a assez de ressources, il pourra alors débloquer au choix de nouvelles caractéristiques sur les tourelles qu’il possède déjà ou alors en débloquer de nouvelles.
+Et bien évidemment plus il débloque de nouvelles capacités, plus les ennemi seront résistants. Et plus il avance dans le jeu, plus il y aura d’ennemis sur la map et de nouveaux apparaîtront. 
+ 
+
+ 
+
+Description des Acteurs
+L’univers est un désert :
+les tuiles seront du sable avec éventuellement des cailloux
+la taille de la carte sera 15/15 ou plus (who knows), ce qui laisse assez d’espace pour inventer et concevoir des chemins plus ou moins compliqué et/ou long.
+
+La Grande Tour :
+Elle représente “l’objet” à défendre, et est défendue par les différentes tourelles. Au cours du jeu, le joueur pourra améliorer sa défense en renforçant les tourelles ou en lui attribuant de nouvelles capacités comme 
+le sniper : attaque ciblée sur un unique ennemi quand celui-ci entre dans son rayon de porté, met ses points de vie totaux à 50%. 
+Item à débloquer
+Le bouclier : ajoute une 2ème barre de vie à la tour, pour la rendre plus résistante
+
+ Les tourelles et les caractéristiques: feu, roche, glace
+tourelle de feu : attaque l'ennemi avec des boules de feu
+tourelle de roche : projette des cailloux sur les ennemis
+tourelle de glace : lance une boule de glace qui ralentit les ennemis
+
+Les tourelles spéciales : destructible, attaque multiple
+Destructible : prends des dégâts, réductions des point de vie de la tourelle
+attaque multiple : tir 3 balles simultanément sur 3 ennemis distincts 
+
+ces tours ne sont déblocables qu’après avoir récupéré les ressources nécessaires
+
+Les ennemis basique: cactus, scorpion, serpent, 
+arrivée par vague avec un nombre minimum et maximum (les ennemis popent si le nombre déjà présent sur la carte est insuffisant, ce nombre varie en fonction de la map)
+Scorpion: déplacement lent mais plus résistant. Point faible: tourelles de glaces
+Serpent:  déplacement rapide mais peu résistant. Point faible: tourelles de roches.
+Cactus: déplacement moyen et résistance moyenne. Point faible: tourelles de feu. 
+
+Les ennemis spéciaux : rechargeable, dédoublement, destructeur
+rechargeable : un ennemi peut recharger sa jauge de points de vie, rechargement lent mais constant
+dédoublement : un ennemi tué peut “ressusciter” en faisant apparaître 2 ennemis 
+destructeurs : un ennemi peut infliger des dégâts aux tourelles  
+
+La fréquence d'apparition de ces ennemis est limitée, il n’y en aura, au début, qu’un seul sur la carte, s’il meurt, une nouvel ennemi spécial peut ou pas réapparaître. Au fil des niveaux, la fréquence augmentera.
+
+Inventaire : item, gestion des ressources
+monnaie : chaque ennemi tué représente un certain nombre de ressource collectibles (monnaie unique), plus l’ennemis est difficile à combattre plus la somme sera importante, elle permet de débloquer de nouveaux items (acheter de nouvelles tourelles, augmenter leur fréquence de tir…)
+
+gestion des ressources :  en général, ces améliorations sont pour  augmentent la vitesse d’attaque, elle peuvent aussi augmenter la durée d’un effet. 

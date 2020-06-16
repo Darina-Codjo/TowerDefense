@@ -3,7 +3,7 @@ package TowerDefense.modele;
 import java.util.ArrayList;
 import java.util.Random;
 import TowerDefense.modele.projectile.Projectile;
-import TowerDefense.modele.tourelle.Tourelle;
+import exceptions.InexistantException;
 import TowerDefense.modele.Acteur;
 import TowerDefense.modele.ennemis.Cactus;
 import TowerDefense.modele.ennemis.CactusSpeciale;
@@ -15,13 +15,16 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class Jeu {
 	
 	private Terrain monTerrain;
-	private ObservableList<Acteur> listeActeur;
+	private static ObservableList<Acteur> listeActeur;
 	private ObservableList<Projectile> listeProjectile;
 	private SimpleIntegerProperty argent;
+	private int nbVagues;
 	
 	
 	public Jeu(Terrain terrain) {
@@ -29,7 +32,7 @@ public class Jeu {
 		this.listeActeur = FXCollections.observableArrayList() ;
 		this.listeProjectile = FXCollections.observableArrayList() ;
 		this.argent = new SimpleIntegerProperty(0);
-		
+		this.nbVagues=0;
 	}
 	
 	//Ces 2 méthodes sont appelé dans la gameloop
@@ -58,11 +61,11 @@ public class Jeu {
 	//Toutes les méthodes qui renvoit des liste : liste d'acteur (ennemis et tourelle ensemble), 
 	//liste de tourelle, liste d'ennemis et la liste de projectile
 	//les liste d'acteur et de projectiles sont des observableListe puisqu'elles sont liés à la vue
-	public ArrayList<Tourelle> listeTourelle(){
-		ArrayList<Tourelle> listeTourelle = new ArrayList<Tourelle>();
+	public ArrayList<Tours> listeTourelle(){
+		ArrayList<Tours> listeTourelle = new ArrayList<Tours>();
 		for(int i=0; i< getListeActeurs().size();i++) {
-			if (getListeActeurs().get(i) instanceof Tourelle) {
-				listeTourelle.add((Tourelle) getListeActeurs().get(i));
+			if (getListeActeurs().get(i) instanceof Tours) {
+				listeTourelle.add((Tours) getListeActeurs().get(i));
 			}
 		}
 		return listeTourelle;
@@ -132,6 +135,21 @@ public class Jeu {
 		return argent ;
 	}
 	
+	public int getNbVagues() {
+		return this.nbVagues;
+	}
+	
+	public void setNbVagues(int nbVague) {
+		this.nbVagues=nbVague;
+	}
+	public void incrementerVagues() {
+		this.nbVagues++;
+	}
+	
+	
+	
+	//Ces 2 méthodes gèrent l'achat d'une tourelle spéciale
+	//La première fait l'achat et la deuxième vérifie que l'achat est possible
 	public void acheterTourelleSpeciale() {
 		int nbArgent=getArgent()-50;
 		this.setArgent(nbArgent);
@@ -146,21 +164,8 @@ public class Jeu {
 	}
 	
 	
-	public Acteur tuileDejaPrise(double x, double y) {
-		Acteur tours=null;
-		
-		for(int i=0; i<listeTourelle().size();i++) {
-			if(		(y-1<= listeTourelle().get(i).getY() && listeTourelle().get(i).getY()<=y+1) &&
-					(x-1<= listeTourelle().get(i).getX() && listeTourelle().get(i).getX()<=x+1)  
-					){
-				tours=listeTourelle().get(i);
-				return tours;
-			}
-		}
-		return tours ;
-	}
 	
-	//Certainemement pas au bonne endroit (classe tourelle surement)
+	
 	public Acteur tourelleProche(double x, double y) {
 
 		Acteur tours=null;
@@ -176,29 +181,31 @@ public class Jeu {
 		return tours ;
 	}
 	
+	
 	public void vagueEnnemis() {
-		Acteur cactus = new Cactus(monTerrain);
-		Acteur grandeTour = new GrandeTour(monTerrain, this);
-		Acteur serpent= new Serpent(monTerrain);
-		Acteur scorpion= new Scorpion(monTerrain);
-		Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain);
-		Acteur serpentSpeciale= new SerpentSpeciale(monTerrain);
-		Acteur cactusSpeciale=new CactusSpeciale(monTerrain);
-		
-		ArrayList<Ennemis> liste = new ArrayList<Ennemis>();
-		liste.add((Ennemis) cactus);
-		liste.add((Ennemis) serpent);
-		liste.add((Ennemis) scorpion);
-		liste.add((Ennemis) scorpionSpeciale);
-		liste.add((Ennemis) cactusSpeciale);
-		liste.add((Ennemis) serpentSpeciale);
-		
-		Random random = new Random();      
-        int randomInt = random.nextInt(liste.size());
-        
-        for(int i=0; i<=randomInt; i++) {
-        	listeActeur.add(liste.get(i));
-        }
+		if(getNbVagues()<=20) {
+			Acteur cactus = new Cactus(monTerrain,this);
+			Acteur serpent= new Serpent(monTerrain,this);
+			Acteur scorpion= new Scorpion(monTerrain,this);
+			Acteur scorpionSpeciale= new ScorpionSpeciale(monTerrain,this);
+			Acteur serpentSpeciale= new SerpentSpeciale(monTerrain,this);
+			Acteur cactusSpeciale=new CactusSpeciale(monTerrain,this);
+			
+			ArrayList<Ennemis> liste = new ArrayList<Ennemis>();
+			liste.add((Ennemis) cactus);
+			liste.add((Ennemis) serpent);
+			liste.add((Ennemis) scorpion);
+			liste.add((Ennemis) scorpionSpeciale);
+			liste.add((Ennemis) cactusSpeciale);
+			liste.add((Ennemis) serpentSpeciale);
+			
+			Random random = new Random();      
+	        int randomInt = random.nextInt(liste.size());      
+	        	listeActeur.add(liste.get(randomInt));
+	  
+	        incrementerVagues();
+	        
+		}
 	}
 	
 	
@@ -219,10 +226,45 @@ public class Jeu {
 	}
 	
 	
+	//Au cours du jeu si il y a un cactus spéciale, ses pv s'incrémentent
+	public void rechargement() {
+		
+		for(int i=0;i<listeEnnemis().size(); i++) {
+			if(listeEnnemis().get(i) instanceof CactusSpeciale) {
+				listeEnnemis().get(i).incrementerPv();
+			}
+		}
+	}
 	
+	//Si la grande tour a perdu tout ses pv alors return true et donc la partie s'arrête
+	public boolean partiePerdue() {
+		
+		for(int i=0; i<listeActeur.size();i++) {
+			if(listeActeur.get(i) instanceof GrandeTour) {
+				if(((GrandeTour) listeActeur.get(i)).getPv() <= 0) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
-	
-	
+	public void tourellesPlus0()throws InexistantException {
+		try {
+			if(this.listeTourelle().size() == 1)
+				throw new InexistantException();
+		}catch (InexistantException i) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Tourelle");
+			alert.setHeaderText(null);
+			alert.setContentText("veuillez mettre au moins une Tourelle !");
+
+			alert.showAndWait();
+
+			throw i;
+
+		}
+	}
 	
 	
 	

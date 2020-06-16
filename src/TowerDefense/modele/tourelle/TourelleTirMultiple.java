@@ -3,9 +3,9 @@ package TowerDefense.modele.tourelle;
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.projectile.ProjectileRoche;
 import TowerDefense.modele.Terrain;
-import TowerDefense.modele.tourelle.Tourelle;
+import TowerDefense.modele.Tours;
 
-public class TourelleTirMultiple extends Tourelle {
+public class TourelleTirMultiple extends Tours {
 
 	public TourelleTirMultiple(int x, int y, Terrain terrain, Jeu jeu) {
 		super(x, y, terrain, jeu);

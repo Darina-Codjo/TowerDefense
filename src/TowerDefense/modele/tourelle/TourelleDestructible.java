@@ -2,10 +2,11 @@ package TowerDefense.modele.tourelle;
 
 import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
+import TowerDefense.modele.Tours;
 import TowerDefense.modele.Ennemis;
 import TowerDefense.modele.projectile.Projectile;
 
-public class TourelleDestructible extends Tourelle {
+public class TourelleDestructible extends Tours {
 	
 	private int pv;
 
