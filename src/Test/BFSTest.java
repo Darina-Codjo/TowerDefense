@@ -5,13 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import TowerDefense.modele.Acteur;
+import TowerDefense.modele.Jeu;
 import TowerDefense.modele.Terrain;
+import TowerDefense.modele.dijkstra.Node;
 import TowerDefense.modele.ennemis.Cactus;
 
 class BFSTest {
-
 	private Terrain terrain = new Terrain();
-	private Acteur ennemis = new Cactus(terrain);
+	private Jeu game = new Jeu(terrain);
+	private Acteur ennemis = new Cactus(terrain, game);
 	
 
 	@Test
@@ -63,65 +65,6 @@ class BFSTest {
 				|| ennemis.getX() == tuile3departX && ennemis.getY() == tuile3departY, 
 				"verifier que les ennemis se place aux coordonnees d'une des cases de depart");
 
-	}
-	
-	@Test
-	public void testArriveeEnnemiCaseArrivee() {
-		terrain.placerNode();
-
-		int compteurCase = 0;
-		
-		double tuile1arriveX = 0;
-		double tuile1arriveY = 0;
-
-		double tuile2arriveX = 0;
-		double tuile2arriveY = 0;
-
-		double tuile3arriveX = 0;
-		double tuile3arriveY = 0;
-		
-		double posXNode = 0;
-		double posYNode = 0;
-		
-		double indiceCurrentNodeAZero = 0;
-		double indiceCurrentEnnemis = 0;
-		
-		//on recupere les coordonnees du node qui a sa distance a zero : le node qui se situe sur la tuile d'arrivee
-		for(int indiceNode = 0; indiceNode < terrain.getListeNode().size(); indiceNode++) {
-			if(terrain.getListeNode().get(indiceNode).getDistance() == 0) {
-				posXNode = terrain.getListeNode().get(indiceNode).getX();
-				posYNode = terrain.getListeNode().get(indiceNode).getY();
-				//recuperation de l'indice dans la map du node a 0
-				indiceCurrentNodeAZero = posYNode*30+posXNode;
-			}
-		}
-		
-		//tant que l'ennemis n'est pas sur la tuile qui se trouve aux memes coordonnees du node qui a sa distance a zero (node de la tuile d'arrivee), il se deplace
-		while(ennemis.getY()*30+ennemis.getX() != indiceCurrentNodeAZero) {
-			this.ennemis.agit();
-		}
-		
-		for(int i = 0; i < terrain.getMap().length; i++) {
-			if(terrain.getMap()[i] == 51) { 
-				compteurCase++;
-			}
-			if(terrain.getMap()[i] == 51 && compteurCase == 1) {
-				tuile1arriveX = i %30;
-				tuile1arriveY = i /30;
-			}
-			else if(terrain.getMap()[i] == 51 && compteurCase == 2) {
-				tuile2arriveX = i %30;
-				tuile2arriveY = i /30;
-			}
-			else if(terrain.getMap()[i] == 51 && compteurCase == 3) {
-				tuile3arriveX = i %30;
-				tuile3arriveY = i /30;
-			}
-		}
-		assertTrue(ennemis.getX() == tuile1arriveX && ennemis.getY() == tuile1arriveY 
-				|| ennemis.getX() == tuile2arriveX && ennemis.getY() == tuile2arriveY 
-				|| ennemis.getX() == tuile3arriveX && ennemis.getY() == tuile3arriveY, 
-				"verifier que les ennemis arruvent a se deplacer jusqu'aux coordonnees d'une des cases d'arrivee");
 	}
 
 }

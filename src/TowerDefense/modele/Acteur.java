@@ -12,8 +12,8 @@ public abstract class Acteur {
 	protected Terrain terrain;
 	public static int compteur=0;
 	
-	public Acteur(double x, double y, Terrain terrain) {
-		this.terrain = terrain;	
+	public Acteur(double x, double y, Terrain terrain2) {
+		this.terrain = terrain2;	
 		this.xProperty = new SimpleDoubleProperty(x) ;
 		this.yProperty = new SimpleDoubleProperty(y) ;
 		this.id="A"+compteur;

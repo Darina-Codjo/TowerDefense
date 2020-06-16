@@ -19,16 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="TowerDefense.modele.tourelle.Tourelle" project="ProjetS2" 
-    file="/ProjetS2/src/TowerDefense/modele/tourelle/Tourelle.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="621" y="279"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="TowerDefense.modele.tourelle.TourelleDestructible" project="ProjetS2" 
+  <class id="3" language="java" name="TowerDefense.modele.tourelle.TourelleDestructible" project="ProjetS2" 
     file="/ProjetS2/src/TowerDefense/modele/tourelle/TourelleDestructible.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="267" y="435"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="TowerDefense.modele.tourelle.TourelleTirMultiple" project="ProjetS2" 
+  <class id="4" language="java" name="TowerDefense.modele.tourelle.TourelleTirMultiple" project="ProjetS2" 
     file="/ProjetS2/src/TowerDefense/modele/tourelle/TourelleTirMultiple.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="241" x="463" y="420"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -46,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="TowerDefense.modele.tourelle.TourelleFeu" project="ProjetS2" 
+  <class id="5" language="java" name="TowerDefense.modele.tourelle.TourelleFeu" project="ProjetS2" 
     file="/ProjetS2/src/TowerDefense/modele/tourelle/TourelleFeu.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="856" y="470"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,11 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="7">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="8">    
+  <generalization id="6">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
